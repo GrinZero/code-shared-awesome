@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "strict": true,
+    "allowJs": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "removeComments": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": "./src",
+    "outDir": "./lib",
+    "typeRoots": ["./node_modules/@types/", "src/types"],
+    "types": ["node", "jest"],
+    "declaration": true,
+    "declarationDir": "./lib/types",
+    "lib": ["ESNext", "WebWorker", "scripthost"]
+  },
+  "exclude": ["node_modules"],
+  "include": ["./src/**/*.js", "./src/**/*.ts", "./*.ts", "src/types/*.d.ts"]
+}

@@ -1,0 +1,35 @@
+2022/04/04 05:37:54 [error] 32#32: *2 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8055"
+2022/04/04 05:37:54 [error] 32#32: *2 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8055", referrer: "http://localhost:8055/"
+2022/04/05 06:47:48 [error] 31#31: *1 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8055"
+2022/04/05 06:47:49 [error] 31#31: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost:8055", referrer: "http://localhost:8055/"
+2022/04/05 08:17:12 [error] 32#32: *1 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "127.0.0.1:8055"
+2022/04/05 08:17:12 [error] 32#32: *1 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1:8055", referrer: "http://127.0.0.1:8055/"
+2022/04/05 08:18:29 [error] 32#32: *4 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "127.0.0.1:8055"
+2022/04/05 08:49:51 [error] 32#32: *6 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "localhost:8055"
+2022/04/05 09:12:09 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:11
+2022/04/05 09:26:35 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:11
+2022/04/05 09:26:49 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:11
+2022/04/05 09:26:53 [emerg] 1#1: "upstream" directive is not allowed here in /etc/nginx/nginx.conf:11
+2022/04/05 09:37:41 [emerg] 1#1: host not found in upstream "sztulives_center_node:3000" in /etc/nginx/nginx.conf:14
+2022/04/05 09:37:44 [emerg] 1#1: host not found in upstream "sztulives_center_node:3000" in /etc/nginx/nginx.conf:14
+2022/04/05 09:38:05 [emerg] 1#1: host not found in upstream "sztulives_center_node:3000" in /etc/nginx/nginx.conf:14
+2022/04/05 09:39:15 [emerg] 1#1: host not found in upstream "sztulives_center_node:3000" in /etc/nginx/nginx.conf:14
+2022/04/05 09:39:20 [emerg] 1#1: host not found in upstream "sztulives_center_node:3000" in /etc/nginx/nginx.conf:14
+2022/04/05 09:39:25 [emerg] 1#1: host not found in upstream "sztulives_center_node:3000" in /etc/nginx/nginx.conf:14
+2022/04/05 09:39:59 [emerg] 1#1: host not found in upstream "sztulives_center_node" in /etc/nginx/nginx.conf:22
+2022/04/05 09:40:03 [emerg] 1#1: host not found in upstream "sztulives_center_node" in /etc/nginx/nginx.conf:22
+2022/04/05 09:45:53 [emerg] 1#1: host not found in upstream "sztulives_center_node" in /etc/nginx/nginx.conf:41
+2022/04/05 09:45:55 [emerg] 1#1: host not found in upstream "sztulives_center_node" in /etc/nginx/nginx.conf:41
+2022/04/05 09:45:57 [emerg] 1#1: host not found in upstream "sztulives_center_node" in /etc/nginx/nginx.conf:41
+2022/04/05 09:46:12 [emerg] 1#1: host not found in upstream "sztulives_center_node" in /etc/nginx/nginx.conf:41
+2022/04/05 09:46:15 [emerg] 1#1: host not found in upstream "sztulives_center_node" in /etc/nginx/nginx.conf:41
+2022/04/05 09:46:28 [emerg] 1#1: host not found in upstream "sztulives_center_node" in /etc/nginx/nginx.conf:41
+2022/04/05 09:46:31 [emerg] 1#1: host not found in upstream "sztulives_center_node" in /etc/nginx/nginx.conf:41
+2022/04/05 09:47:00 [warn] 1#1: conflicting server name "localhost" on 0.0.0.0:80, ignored
+2022/04/05 09:47:17 [error] 33#33: *1 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "127.0.0.1:8055"
+2022/04/05 09:47:54 [error] 33#33: *1 open() "/usr/share/nginx/html/index" failed (2: No such file or directory), client: 172.17.0.1, server: localhost, request: "GET /index HTTP/1.1", host: "127.0.0.1:8055"
+2022/04/05 09:47:58 [error] 33#33: *1 directory index of "/usr/share/nginx/html/" is forbidden, client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", host: "127.0.0.1:8055"
+2022/04/05 09:55:16 [warn] 1#1: conflicting server name "localhost" on 0.0.0.0:80, ignored
+2022/04/05 10:15:40 [emerg] 1#1: host not found in upstream "sztulives_center_node:3000" in /etc/nginx/nginx.conf:32
+2022/04/05 10:34:41 [error] 32#32: *5 connect() failed (111: Connection refused) while connecting to upstream, client: 172.17.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:3000/", host: "127.0.0.1:8060"
+2022/04/05 10:34:41 [error] 32#32: *5 connect() failed (111: Connection refused) while connecting to upstream, client: 172.17.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:3000/favicon.ico", host: "127.0.0.1:8060", referrer: "http://127.0.0.1:8060/"
