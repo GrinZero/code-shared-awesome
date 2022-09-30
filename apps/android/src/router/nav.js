@@ -15,7 +15,7 @@ import Logintwo from '../pages/user/logintwo';
 import Loginone from '../pages/user/loginone';
 import Login from '../pages/user/login';
 
-import Pone from '../pages/personal/pone';
+import UserHome from '../pages/personal/pone';
 
 
 
@@ -50,8 +50,8 @@ class Nav extends Component {
           />
 
              <Stack.Screen
-            name="Pone"
-            component={Pone}
+            name="UserHome"
+            component={UserHome}
             options={{
               ...TransitionPresets.SlideFromRightIOS,
             }}
