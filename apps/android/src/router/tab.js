@@ -65,7 +65,7 @@ function MyTabBar({state, descriptors, navigation}) {
     <View style={styles.tab_home_wrap}>
       <Image
         style={styles.tab_home_bg}
-        source={require('../assets/images/bottom.png')}
+        source={require('../assets/images/bottom-zi.png')}
       />
       <View style={styles.tab_home}>
         {state.routes.map((route, index) => {

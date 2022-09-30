@@ -2,53 +2,67 @@ import React, { Component }  from 'react';
 import { View, Text, Image ,StatusBar,ImageBackground, StyleSheet,TouchableOpacity,TextInput,Button,ScrollView} from 'react-native';
 import {inject,observer} from "mobx-react";
 import RootStore from '../../mobx/index';
-
+import {userInfo,userCodeList} from '../../mock/user'
 class UserHome extends Component {
   constructor(props) {
     super(props);
   }
-    render() {     
+state={
+  userInfo:{},
+  userCodeList:[]
+}
+ componentDidMount(){
+        this.setState({userInfo});
+        this.setState({userCodeList})
+}
+    render() {   
+    const {userName,signature,getLikes,followers,concern,avatar}=this.state.userInfo
+
+    const userCodeListDom=this.state.userCodeList.map(item=>{
+            return (
+            <View style={OpusStyles.OpusBox}>
+                <View style={OpusStyles.ItemBox}>
+                     <Text style={OpusStyles.title}>{item.title}</Text>
+                    <View style={{display:"flex",flexDirection:"row"}}
+                    >
+                    <Text style={OpusStyles.ItemName}>{item.user}</Text>
+                        <Text style={OpusStyles.ItemName}>&nbsp; | &nbsp;</Text>
+                    <Text style={OpusStyles.ItemName}>五个月前</Text>
+                    </View>
+                        <Text numberOfLines={2} style={OpusStyles.mainContent}>{item.introduce}</Text>
+                    <View style={OpusStyles.itemTool}>
+                        <Image style={OpusStyles.like}source={require('../../static/img/like-3.png')}/>
+                    <Text style={{margin:5,color:'gray'}}>{item.getLikes}</Text>   
+                    <Image style={OpusStyles.comment}source={require('../../static/img/comment.png')}/>
+                    <Text style={{margin:5,color:'gray'}}>{item.comment}</Text>   
+                </View>
+                    </View>
+            </View>
+            )
+        })
       return (
-        <View >
+        <View style={{backgroundColor:'#24273b'}}>
         <ScrollView>
-           <View style={UserStyles.bg}><Image style={UserStyles.bg} source={require('../imgc/userBg.png')}/></View>
+           <View style={UserStyles.bg}><Image style={UserStyles.bg} source={require('../imgc/user_bg.png')}/></View>
              <View style={UserStyles.baseMessageBox}>
                 <Image style={UserStyles.avatar}
                 source={require('../imgc/avatar.jpg')}
                 />
-                <View style={UserStyles.userNameBox}><Text style={UserStyles.userName}>撒冷才不是小小蒙</Text></View>
+                <View style={UserStyles.userNameBox}><Text style={UserStyles.userName}>{userName}</Text></View>
                 <View style={UserStyles.toolBox}> 
                     <View style={UserStyles.toolButton}><Text style={UserStyles.toolButtonText}>关 注</Text></View>
                 </View>
-                <View style={{marginTop:5,marginLeft:20}}><Text style={{fontSize:18,color:'gray'}}>一只躺平的小卷卷</Text></View>
+                <View style={{marginTop:5,marginLeft:20}}><Text style={{fontSize:18,color:'gray'}}>{signature}</Text></View>
                 <View style={UserStyles.MesBox}>
-                    <View style={UserStyles.MesBoxItem}><Text style={UserStyles.MesBoxItemText}><Text style={{fontWeight:'bold'}}>100</Text>获赞</Text></View>
-                    <View style={UserStyles.MesBoxItem}><Text style={UserStyles.MesBoxItemText}><Text style={{fontWeight:'bold'}}>11</Text> 关注</Text></View>
-                    <View style={UserStyles.MesBoxItem}><Text style={UserStyles.MesBoxItemText}><Text style={{fontWeight:'bold'}}>121</Text>粉丝</Text></View>
+                    <View style={UserStyles.MesBoxItem}><Text style={UserStyles.MesBoxItemText}><Text style={{fontWeight:'bold'}}>{getLikes}</Text>获赞</Text></View>
+                    <View style={UserStyles.MesBoxItem}><Text style={UserStyles.MesBoxItemText}><Text style={{fontWeight:'bold'}}>{concern}</Text> 关注</Text></View>
+                    <View style={UserStyles.MesBoxItem}><Text style={UserStyles.MesBoxItemText}><Text style={{fontWeight:'bold'}}>{followers}</Text>粉丝</Text></View>
                 </View>
-                <View style={UserStyles.MesBox}><Text style={{fontSize:20,color:'#624ac6',fontWeight:'bold'}}>作品</Text></View>
-                <View style={{marginTop:5, marginLeft:12, width:40,height:5,backgroundColor:'#624ac6'}}></View>
+                <View style={UserStyles.MesBox}><Text style={{fontSize:20,color:'white',fontWeight:'bold'}}>作品</Text></View>
+                <View style={{marginTop:5, marginLeft:12, width:40,height:5,backgroundColor:'white'}}></View>
             </View>
-
-            <View style={OpusStyles.OpusBox}>
-                <View style={OpusStyles.ItemBox}>
-                     <Text style={OpusStyles.title}>Vue源码这里的处理太妙了！</Text>
-                    <View style={{display:"flex",flexDirection:"row"}}
-                    >
-                    <Text style={OpusStyles.ItemName}>用户名</Text>
-                        <Text style={OpusStyles.ItemName}>&nbsp; | &nbsp;</Text>
-                    <Text style={OpusStyles.ItemName}>五个月前</Text>
-                    </View>
-                        <Text numberOfLines={2} style={OpusStyles.mainContent}>关于Vue的源码，一直是为大家津津乐道的,今天我们就来一起研究一下关于Vue源码中响应式的部分...</Text>
-                    <View style={OpusStyles.itemTool}>
-                        <Image style={OpusStyles.like}source={require('../../static/img/like-3.png')}/>
-                    <Text style={{margin:5,color:'gray'}}>120</Text>   
-                    <Image style={OpusStyles.comment}source={require('../../static/img/comment.png')}/>
-                    <Text style={{margin:5,color:'gray'}}>40</Text>   
-                </View>
-                    </View>
-            </View>
-            <View style={{height:30}}></View>
+            {userCodeListDom}
+            <View style={{height:200}}></View>
         </ScrollView>
         </View>
       );
@@ -76,23 +90,24 @@ padding:20
     },
     userNameBox:{
         marginLeft:10,
-        marginTop:10
+        marginTop:10,
     },
     userName:{
         fontSize:22,
+        color:'white'
     },  
     toolButton:{
         width:65,
         padding:10,
         height:40,
         borderRadius:6,
-        borderColor:'#624ac6',
+        borderColor:'#1b86f8',
         borderWidth:1,
-        backgroundColor:'white',
-        textAlign:'center'
+        backgroundColor:'#1b86f8',
+        textAlign:'center',
     },
     toolButtonText:{
-        color:'#624ac6',
+        color:'white',
         fontSize:18,
         lineHeight:20,
     },
@@ -112,7 +127,8 @@ padding:20
         marginRight:10
     },
     MesBoxItemText:{
-        fontSize:20
+        fontSize:20,
+        color:'white'
     }
 });
 const OpusStyles= StyleSheet.create({
@@ -121,7 +137,11 @@ const OpusStyles= StyleSheet.create({
     marginTop:10
     },
     ItemBox:{
-        marginLeft:30,
+        paddingTop:10,
+        paddingBottom:10,
+        paddingLeft:30,
+        backgroundColor:'#151728',
+        opacity:0.6
     },
     avatar:{
         width:30,
@@ -131,16 +151,19 @@ const OpusStyles= StyleSheet.create({
     ItemName:{
         position:'relative',
         fontSize:16,
+        color:'white',
         top:5
     },
     title:{
+        color:'white',
         fontSize:20,
         fontWeight:'bold'
     },
     mainContent:{
         marginTop:5,
         fontSize:18,
-        paddingRight:10
+        paddingRight:10,
+        color:'white'
     },
     itemTool:{
         position:'relative',
