@@ -37,7 +37,7 @@ toFollower=()=>{
                     <View style={OpusStyles.itemTool}>
                         <Image style={OpusStyles.like}source={require('../../static/img/like-3.png')}/>
                     <Text style={{margin:5,color:'gray'}}>{item.getLikes}</Text>   
-                    <Image style={OpusStyles.comment}source={require('../../static/img/comment.png')}/>
+                    <Image style={OpusStyles.comment} source={require('../../static/img/comment.png')}/>
                     <Text style={{margin:5,color:'gray'}}>{item.comment}</Text>   
                 </View>
                     </View>
