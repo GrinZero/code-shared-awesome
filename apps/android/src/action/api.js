@@ -10,7 +10,6 @@ const api = {
         url: '/authentication/user/sendNote',
         method: 'post',
     },
-
     // 登陆验证
     yzmyanzheng: {
         url: '/authentication/user/login',
@@ -26,7 +25,7 @@ const api = {
         url: '/authentication/user/change',
         method: 'post',
     },
-
+    // 用户部分
 
 };
 

@@ -14,12 +14,47 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "sidebar-codeShow",
+          "title": "codeShow",
+          "icon": "images/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "sidebar-codeShow": [
+        {
+          "id": "sidebar-codeShow-context",
+          "name": "收藏的code"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "vsc-code-shared-awesome.helloWorld",
-        "title": "Hello World"
+        "title": "codeShow",
+        "icon": "images/icon.svg"
       }
-    ]
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "when": "editorFocus",
+          "command": "vsc-code-shared-awesome.helloWorld",
+          "alt": "",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "vsc-code-shared-awesome.helloWorld",
+          "group": "codeShow"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",

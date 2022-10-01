@@ -17,7 +17,7 @@ import Home from '../pages/home';
 // 登录
 import Logintwo from '../pages/user/logintwo';
 // 旅游模式
-import Pone from '../pages/personal/pone'
+import UserHome from '../pages/personal/pone'
 
 import {
   flexColumnCenter,
@@ -65,7 +65,7 @@ function MyTabBar({state, descriptors, navigation}) {
     <View style={styles.tab_home_wrap}>
       <Image
         style={styles.tab_home_bg}
-        source={require('../assets/images/Bottom_home.png')}
+        source={require('../assets/images/bottom-zi.png')}
       />
       <View style={styles.tab_home}>
         {state.routes.map((route, index) => {
@@ -142,13 +142,13 @@ function tabIcon(isFocused, index) {
 onStartShouldSetResponderCapture={(ev) => true}
 >
     <View 
-        style={{marginBottom:pxToDp(180)}}
+        style={{marginBottom:pxToDp(50)}}
     >
       <Image
-        source={require('../assets/icons/playing.png')}
+        source={require('../assets/icons/add.png')}
         style={{
-          width: pxToDp(218),
-          height: pxToDp(218),
+          width: pxToDp(100),
+          height: pxToDp(100),
           borderTopWidth:pxToDp(140)
         }}
         resizeMode={'contain'}
@@ -267,7 +267,7 @@ class Tabs extends Component {
         {/* 播放 */}
         <Tab.Screen name="需要" component={Home} />
         {/* 旅游页面 */}
-        <Tab.Screen name="动态" component={Pone} />
+        <Tab.Screen name="动态" component={UserHome} />
 
 
       </Tab.Navigator>
@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
   },
   tab_home_bg: {
     width: pxToDp(750),
-    height: pxToDp(120),
+    height: pxToDp(150),
     position: 'absolute',
     bottom: 0,
     left: 0,
