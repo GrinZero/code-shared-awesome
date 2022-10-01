@@ -1,8 +1,8 @@
+import {useRouter} from 'next/router';
+import React, {FC} from 'react';
+import style from './index.module.css';
 
-export default function Login() {
-  return (
-    <div>
-      <h1>Login</h1>
-    </div>
-  );
-}
+const Login: FC = () => {
+  return <h2>哈哈哈</h2>;
+};
+export default Login;
