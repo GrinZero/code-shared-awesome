@@ -96,18 +96,17 @@ const styles = StyleSheet.create({
   },
   buttonone: {
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
+    backgroundColor: "#151728",
     padding: 13,
     marginTop:20,
     width:250,
     alignSelf:'center',
-    backgroundColor:'#DE2910',
     justifyContent:'center',
     borderRadius: 10//按钮圆角
   },
   buttontwo: {
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
+    backgroundColor: "#151728",
     padding: 13,
     marginTop:20,
     width:250,

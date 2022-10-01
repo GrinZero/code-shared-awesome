@@ -23,19 +23,18 @@ press = () => {
         <Image 
         style={{flex:1,height:'100%'}}
         resizeMode="stretch"
-        source={require('../imgc/onec.png')}>
+        source={require('../imgc/appbg.png')}>
         </Image>
-        <Text style={{position:'absolute' ,marginTop:'30%'}}> 
-            <Text style={LoginStyles.login}>
-                     红 侣 </Text>  
+        <Text style={{position:'absolute' ,marginTop:'52%',color:'white',fontSize:16}}>  
+            Talk is cheap , Show me the code
         </Text> 
 
-        <Text style={{position:'absolute',marginTop:600,color:'white'}}>
+        <Text style={{position:'absolute',marginTop:560,color:'white'}}>
         
         
           第三方账号登录  
         </Text>
-        <Text style={{position:'absolute',marginTop:625,color:'white',height:60}}>
+        <Text style={{position:'absolute',marginTop:585,color:'white',height:60}}>
             <Image style={{}} source={require('../imgc/qq.png')}></Image>   
             <Text>           </Text>
             <Image source={require('../imgc/weixin.png')}></Image>

@@ -16,8 +16,9 @@ import LocalStorageUtils from '../utils/LocalStorageUtils';
 import Home from '../pages/home';
 // 登录
 import Logintwo from '../pages/user/logintwo';
-// 旅游模式
+//用户信息
 import UserHome from '../pages/personal/pone'
+import Message from '../pages/message/index'
 
 import {
   flexColumnCenter,
@@ -80,7 +81,7 @@ function MyTabBar({state, descriptors, navigation}) {
             if (
               RootStore.userStore.allData.accessToken === '' &&
               (route.name === '消息' ||
-                route.name === '需求' ||
+                route.name === '首页' ||
                 route.name === '我的')
             ) {
               NavigationHelper.navigate('Login');
@@ -135,11 +136,11 @@ function MyTabBar({state, descriptors, navigation}) {
 function tabIcon(isFocused, index) {
   if (index === 1) {
     return (
-    <TouchableOpacity onPress={()=>{
-           Pubsub.publish('changePlay',RootStore.globalStore.isPlaying)
-          RootStore.globalStore.setPlaying()
-}}
+    <TouchableOpacity 
 onStartShouldSetResponderCapture={(ev) => true}
+onPress={()=>{
+    NavigationHelper.navigate('首页');
+}}
 >
     <View 
         style={{marginBottom:pxToDp(50)}}
@@ -252,7 +253,9 @@ class Tabs extends Component {
   keyboardDidHideHandler(event) {
     this.setState({KeyboardShown: true});
   }
-
+    componentDidMount(){
+     NavigationHelper.navigate('首页');
+    }
   render() {
     return (
       <Tab.Navigator
@@ -263,11 +266,10 @@ class Tabs extends Component {
           this.state.KeyboardShown ? <MyTabBar {...props} /> : null
         }>
           {/* 推荐页面 */}
+        <Tab.Screen name="消息" component={Message} />
         <Tab.Screen name="首页" component={Home} />
-        {/* 播放 */}
-        <Tab.Screen name="需要" component={Home} />
         {/* 旅游页面 */}
-        <Tab.Screen name="动态" component={UserHome} />
+        <Tab.Screen name="我的" component={UserHome} />
 
 
       </Tab.Navigator>

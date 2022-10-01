@@ -1,0 +1,34 @@
+export const messageList=[
+    {
+        type:'like',
+        user:'用户12138',
+        userId:12,
+        time:'2022-12-13',
+        code:'Vue的源码太巧妙了！',
+        content:''
+    },
+    {
+        type:'follower',
+        user:'用户12138',
+        userId:12,
+        time:'2022-12-13',
+        code:'Vue的源码太巧妙了！',
+        content:''
+    },
+    {
+        type:'comment',
+        user:'用户1218',
+        userId:12,
+        time:'2022-12-13',
+        code:'Vue的源码太巧妙了！',
+        content:'太厉害了！！！'
+    },
+        {
+        type:'message',
+        user:'系统消息',
+        userId:12,
+        time:'2022-12-13',
+        code:'Vue的源码太巧妙了！',
+        content:'您的代码片段《Vue的源码太巧妙了！》已通过审核'
+    }
+]

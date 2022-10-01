@@ -173,11 +173,14 @@ queding=async()=>{
   render() {
     const {one,two,three}=this.state;
     return (
-      <View  style={{alignItems: 'center' }}>
-          <Login></Login>
+      <View  style={{flex:1, alignItems: 'center',backgroundColor:'red'}}>
+               <Image 
+        style={{flex:1,height:'100%'}}
+        resizeMode="stretch"
+        source={require('../imgc/appbg.png')}>
+        </Image>
           {/* <Text style={{position:'absolute', marginTop:250,fontSize:18}}>重置密码                           </Text> */}
-         {one ? this.phone():(two ? this.vernumber() :this.password() )}
-         
+         {one ? this.phone():(two ? this.vernumber() :this.password() )}         
         </View>
     );
   }
@@ -197,7 +200,7 @@ queding=async()=>{
       height:50,
       borderRadius: 10,//按钮圆角
       alignSelf:'center',
-      backgroundColor:'#DE2910',
+      backgroundColor:'#151728',
       justifyContent:'center',
       alignItems:'center'//显示Text组件居中
       }, 

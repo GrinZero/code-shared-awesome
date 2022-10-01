@@ -9,7 +9,11 @@ class UserHome extends Component {
   }
 state={
   userInfo:{},
-  userCodeList:[]
+  userCodeList:[],
+  isFollowed:true
+}
+toFollower=()=>{
+   this.setState({isFollowed:!this.state.isFollowed})
 }
  componentDidMount(){
         this.setState({userInfo});
@@ -17,7 +21,7 @@ state={
 }
     render() {   
     const {userName,signature,getLikes,followers,concern,avatar}=this.state.userInfo
-
+    let {isFollowed}=this.state
     const userCodeListDom=this.state.userCodeList.map(item=>{
             return (
             <View style={OpusStyles.OpusBox}>
@@ -50,7 +54,9 @@ state={
                 />
                 <View style={UserStyles.userNameBox}><Text style={UserStyles.userName}>{userName}</Text></View>
                 <View style={UserStyles.toolBox}> 
-                    <View style={UserStyles.toolButton}><Text style={UserStyles.toolButtonText}>关 注</Text></View>
+                 <TouchableOpacity onPress={this.toFollower}>
+                    <View style={UserStyles.toolButton}><Text style={UserStyles.toolButtonText}>{isFollowed?'已关注':'关    注'}</Text></View>
+                 </TouchableOpacity> 
                 </View>
                 <View style={{marginTop:5,marginLeft:20}}><Text style={{fontSize:18,color:'gray'}}>{signature}</Text></View>
                 <View style={UserStyles.MesBox}>
@@ -97,7 +103,7 @@ padding:20
         color:'white'
     },  
     toolButton:{
-        width:65,
+        width:80,
         padding:10,
         height:40,
         borderRadius:6,

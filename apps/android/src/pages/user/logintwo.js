@@ -162,10 +162,10 @@ renderLogin=()=>{
           <TextInput
           placeholder="      请输入手机号码"
           maxLength={11}
-          inputStyle={{color:"#666666"}} 
+          inputStyle={{color:"white"}} 
           keyboardType="phone-pad"     //输入时键盘为数字键
           underlineColorAndroid='#666666'
-          style={{ height: 60,fontSize:20,width:220}}
+          style={{ height: 60,fontSize:20,width:220,color:"white"}}
           // onSubmitEditing={this.onSubmitEditing}
           // errorMessage="手机号码不正确"
           onChangeText={this.phoneChange}
@@ -205,7 +205,7 @@ renderVcode=()=>{
    <View>
          <TextInput
          placeholder="         输入验证码"
-         underlineColorAndroid='#666666'
+         underlineColorAndroid='#151728'
          style={{ height: 60,fontSize:20,width:220,marginTop:15,marginBottom:30}}
          // value={value}
          onChangeText={this.verNumber}
@@ -298,25 +298,25 @@ render() {
     },
     buttonone: {
       alignItems: "center",
-      backgroundColor: "#DDDDDD",
+      backgroundColor: "#151728",
       padding: 13,
       marginTop:20,
       width:250,
       alignSelf:'center',
-      backgroundColor:'#DE2910',
       justifyContent:'center',
       borderRadius: 10//按钮圆角
     },
     buttontwo: {
       alignItems: "center",
-      backgroundColor: "#DDDDDD",
+      backgroundColor: "#151728",
       padding: 13,
       marginTop:20,
       width:250,
       alignSelf:'center',
       backgroundColor:'white',
       justifyContent:'center',
-      borderRadius: 10//按钮圆角
+      borderRadius: 10,
+       opacity:0.9
     },
     one: {
       paddingTop:280,
