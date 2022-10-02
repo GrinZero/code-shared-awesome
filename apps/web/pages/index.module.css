@@ -102,12 +102,13 @@
 .top_nav ul li {
   width: 80px;
   text-align: center;
-  /* margin-right: 40px; */
   color: #5c5d71;
+  cursor: pointer;
+  transition: 0.36s ease;
 }
 .top_nav ul li:hover {
   background-color: #1b1d2e;
-  color: #ffffff !important;
+  color: #ffffff;
 }
 .top_nav ul li:hover::after {
   content: "";
