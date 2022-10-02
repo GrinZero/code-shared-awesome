@@ -6,6 +6,7 @@ export async function activate(context: vscode.ExtensionContext) {
   let editor = vscode.window.activeTextEditor;
   let editorText = editor?.document.getText() || "";
   // 一次只允许一个 webview 存在
+
   let currentPanel: vscode.WebviewPanel | undefined = undefined;
 
   context?.subscriptions.push(
