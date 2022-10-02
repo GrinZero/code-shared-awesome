@@ -4,7 +4,8 @@ module.exports = {
   extends: ["custom"],
   settings: {
     next: {
-      rootDir: ["apps/*/"],
+      rootDir: ["apps/web/"],
     },
   },
+  ignorePatterns: ["eslint-config-custom", ".eslintrc.js"],
 };
