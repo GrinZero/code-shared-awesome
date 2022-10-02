@@ -10,6 +10,8 @@ import {
 import { comment } from "../../utils";
 import style from "./index.module.css";
 const MyComment: FC = () => {
+  console.log(1);
+
   const [like, setLike] = React.useState(true);
   const [star, setStar] = React.useState(true);
   const actions = [
