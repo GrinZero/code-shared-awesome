@@ -1,5 +1,4 @@
 import type { Api } from "../types";
-
 export interface DetailResult {
   id: number;
   type: number;
@@ -11,12 +10,12 @@ export interface DetailResult {
   comment: number;
   code: string;
 }
-export type Params = number;
+export type DetailParams = number;
 const code = `console.log(abc);
 console.log(abc);
 console.log(abc);
 xxx.forEach(item=>{console.log(1)})`;
-export const articleDetail: Api<DetailResult, Params> = async (id) => {
+export const getArticleDetail: Api<DetailResult, DetailParams> = async (id) => {
   return {
     status: "ok",
     data: {

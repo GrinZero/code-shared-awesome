@@ -4,20 +4,22 @@ import hljs from "highlight.js";
 import "highlight.js/styles/night-owl.css";
 import { useEffect, useState } from "react";
 import React, { FC } from "react";
-import { articleDetail } from "api-sdk";
+import { getArticleDetail } from "api-sdk";
 import { Code } from "../../type";
 import MyComment from "../../components/comment";
 const Detail: FC = () => {
   const [code, setCode] = useState<Code>();
+  useEffect(() => {});
   useEffect(() => {
     //获取右边代码数据
     let getData = async () => {
-      const result = await articleDetail(1);
+      const result = await getArticleDetail(1);
       const listData = result.data;
       setCode(listData);
     };
     getData();
-    // 配置 highlight.js
+  }, []);
+  useEffect(() => {
     hljs.configure({
       // 忽略未经转义的 HTML 字符
       ignoreUnescapedHTML: true,
@@ -28,7 +30,7 @@ const Detail: FC = () => {
       // 让code进行高亮
       hljs.highlightElement(el as HTMLElement);
     });
-  }, [code]);
+  });
   return (
     <div className={style["content"]}>
       <div className={style["head"]}>
@@ -39,46 +41,49 @@ const Detail: FC = () => {
       </div>
       <div className={style["container"]}>
         <MyComment></MyComment>
-        {code ? (
-          <div className={style["code"]}>
-            <h2 className={style["title"]}>{code.title}</h2>
-            <div className={style["author_info"]}>
-              <div className={style["author_det"]}>
-                <div className={style["author_avatar"]}></div>
 
-                <div className={style["detail"]}>
-                  <p className={style["author_name"]}>{code.user}</p>
-                  <p className={style["article_det"]}>
-                    <p>{code.time}</p>
-                    <p className={style["read"]}>阅读量 283384</p>
-                  </p>
+        <div className={style["code"]}>
+          {code ? (
+            <>
+              <h2 className={style["title"]}>{code.title}</h2>
+              <div className={style["author_info"]}>
+                <div className={style["author_det"]}>
+                  <div className={style["author_avatar"]}></div>
+
+                  <div className={style["detail"]}>
+                    <p className={style["author_name"]}>{code.user}</p>
+                    <div className={style["article_det"]}>
+                      <p>{code.time}</p>
+                      <p className={style["read"]}>阅读量 283384</p>
+                    </div>
+                  </div>
                 </div>
+                <button className={style["focus"]}>+ 关注</button>
               </div>
-              <button className={style["focus"]}>+ 关注</button>
-            </div>
 
-            <div className={style["dg-html"]}>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: `<pre> <code>${code.code}</code> </pre>`,
-                }}
-              />
-            </div>
-            <div className={style["operation"]}>
-              <p>
-                <IconHeartFill className={style["like"]} />
-              </p>
-              <p>
-                <IconStarFill className={style["collect"]} />
-              </p>
-              <p>
-                <span className={style["fork"]}>fork</span>
-              </p>
-            </div>
-          </div>
-        ) : (
-          <></>
-        )}
+              <div className={style["dg-html"]}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `<pre> <code>${code.code}</code> </pre>`,
+                  }}
+                />
+              </div>
+              <div className={style["operation"]}>
+                <p>
+                  <IconHeartFill className={style["like"]} />
+                </p>
+                <p>
+                  <IconStarFill className={style["collect"]} />
+                </p>
+                <p>
+                  <span className={style["fork"]}>fork</span>
+                </p>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );

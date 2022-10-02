@@ -11,7 +11,7 @@ export type articleList = {
 }[];
 export type ListResult = articleList[];
 
-export const articleList: Api<ListResult> = async () => {
+export const getArticleList: Api<ListResult> = async () => {
   return {
     status: "ok",
     data: [

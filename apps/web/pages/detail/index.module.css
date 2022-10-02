@@ -2,7 +2,6 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
-  /* background-color: #24273b; */
 }
 /* 头部 */
 .head {
@@ -10,12 +9,12 @@
   justify-content: space-between;
   height: 60px;
   line-height: 60px;
-  background-color: #151728;
+  background-color: var(--theme-bg-color);
   color: #f7f7f7;
-  /* box-shadow: 0 10px 10px pink; */
 }
 .head_l {
   margin-left: 20px;
+  caret-color: transparent;
 }
 .head_r {
   margin-right: 20px;
@@ -42,16 +41,14 @@
 /* 左边评论部分 */
 .comment {
   width: 25%;
-  background-color: #151728;
+  background-color: var(--theme-bg-color);
   /* height: 100%;
      */
 }
 .com_det {
   height: 70%;
-  /* width: 25%; */
   overflow: auto;
   padding: 10px 0px;
-  /* background-color: pink; */
 }
 .publish_com {
   position: relative;
@@ -86,7 +83,6 @@
 /* 每一条评论 */
 .comment_item {
   margin: 0px 15px;
-  /* margin: 5px 10px 0px 10px; */
   padding: 15px;
   background-color: #24273b;
   border-radius: 5px;
@@ -102,12 +98,13 @@
   margin-top: 20px;
   color: #c3c5d5;
   margin-left: 9px;
+  caret-color: transparent;
 }
 .author_info {
   margin: 10px 10px -10px 10px;
   display: flex;
   justify-content: space-between;
-  color: #5c5e6e;
+  color: var(--theme-unactive-text-color);
 }
 
 .author_det {
@@ -119,10 +116,7 @@
   height: 40px;
   border-radius: 50px;
   margin-top: 10px;
-  /* padding: 10px; */
-  /* text-align: center; */
   background-color: palegoldenrod;
-  /* margin-top: 10px; */
   margin-right: 10px;
 }
 .detail {
@@ -146,11 +140,8 @@
   margin-right: 20px;
 }
 .dg-html {
-  /* background-color: #24273b; */
   width: 96%;
-  /* height: 450px; */
   margin-left: 9px;
-  /* margin-top: 20px; */
   margin-bottom: 14px;
 }
 .operation {

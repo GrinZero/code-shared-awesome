@@ -4,9 +4,8 @@ import style from "./index.module.css";
 import { topNavBar } from "../utils";
 import { useEffect, useState } from "react";
 import React, { FC } from "react";
-import { articleList } from "api-sdk";
+import { getArticleList } from "api-sdk";
 import { WebProps } from "../type";
-import { prependOnceListener } from "process";
 const Web: FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const clickHandler = (index: number) => {
@@ -24,7 +23,7 @@ const Web: FC = () => {
   }
   useEffect(() => {
     let getData = async () => {
-      const result = await articleList();
+      const result = await getArticleList();
       const listData = result.data;
       setListData(listData);
     };
@@ -36,10 +35,10 @@ const Web: FC = () => {
       <div className={style["head"]}>
         <div className={style["head_l"]}>Code Show</div>
         <div className={style["head_r"]}>
-          <div className={style["search_ipt"]}>
+          <div className={style["search"]}>
             <input
               type="text"
-              className={style["search_ipt_input"]}
+              className={style["search_input"]}
               placeholder="搜索音乐、MV、歌单"
             />
             <a className="search_ipt_btn iconfont icon-sousuo"></a>
@@ -86,7 +85,8 @@ const Web: FC = () => {
                       <div className={style["detail"]}>{item.introduce}</div>
                       <div className={style["article_info"]}>
                         <div className={style["dianzan"]}>
-                          点赞 {item.getLikes}
+                          <span>点赞 </span>
+                          <span>{item.getLikes}</span>
                         </div>
                         <div className={style["commonet"]}>
                           评论 {item.comment}
@@ -110,9 +110,18 @@ const Web: FC = () => {
               </div>
             </div>
             <div className={style["achieve"]}>
-              <p>获得点赞 7</p>
-              <p>文章被收藏 3</p>
-              <p>总浏览 10</p>
+              <p>
+                <span>获得点赞 </span>
+                <span>7</span>
+              </p>
+              <p>
+                <span>文章被收藏 </span>
+                <span>3</span>
+              </p>
+              <p>
+                <span>总浏览 </span>
+                <span>10</span>
+              </p>
             </div>
             <div className={style["entrance"]}>进入主页</div>
           </div>

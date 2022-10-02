@@ -10,8 +10,6 @@ import {
 import { comment } from "../../utils";
 import style from "./index.module.css";
 const MyComment: FC = () => {
-  console.log(1);
-
   const [like, setLike] = React.useState(true);
   const [star, setStar] = React.useState(true);
   const actions = [
@@ -38,7 +36,7 @@ const MyComment: FC = () => {
   return (
     <div className={style["comment"]}>
       <div className={style["com_det"]}>
-        {comment.map((item) => (
+        {comment.map((item, index) => (
           <Comment
             className={style["comment_item"]}
             actions={actions}
@@ -47,6 +45,7 @@ const MyComment: FC = () => {
             avatar={<Avatar></Avatar>}
             content={<div>{item.det}</div>}
             datetime={item.time}
+            key={index}
           />
         ))}
       </div>
