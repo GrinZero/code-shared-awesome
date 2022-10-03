@@ -1,11 +1,11 @@
 
-FROM node:17.3.1
+FROM node:16.14.0
 LABEL MAINTAINER "774933704@qq.com"
-RUN mkdir -p /usr/src/csa-koa
-WORKDIR /usr/src/csa-koa
-COPY package.json /usr/src/csa-koa
+RUN mkdir -p /usr/csa-koa
+WORKDIR /usr/csa-koa
+COPY package.json /usr/csa-koa
 RUN npm i -g pnpm
 RUN pnpm i
-COPY . /usr/src/csa-koa
-CMD ["./start.sh"]
+COPY . /usr/csa-koa
+CMD ["npm","run","start"]
 EXPOSE 3000
