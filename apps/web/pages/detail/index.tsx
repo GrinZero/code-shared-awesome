@@ -1,5 +1,5 @@
 import style from "./index.module.css";
-import { IconHeartFill, IconStarFill } from "@arco-design/web-react/icon";
+
 import hljs from "highlight.js";
 import "highlight.js/styles/night-owl.css";
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import { getArticleDetail, getComment } from "api-sdk";
 import { Code, Comment } from "../../type";
 import MyComment from "../../components/comment";
 import { useRouter } from "next/router";
-
+import MyCode from "../../components/code";
 const Detail: FC = () => {
   const router = useRouter();
   const { id, type } = router.query;
@@ -55,49 +55,7 @@ const Detail: FC = () => {
         {comments && code && (
           <MyComment comment={comments} author={code.user} id={id}></MyComment>
         )}
-
-        <div className={style["code"]}>
-          {code ? (
-            <>
-              <h2 className={style["title"]}>{code.title}</h2>
-              <div className={style["author_info"]}>
-                <div className={style["author_det"]}>
-                  <div className={style["author_avatar"]}></div>
-
-                  <div className={style["detail"]}>
-                    <p className={style["author_name"]}>{code.user}</p>
-                    <div className={style["article_det"]}>
-                      <p>{code.time}</p>
-                      <p className={style["read"]}>阅读量 283384</p>
-                    </div>
-                  </div>
-                </div>
-                <button className={style["focus"]}>+ 关注</button>
-              </div>
-
-              <div className={style["dg-html"]}>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: `<pre> <code>${code.code}</code> </pre>`,
-                  }}
-                />
-              </div>
-              <div className={style["operation"]}>
-                <p>
-                  <IconHeartFill className={style["like"]} />
-                </p>
-                <p>
-                  <IconStarFill className={style["collect"]} />
-                </p>
-                <p>
-                  <span className={style["fork"]}>fork</span>
-                </p>
-              </div>
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
+        {code && <MyCode code={code}></MyCode>}
       </div>
     </div>
   );

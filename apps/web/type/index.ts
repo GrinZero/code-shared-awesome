@@ -38,4 +38,9 @@ interface CommentObj {
 export type Comment = CommentObj[];
 export interface CommentProps {
   comment: Comment;
+  author: string;
+  id: string | string[] | undefined;
+}
+export interface CodeProps {
+  code: Code;
 }

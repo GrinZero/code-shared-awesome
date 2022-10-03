@@ -1,5 +1,5 @@
 import React, { FC, useRef, useState } from "react";
-import { Comment, Avatar, CommentProps } from "@arco-design/web-react";
+import { Comment, Avatar } from "@arco-design/web-react";
 import {
   IconHeartFill,
   IconMessage,
@@ -7,12 +7,11 @@ import {
   IconHeart,
   IconStar,
 } from "@arco-design/web-react/icon";
-import { comment } from "../../utils";
 import { AddComment } from "api-sdk";
 import style from "./index.module.css";
-import Item from "@arco-design/web-react/es/Breadcrumb/item";
 import dayjs from "dayjs";
-const MyComment: FC<any> = (props) => {
+import { CommentProps } from "../../type";
+const MyComment: FC<CommentProps> = (props) => {
   const { comment, author, id } = props;
 
   const [like, setLike] = React.useState(false);
@@ -23,9 +22,11 @@ const MyComment: FC<any> = (props) => {
     const value = myCommentData.current?.value;
     // 时间
     const time = dayjs().format("MM月D日 HH:mm");
-    if (value) {
+
+    if (value && id) {
+      const resId = id.toString();
       const commentParams = {
-        id,
+        id: resId,
         author,
         det: value,
         time,
