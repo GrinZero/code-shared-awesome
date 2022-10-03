@@ -1,21 +1,21 @@
 import Router from "next/router";
 import Image from "next/image";
 import style from "./index.module.css";
-import { topNavBar } from "../utils";
+import { getTime, topNavBar } from "../utils";
 import { useEffect, useState } from "react";
 import React, { FC } from "react";
 import { getArticleList } from "api-sdk";
-import { WebProps } from "../type";
+import { ListDataProps } from "../type";
 const Web: FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const clickHandler = (index: number) => {
     setActiveIndex(index);
   };
-  const [listData, setListData] = useState<WebProps[]>();
+  const [listData, setListData] = useState<ListDataProps[]>();
   function goTodetail(id: number) {
     Router.push({
       pathname: "/detail",
-      query: { id: id },
+      query: { id: id, type: activeIndex },
     });
   }
   function handlePublish() {
@@ -28,6 +28,7 @@ const Web: FC = () => {
       setListData(listData);
     };
     getData();
+    getTime();
   }, []);
 
   return (

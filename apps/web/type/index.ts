@@ -1,7 +1,9 @@
+import { type } from "os";
+
 export interface AppProps {
   Component: () => JSX.Element;
 }
-export interface WebProp {
+export interface ListProp {
   id: number;
   type: number;
   title: string;
@@ -10,9 +12,10 @@ export interface WebProp {
   introduce: string;
   getLikes: number;
   comment: number;
+  code: string;
 }
 [];
-export type WebProps = WebProp[];
+export type ListDataProps = ListProp[];
 
 export interface Code {
   id: number;
@@ -24,4 +27,15 @@ export interface Code {
   getLikes: number;
   comment: number;
   code: string;
+}
+interface CommentObj {
+  author: string;
+  det: string;
+  time: string;
+  getLike: number;
+  getcollect: number;
+}
+export type Comment = CommentObj[];
+export interface CommentProps {
+  comment: Comment;
 }

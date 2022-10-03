@@ -4,18 +4,30 @@ import hljs from "highlight.js";
 import "highlight.js/styles/night-owl.css";
 import { useEffect, useState } from "react";
 import React, { FC } from "react";
-import { getArticleDetail } from "api-sdk";
-import { Code } from "../../type";
+import { getArticleDetail, getComment } from "api-sdk";
+import { Code, Comment } from "../../type";
 import MyComment from "../../components/comment";
+import { useRouter } from "next/router";
+
 const Detail: FC = () => {
+  const router = useRouter();
+  const { id, type } = router.query;
+  console.log("参数", id, type);
   const [code, setCode] = useState<Code>();
-  useEffect(() => {});
+  const [comments, setComments] = useState<Comment>();
   useEffect(() => {
     //获取右边代码数据
     let getData = async () => {
-      const result = await getArticleDetail(1);
-      const listData = result.data;
-      setCode(listData);
+      //右边代码部分
+      if (typeof id == "string" && typeof type == "string") {
+        const coderesult = await getArticleDetail({ id: id, type: type });
+        const listData = coderesult.data;
+        //评论
+        const commentRes = await getComment();
+        const comments = commentRes.data;
+        setComments(comments);
+        setCode(listData);
+      }
     };
     getData();
   }, []);
@@ -31,6 +43,8 @@ const Detail: FC = () => {
       hljs.highlightElement(el as HTMLElement);
     });
   });
+  console.log(comments);
+
   return (
     <div className={style["content"]}>
       <div className={style["head"]}>
@@ -40,7 +54,7 @@ const Detail: FC = () => {
         </div>
       </div>
       <div className={style["container"]}>
-        <MyComment></MyComment>
+        {comments && <MyComment comment={comments}></MyComment>}
 
         <div className={style["code"]}>
           {code ? (
