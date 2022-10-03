@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useRef, useState } from "react";
 import { Comment, Avatar, CommentProps } from "@arco-design/web-react";
 import {
   IconHeartFill,
@@ -8,21 +8,40 @@ import {
   IconStar,
 } from "@arco-design/web-react/icon";
 import { comment } from "../../utils";
-
+import { AddComment } from "api-sdk";
 import style from "./index.module.css";
 import Item from "@arco-design/web-react/es/Breadcrumb/item";
+import dayjs from "dayjs";
 const MyComment: FC<any> = (props) => {
-  const { comment } = props;
-  const [like, setLike] = React.useState(true);
-  const [star, setStar] = React.useState(true);
+  const { comment, author, id } = props;
+
+  const [like, setLike] = React.useState(false);
+  const [star, setStar] = React.useState(false);
   const myCommentData = useRef<HTMLTextAreaElement | null>(null);
-  const addComment = () => {
-    console.log(myCommentData.current?.value);
+  const [commentList, setCommentList] = useState(comment);
+  const addComment = async () => {
+    const value = myCommentData.current?.value;
+    // 时间
+    const time = dayjs().format("MM月D日 HH:mm");
+    if (value) {
+      const commentParams = {
+        id,
+        author,
+        det: value,
+        time,
+        getLike: 0,
+        getcollect: 0,
+      };
+      const successAddComment = await AddComment(commentParams);
+      const newCommentList = [...successAddComment.data];
+      setCommentList(newCommentList);
+    }
   };
+
   return (
     <div className={style["comment"]}>
       <div className={style["com_det"]}>
-        {comment.map((item: any, index: number) => (
+        {commentList.map((item: any, index: number) => (
           <Comment
             className={style["comment_item"]}
             actions={[

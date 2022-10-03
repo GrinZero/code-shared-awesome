@@ -1,6 +1,9 @@
+import { CommentList } from "../data";
 import type { Api } from "../types";
+import { getCurComment } from "../utils";
 
 interface CommentResult {
+  id: string;
   author: string;
   det: string;
   time: string;
@@ -8,17 +11,12 @@ interface CommentResult {
   getcollect: number;
 }
 type CommentDataResult = CommentResult[];
-export const getComment: Api<CommentDataResult> = async () => {
+type getCommentParam = string;
+export const getComment: Api<CommentDataResult, getCommentParam> = async (
+  param
+) => {
   return {
     status: "ok",
-    data: [
-      {
-        author: "lijiayan",
-        det: "真不错",
-        time: "1 hour ago",
-        getLike: 32,
-        getcollect: 10,
-      },
-    ],
+    data: getCurComment(param!),
   };
 };

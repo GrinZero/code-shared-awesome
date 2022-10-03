@@ -111,4 +111,53 @@ export const articleListData = [
   ],
 ];
 
-// export const article
+export const CommentList = [
+  {
+    id: "0",
+    author: "lijiayan",
+    det: "真不错",
+    time: "1 hour ago",
+    getLike: 32,
+    getcollect: 10,
+  },
+  {
+    id: "1",
+    author: "lijiayan",
+    det: "真不错",
+    time: "1 hour ago",
+    getLike: 32,
+    getcollect: 10,
+  },
+  {
+    id: "2",
+    author: "lijiayan",
+    det: "真不错",
+    time: "1 hour ago",
+    getLike: 32,
+    getcollect: 10,
+  },
+  {
+    id: "3",
+    author: "lijiayan",
+    det: "真不错",
+    time: "1 hour ago",
+    getLike: 32,
+    getcollect: 10,
+  },
+  {
+    id: "4",
+    author: "lijiayan",
+    det: "真不错",
+    time: "1 hour ago",
+    getLike: 32,
+    getcollect: 10,
+  },
+  {
+    id: "5",
+    author: "lijiayan",
+    det: "真不错",
+    time: "1 hour ago",
+    getLike: 32,
+    getcollect: 10,
+  },
+];

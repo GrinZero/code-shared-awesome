@@ -12,7 +12,6 @@ import { useRouter } from "next/router";
 const Detail: FC = () => {
   const router = useRouter();
   const { id, type } = router.query;
-  console.log("参数", id, type);
   const [code, setCode] = useState<Code>();
   const [comments, setComments] = useState<Comment>();
   useEffect(() => {
@@ -23,7 +22,7 @@ const Detail: FC = () => {
         const coderesult = await getArticleDetail({ id: id, type: type });
         const listData = coderesult.data;
         //评论
-        const commentRes = await getComment();
+        const commentRes = await getComment(id);
         const comments = commentRes.data;
         setComments(comments);
         setCode(listData);
@@ -43,7 +42,6 @@ const Detail: FC = () => {
       hljs.highlightElement(el as HTMLElement);
     });
   });
-  console.log(comments);
 
   return (
     <div className={style["content"]}>
@@ -54,7 +52,9 @@ const Detail: FC = () => {
         </div>
       </div>
       <div className={style["container"]}>
-        {comments && <MyComment comment={comments}></MyComment>}
+        {comments && code && (
+          <MyComment comment={comments} author={code.user} id={id}></MyComment>
+        )}
 
         <div className={style["code"]}>
           {code ? (

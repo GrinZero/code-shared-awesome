@@ -1,14 +1,20 @@
 import type { Api } from "../types";
+import { addComment } from "../utils";
 
-export interface RegisterResult {
+interface addCommentDetail {
   id: string;
+  author: string;
+  det: string;
+  time: string;
+  getLike: number;
+  getcollect: number;
 }
-
-export const register: Api<RegisterResult> = async () => {
+type finishAddComment = addCommentDetail[];
+export const AddComment: Api<finishAddComment, addCommentDetail> = async (
+  param
+) => {
   return {
     status: "ok",
-    data: {
-      id: "xxx",
-    },
+    data: addComment(param!),
   };
 };
