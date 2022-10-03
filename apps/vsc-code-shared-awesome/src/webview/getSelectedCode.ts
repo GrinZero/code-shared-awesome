@@ -1,6 +1,22 @@
 import * as vscode from "vscode";
 
+// 转换成markdown
+let md = require("markdown-it")({
+  html: false,
+  xhtmlOut: false,
+  breaks: true,
+  langPrefix: "language-",
+  linkify: false,
+  typographer: false,
+  quotes: "“”‘’",
+  highlight: function (/*str, lang*/) {
+    return "";
+  },
+});
+
 function getWebviewContent(selectedCode: string) {
+  let result = md.render(selectedCode);
+
   return `
 	<!DOCTYPE html>
 		<html lang="en">
@@ -11,9 +27,7 @@ function getWebviewContent(selectedCode: string) {
 		</head>
 		<body>
 			<h3>上传的代码片段为：</h3>
-			<span>
-				${selectedCode} 
-			</span>
+            ${result}
 		</body>
   	</html>
   `;
