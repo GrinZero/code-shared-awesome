@@ -1,0 +1,30 @@
+{
+  "json.schemaDownload.enable": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "package.json": "pnpm*, .npm*, turbo.json",
+    "README.md": "QUICK_START.md, LICENSE",
+    ".editorconfig": ".git*, .eslint*, .prettier*, .stylelint*, .commitlint*, .lintstage*"
+  },
+  "eslint.packageManager": "pnpm",
+  "editor.rulers": [120],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.fixAll.eslint": false, // this allows ESLint to auto fix on save
+    "source.organizeImports": false
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

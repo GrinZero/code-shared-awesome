@@ -1,0 +1,71 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 1.6;
+  font-size: 18px;
+  height: 100%;
+}
+body {
+  --theme-bg-color: #151728;
+  --theme-light-bg-color: #1b1d2e;
+  --theme-border-color: #272a3a;
+
+  --theme-light-text-color: white;
+  --theme-text-color: #9c9cab;
+  --theme-unactive-text-color: #5c5e6e;
+  --theme-link-text-color: #1771d6;
+
+  --theme-scrollbar-bg: rgba(255, 255, 255, 0.11);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+ul,
+p,
+span,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+button:hover {
+  cursor: pointer;
+  transition: 0.36s ease;
+}
+span,
+p {
+  caret-color: transparent;
+}
+.mg-scrollbar {
+  padding: 8px 0 0 8px;
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-scrollbar-bg);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
