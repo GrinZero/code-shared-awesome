@@ -9,6 +9,7 @@ import { Code, Comment } from "../../type";
 import MyComment from "../../components/comment";
 import { useRouter } from "next/router";
 import MyCode from "../../components/code";
+import Header from "../../components/Header";
 const Detail: FC = () => {
   const router = useRouter();
   const { id, type } = router.query;
@@ -47,12 +48,7 @@ const Detail: FC = () => {
 
   return (
     <div className={style["content"]}>
-      <div className={style["head"]}>
-        <div className={style["head_l"]}>Code Show</div>
-        <div className={style["head_r"]}>
-          <div className={style["avatar"]}></div>
-        </div>
-      </div>
+      <Header></Header>
       <div className={style["container"]}>
         {comments && code && (
           <MyComment comment={comments} author={code.user} id={id}></MyComment>

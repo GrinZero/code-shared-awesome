@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { topNavBar } from "../../utils";
 import Router from "next/router";
 import { HomeLeftProps } from "../../type";
@@ -23,6 +23,11 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
       query: { id: id, type: activeIndex },
     });
   }
+  useEffect(() => {
+    document.addEventListener("selectstart", function (e) {
+      e.preventDefault();
+    });
+  }, []);
   return (
     <div className={style["main"]}>
       <div className={style["main_top"]}>
@@ -63,12 +68,14 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
           {listData &&
             listData[activeIndex].map((item) => {
               return (
-                <li onClick={() => goTodetail(item.id)} key={item.id}>
-                  <div className={style["title"]}>{item.title}</div>
-                  <div className={style["describe"]}>
-                    {item.user} | {item.time}
+                <li key={item.id}>
+                  <div onClick={() => goTodetail(item.id)}>
+                    <div className={style["title"]}>{item.title}</div>
+                    <div className={style["describe"]}>
+                      {item.user} | {item.time}
+                    </div>
+                    <div className={style["detail"]}>{item.introduce}</div>
                   </div>
-                  <div className={style["detail"]}>{item.introduce}</div>
                   <div className={style["article_info"]}>
                     <div className={style["dianzan"]}>
                       <span>
