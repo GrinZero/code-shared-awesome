@@ -1,0 +1,31 @@
+.register {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--theme-bg-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 700px;
+  border: 1px solid var(--theme-border-color);
+  color: var(--theme-text-color);
+  padding: 10px;
+  transform: translateY(-30%);
+
+  h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
+
+.return {
+  float: right;
+  cursor: pointer;
+  &:hover {
+    color: var(--theme-link-text-color);
+  }
+}

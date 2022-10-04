@@ -29,7 +29,7 @@
 .head_r {
   margin-right: 0.4rem;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .search {
   margin-top: -0.04rem;
