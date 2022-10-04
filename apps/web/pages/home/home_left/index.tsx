@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
-import { topNavBar } from "../../utils";
+import { topNavBar } from "../../../utils";
 import Router from "next/router";
-import { HomeLeftProps } from "../../types";
+import { HomeLeftProps } from "../../../types";
 import style from "./index.module.css";
 import { Carousel } from "@arco-design/web-react";
 import { IconThumbUp, IconMessage } from "@arco-design/web-react/icon";

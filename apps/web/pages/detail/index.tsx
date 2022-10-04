@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import React, { FC } from "react";
 import { getArticleDetail, getComment } from "api-sdk";
 import { Code, Comment } from "../../types";
-import MyComment from "../../components/comment";
 import { useRouter } from "next/router";
-import MyCode from "../../components/code";
-import MyHeader from "../../components/Header";
+import MyComment from "./comment";
+import MyHeader from "./Header";
+import MyCode from "./code";
 const Detail: FC = () => {
   const router = useRouter();
   const { id, type } = router.query;

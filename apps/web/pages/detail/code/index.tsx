@@ -5,7 +5,7 @@ import {
   IconStarFill,
   IconBranch,
 } from "@arco-design/web-react/icon";
-import { CodeProps } from "../../types";
+import { CodeProps } from "../../../types";
 const MyCode: FC<CodeProps> = (props) => {
   const { code } = props;
   return (
