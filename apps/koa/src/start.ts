@@ -2,4 +2,49 @@
 process.env.TZ = "Asia/Shanghai";
 
 import "./extension";
-console.log('start')
+
+import { app } from "./app";
+
+import { ApolloServer, gql } from "apollo-server-koa";
+
+const books = [
+  {
+    title: "Harry Potter and the Chamber of Secrets",
+    author: "J.K. Rowling",
+  },
+  {
+    title: "Jurassic Park",
+    author: "Michael Crichton",
+  },
+];
+const typeDefs = gql`
+  type Book {
+    title: String
+    author: String
+  }
+
+  type Query {
+    books: [Book]
+  }
+`;
+const resolvers = {
+  Query: {
+    books: () => books,
+  },
+};
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+// 启动服务监听本地3000端口
+
+(async () => {
+  await server.start();
+  server.applyMiddleware({ app });
+  app.listen(3000, () => {
+    console.log("应用已经启动，http://localhost:3000");
+    console.log("GQL已经启动，http://localhost:3000/graphql");
+  });
+})();
