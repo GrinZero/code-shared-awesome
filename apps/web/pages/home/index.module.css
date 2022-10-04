@@ -1,0 +1,10 @@
+/* 主体部分 */
+.content {
+  width: calc(100% - 5.5rem);
+  margin: 0rem auto;
+  padding: 0.8rem 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  height: calc(100vh - 60px);
+  caret-color: transparent;
+}

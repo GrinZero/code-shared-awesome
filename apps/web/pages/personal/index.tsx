@@ -7,8 +7,10 @@ const Personal: React.FC = () => {
   return (
     <MainLayout contentType="middle">
       <div className={style.personal}>
-        <div className={style.right}></div>
-        <div className={style.left}>
+        <div className={style.left} style={{ height: 1000 }}>
+          a
+        </div>
+        <div className={style.right}>
           <Achievement />
         </div>
       </div>
