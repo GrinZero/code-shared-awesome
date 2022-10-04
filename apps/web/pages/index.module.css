@@ -31,7 +31,7 @@
 .head_r {
   margin-right: 20px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 .search {
   margin-top: -2px;
@@ -115,7 +115,7 @@
   height: 60px;
   line-height: 60px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   list-style: none;
   padding-left: 20px;
 }
@@ -188,7 +188,7 @@
 }
 .article_info {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   color: #a2a4b4;
   font-size: 13px;
   margin-top: 8px;
@@ -213,7 +213,7 @@
 .self_info {
   height: 80px;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   border-bottom: 1px solid #272a3a;
 }
 .avatar {
