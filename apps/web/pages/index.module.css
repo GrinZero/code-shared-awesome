@@ -1,6 +1,7 @@
 .container {
-  width: 100%;
+  /* width: 19.92rem; */
   min-height: 100vh;
+  margin: 0 auto;
   position: relative;
   background-color: #24273b;
 }
@@ -85,12 +86,25 @@
   background-color: #5a5f73;
 }
 /* 主体部分 */
+/* .body{
+  background-color: #24273b;
+  width: 100vh;
+} */
+.content_wrapper {
+  background-color: #24273b;
+  width: 100vw;
+  /* height:100vh; */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
 .content {
-  width: calc(100% - 5.5rem);
+  /* width: ; */
   margin: 0rem auto;
   padding: 1.8rem 0 0 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: calc(100vh-60px);
   caret-color: transparent;
+  margin: 0 auto;
 }

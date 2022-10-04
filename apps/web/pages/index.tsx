@@ -47,10 +47,11 @@ const Web: FC = () => {
           </button>
         </div>
       </div>
-
-      <div className={style["content"]}>
-        {listData && <HomeLeft listData={listData}></HomeLeft>}
-        <HomeRight></HomeRight>
+      <div className={style["content_wrapper"]}>
+        <div className={style["content"]}>
+          {listData && <HomeLeft listData={listData}></HomeLeft>}
+          <HomeRight></HomeRight>
+        </div>
       </div>
     </div>
   );
