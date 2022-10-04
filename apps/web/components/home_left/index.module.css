@@ -1,0 +1,129 @@
+/* 主体部分 */
+.content {
+  width: calc(100% - 5.5rem);
+  margin: 0rem auto;
+  padding: 1.8rem 0 0 0;
+  display: flex;
+  justify-content: space-between;
+  height: calc(100vh-60px);
+  caret-color: transparent;
+}
+.main {
+  width: 75%;
+  margin-right: 0.6rem;
+  /* grid-area: main; */
+}
+.main_top {
+  background-color: #24273b;
+  height: 6rem;
+
+  border-radius: 0.08rem;
+}
+.top_bg {
+  height: 4.8rem;
+  /* width: 16.62rem; */
+  border-top-left-radius: 0.08rem;
+  border-top-right-radius: 0.08rem;
+}
+.swiper_item {
+  height: 4.8rem;
+  width: 16.62rem;
+  border-top-left-radius: 0.08rem;
+  border-top-right-radius: 0.08rem;
+}
+.top_nav {
+  background-color: var(--theme-bg-color);
+  border-bottom-left-radius: 0.08rem;
+  border-bottom-right-radius: 0.08rem;
+}
+.top_nav ul {
+  height: 1.2rem;
+  line-height: 1.2rem;
+  display: flex;
+  justify-content: start;
+  list-style: none;
+  padding-left: 0.4rem;
+}
+.top_nav ul li {
+  width: 1.6rem;
+  text-align: center;
+  color: var(--theme-unactive-text-color);
+  cursor: pointer;
+  transition: 0.36s ease;
+}
+.top_nav ul li:hover {
+  background-color: #1b1d2e;
+  color: var(--theme-light-text-color);
+}
+.top_nav ul li:hover::after {
+  content: "";
+  content: "";
+  width: 1.6rem;
+  height: 0.06rem;
+  display: block;
+  margin-top: -0.06rem;
+  /* margin: 0 auto; */
+  background-color: var(--theme-link-text-color);
+}
+.elementActive {
+  background-color: #1b1d2e;
+  color: var(--theme-light-text-color) !important;
+}
+.elementActive::after {
+  content: "";
+  content: "";
+  width: 1.6rem;
+  height: 0.06rem;
+  display: block;
+  margin: 0 auto;
+  margin-top: -0.06rem;
+  background-color: var(--theme-link-text-color);
+}
+.list {
+  margin-top: 0.4rem;
+  background-color: #151728;
+  border-radius: 0.08rem;
+}
+.list ul {
+  list-style: none;
+  height: 100%;
+}
+.list ul li {
+  border-bottom: 0.02rem solid #272a3a;
+  padding: 0.34rem 0.6rem;
+  height: 2.68rem;
+  /* width: 14.48rem; */
+}
+.list ul li:hover {
+  cursor: pointer;
+}
+.title {
+  color: #ccc8db;
+  font-size: 0.36rem;
+}
+.describe {
+  color: #595c6c;
+  font-size: 0.26rem;
+  margin: 0.06rem 0;
+}
+.detail {
+  color: #ccc8db;
+  font-size: 0.28rem;
+  height: 0.44rem;
+  overflow: hidden;
+}
+.article_info {
+  display: flex;
+  justify-content: start;
+  color: #a2a4b4;
+  font-size: 0.26rem;
+  margin-top: 0.16rem;
+}
+.dianzan {
+  margin-right: 0.4rem;
+  color: #a2a4b4;
+  vertical-align: bottom;
+}
+.dianzan span {
+  vertical-align: bottom;
+}

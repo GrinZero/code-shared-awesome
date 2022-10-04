@@ -4,6 +4,7 @@
   height: 100%;
   background-color: #24273b;
   padding-left: 20px;
+  position: relative;
 }
 .title {
   margin-top: 20px;
@@ -86,6 +87,15 @@
 }
 .fork {
   position: absolute;
-  left: 7px;
-  top: 6px;
+  left: 3px;
+  top: -2px;
+  margin: 10px;
+  /* width: 50px;
+    height: 50px;
+    border-radius: 50px; */
+  color: #a2a4b4;
+
+  font-size: 29px;
+  /* background-color: #444857; */
+  /* position: relative; */
 }

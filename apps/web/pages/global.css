@@ -19,6 +19,7 @@ body {
   --theme-link-text-color: #1771d6;
 
   --theme-scrollbar-bg: rgba(255, 255, 255, 0.11);
+  --theme-font-family: Gemeric Techno;
 }
 
 * {
@@ -48,6 +49,9 @@ h2 {
 button:hover {
   cursor: pointer;
   transition: 0.36s ease;
+}
+button {
+  border: none;
 }
 span,
 p {

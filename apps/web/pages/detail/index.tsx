@@ -29,7 +29,7 @@ const Detail: FC = () => {
       }
     };
     getData();
-  }, []);
+  }, [id, type]);
   useEffect(() => {
     hljs.configure({
       // 忽略未经转义的 HTML 字符
@@ -42,6 +42,8 @@ const Detail: FC = () => {
       hljs.highlightElement(el as HTMLElement);
     });
   });
+  console.log("评论", comments);
+  console.log("daima", code);
 
   return (
     <div className={style["content"]}>

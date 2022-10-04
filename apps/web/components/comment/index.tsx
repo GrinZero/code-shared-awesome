@@ -47,7 +47,7 @@ const MyComment: FC<CommentProps> = (props) => {
             className={style["comment_item"]}
             actions={[
               <span
-                className="custom-comment-action"
+                className={style["custom-comment-action"]}
                 key="heart"
                 onClick={() => setLike(!like)}
               >
@@ -59,7 +59,7 @@ const MyComment: FC<CommentProps> = (props) => {
                 {item.getLike + (like ? 1 : 0)}
               </span>,
               <span
-                className="custom-comment-action"
+                className={style["custom-comment-action"]}
                 key="star"
                 onClick={() => setStar(!star)}
               >
@@ -70,7 +70,7 @@ const MyComment: FC<CommentProps> = (props) => {
                 )}
                 {item.getcollect + (star ? 1 : 0)}
               </span>,
-              <span className="custom-comment-action" key="reply">
+              <span className={style["custom-comment-action"]} key="reply">
                 <IconMessage /> Reply
               </span>,
             ]}

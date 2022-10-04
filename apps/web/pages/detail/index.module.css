@@ -37,4 +37,5 @@
   justify-content: start;
   height: calc(100vh - 60px);
   width: 100%;
+  flex-direction: row-reverse;
 }

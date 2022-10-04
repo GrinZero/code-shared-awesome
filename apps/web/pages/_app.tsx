@@ -3,7 +3,8 @@ import { useEffect } from "react";
 import { AppProps } from "../type";
 import "./global.css";
 import "@arco-design/web-react/dist/css/arco.css";
-
+import "./normalize.css";
+import "./common.css";
 export default function App(props: AppProps) {
   const { Component } = props;
   useEffect(() => {

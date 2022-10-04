@@ -1,6 +1,10 @@
 import React, { FC } from "react";
 import style from "./index.module.css";
-import { IconHeartFill, IconStarFill } from "@arco-design/web-react/icon";
+import {
+  IconHeartFill,
+  IconStarFill,
+  IconBranch,
+} from "@arco-design/web-react/icon";
 import { CodeProps } from "../../type";
 const MyCode: FC<CodeProps> = (props) => {
   const { code } = props;
@@ -37,7 +41,9 @@ const MyCode: FC<CodeProps> = (props) => {
           <IconStarFill className={style["collect"]} />
         </p>
         <p>
-          <span className={style["fork"]}>fork</span>
+          <span className={style["fork"]}>
+            <IconBranch />
+          </span>
         </p>
       </div>
     </div>
