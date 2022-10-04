@@ -1,4 +1,5 @@
 import { IconSearch } from "@arco-design/web-react/icon";
+import Router from "next/router";
 import React from "react";
 import style from "./index.module.scss";
 
@@ -13,6 +14,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   children,
   contentType = "default",
 }) => {
+  const handleClick = (path: string) => {
+    Router.push(path);
+  };
+
   return (
     <div className={style.mainLayout}>
       <header className={style.header}>
@@ -26,8 +31,15 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             />
             <IconSearch className={style.icon_search} />
           </div>
-          <button className={style.publish}>发表文章</button>
-          <button className={style.login}>登录</button>
+          <button
+            className={style.publish}
+            onClick={() => handleClick("/publish")}
+          >
+            发表文章
+          </button>
+          <button className={style.login} onClick={() => handleClick("/login")}>
+            登录
+          </button>
         </div>
       </header>
 

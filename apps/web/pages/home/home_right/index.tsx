@@ -3,8 +3,14 @@ import style from "./index.module.css";
 import Image from "next/image";
 import { IconStar, IconThumbUp, IconEye } from "@arco-design/web-react/icon";
 import dayjs from "dayjs";
-import { getTime } from "../../utils";
+import { getTime } from "../../../utils";
+import Router from "next/router";
+
 const HomeRight: FC = () => {
+  const handleClick = (path: string) => {
+    Router.push(path);
+  };
+
   return (
     <div className={style["right"]}>
       <div className={style["personal_info"]}>
@@ -34,7 +40,12 @@ const HomeRight: FC = () => {
             <span>10</span>
           </p>
         </div>
-        <div className={style["entrance"]}>进入主页</div>
+        <div
+          className={style["entrance"]}
+          onClick={() => handleClick("/personal")}
+        >
+          进入主页
+        </div>
       </div>
 
       <div className={`${style["event"]} ${style["box"]}`}>
