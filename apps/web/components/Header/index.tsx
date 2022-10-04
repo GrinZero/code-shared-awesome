@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import style from "./index.module.css";
-const Header: FC = () => {
+const MyHeader: FC = () => {
   return (
     <div className={style["head"]}>
       <div className={style["head_l"]}>Code Show</div>
@@ -10,4 +10,4 @@ const Header: FC = () => {
     </div>
   );
 };
-export default Header;
+export default MyHeader;

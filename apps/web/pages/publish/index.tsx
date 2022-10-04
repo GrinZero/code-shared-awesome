@@ -1,5 +1,8 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { Layout } from "@arco-design/web-react";
+import style from "./index.module.css";
+
+import "highlight.js/styles/night-owl.css";
 const Sider = Layout.Sider;
 const Header = Layout.Header;
 
@@ -9,12 +12,23 @@ const Publish: FC = () => {
   function onChangeHandle(value: any) {
     setText(value);
   }
+
   return (
-    <Layout style={{ height: "400px" }}>
-      <Header>Header</Header>
+    <Layout style={{ height: "100vh" }}>
+      <Header style={{ height: "1.2rem" }}>
+        <input
+          placeholder="Enter the title"
+          className={style["title_ipt"]}
+        ></input>
+      </Header>
       <Layout>
-        <Content></Content>
-        <Sider>Sider</Sider>
+        <Content
+          style={{ width: "75%" }}
+          className={style["publish_left"]}
+        ></Content>
+        <Sider style={{ width: "25%" }} className={style["publish_right"]}>
+          <div></div>
+        </Sider>
       </Layout>
     </Layout>
   );
