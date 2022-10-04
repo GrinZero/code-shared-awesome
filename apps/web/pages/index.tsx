@@ -47,7 +47,14 @@ const Web: FC = () => {
           <button className={style["publish"]} onClick={handlePublish}>
             发表文章
           </button>
-          <button className={style["login"]}>登录</button>
+          <button
+            className={style["login"]}
+            onClick={() => {
+              Router.push("/login");
+            }}
+          >
+            登录
+          </button>
         </div>
       </div>
 
