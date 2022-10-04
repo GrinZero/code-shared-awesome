@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import style from "./index.module.css";
 import Image from "next/image";
+import { IconStar, IconThumbUp, IconEye } from "@arco-design/web-react/icon";
 const HomeRight: FC = () => {
   return (
     <div className={style["right"]}>
@@ -10,21 +11,24 @@ const HomeRight: FC = () => {
           <div className={style["info_det"]}>
             <p>小太阳林凌柒</p>
             <div className={style["info_desc"]}>
-              好好奋斗尽快发货的可变长度和恢复重建的和等方式尽快和东方时空飓风的是
+              好好奋斗尽快发货的可变长度和恢复重建的和等方式尽快和东方时空飓风的是j决定是否可接受的回复快点睡觉
             </div>
           </div>
         </div>
         <div className={style["achieve"]}>
           <p>
-            <span>获得点赞 </span>
+            <IconThumbUp />
+            <span> 获得点赞 </span>
             <span>7</span>
           </p>
           <p>
-            <span>文章被收藏 </span>
+            <IconStar />
+            <span> 文章被收藏 </span>
             <span>3</span>
           </p>
           <p>
-            <span>总浏览 </span>
+            <IconEye />
+            <span> 总浏览 </span>
             <span>10</span>
           </p>
         </div>

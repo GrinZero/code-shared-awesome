@@ -4,6 +4,7 @@ import Router from "next/router";
 import { ListDataProps, HomeLeftProps } from "../../type";
 import style from "./index.module.css";
 import { Carousel } from "@arco-design/web-react";
+import { IconThumbUp, IconMessage } from "@arco-design/web-react/icon";
 const imageSrc = [
   "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp",
   "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp",
@@ -36,7 +37,7 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
         >
           {imageSrc.map((src, index) => (
             <div key={index} className={style["swiper_item"]}>
-              <img src={src} style={{ width: "16.62rem" }} />
+              <img src={src} />
             </div>
           ))}
         </Carousel>
@@ -59,6 +60,7 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
           </ul>
         </div>
       </div>
+
       <div className={style["list"]}>
         <ul>
           {listData &&
@@ -72,10 +74,14 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
                   <div className={style["detail"]}>{item.introduce}</div>
                   <div className={style["article_info"]}>
                     <div className={style["dianzan"]}>
-                      <span>点赞 </span>
+                      <span>
+                        <IconThumbUp />{" "}
+                      </span>
                       <span>{item.getLikes}</span>
                     </div>
-                    <div className={style["commonet"]}>评论 {item.comment}</div>
+                    <div className={style["commonet"]}>
+                      <IconMessage /> {item.comment}
+                    </div>
                   </div>
                 </li>
               );

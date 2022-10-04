@@ -27,7 +27,7 @@
 }
 .swiper_item {
   height: 4.8rem;
-  width: 16.62rem;
+  /* width: 16.62rem; */
   border-top-left-radius: 0.08rem;
   border-top-right-radius: 0.08rem;
 }
@@ -46,6 +46,7 @@
 }
 .top_nav ul li {
   width: 1.6rem;
+  /* margin-right: .2rem; */
   text-align: center;
   color: var(--theme-unactive-text-color);
   cursor: pointer;
@@ -62,6 +63,7 @@
   height: 0.06rem;
   display: block;
   margin-top: -0.06rem;
+
   /* margin: 0 auto; */
   background-color: var(--theme-link-text-color);
 }

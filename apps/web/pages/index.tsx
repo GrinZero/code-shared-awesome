@@ -7,7 +7,7 @@ import { getArticleList } from "api-sdk";
 import { ListDataProps } from "../type";
 import HomeLeft from "../components/home_left";
 import HomeRight from "../components/home_right";
-
+import { IconSearch } from "@arco-design/web-react/icon";
 const Web: FC = () => {
   const [listData, setListData] = useState<ListDataProps[]>();
 
@@ -32,9 +32,9 @@ const Web: FC = () => {
             <input
               type="text"
               className={style["search_input"]}
-              placeholder="搜索音乐、MV、歌单"
+              placeholder="搜索文章"
             />
-            <a className="search_ipt_btn iconfont icon-sousuo"></a>
+            <IconSearch className={style["icon_search"]} />
           </div>
           <button className={style["publish"]} onClick={handlePublish}>
             发表文章
