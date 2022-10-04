@@ -1,8 +1,6 @@
 import Router from "next/router";
-import Image from "next/image";
 import style from "./index.module.css";
-import { useEffect, useState } from "react";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { getArticleList } from "api-sdk";
 import { ListDataProps } from "../type";
 import HomeLeft from "../components/home_left";

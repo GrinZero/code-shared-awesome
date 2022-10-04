@@ -1,7 +1,9 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import style from "./index.module.css";
 import Image from "next/image";
 import { IconStar, IconThumbUp, IconEye } from "@arco-design/web-react/icon";
+import dayjs from "dayjs";
+import { getTime } from "../../utils";
 const HomeRight: FC = () => {
   return (
     <div className={style["right"]}>
@@ -45,11 +47,11 @@ const HomeRight: FC = () => {
             height={180}
           />
           <div className={style["event-date"]}>
-            <div className={style["event-month"]}>Jan</div>
-            <div className={style["event-day"]}>01</div>
+            <div className={style["event-month"]}>{getTime().month}</div>
+            <div className={style["event-day"]}>{`0${getTime().day}`}</div>
           </div>
           <div className={style["event-title"]}>Winter Wonderland</div>
-          <div className={style["event-subtitle"]}>01st Jan, 2019 07:00AM</div>
+          <div className={style["event-subtitle"]}>{getTime().detTime}</div>
         </div>
       </div>
     </div>

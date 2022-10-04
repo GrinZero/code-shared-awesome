@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
-import { getTime, topNavBar } from "../../utils";
+import React, { FC, useState } from "react";
+import { topNavBar } from "../../utils";
 import Router from "next/router";
-import { ListDataProps, HomeLeftProps } from "../../type";
+import { HomeLeftProps } from "../../type";
 import style from "./index.module.css";
 import { Carousel } from "@arco-design/web-react";
 import { IconThumbUp, IconMessage } from "@arco-design/web-react/icon";
@@ -17,7 +17,6 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
   const clickHandler = (index: number) => {
     setActiveIndex(index);
   };
-  // const [listData, setListData] = useState<ListDataProps[]>();
   function goTodetail(id: number) {
     Router.push({
       pathname: "/detail",
@@ -27,10 +26,8 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
   return (
     <div className={style["main"]}>
       <div className={style["main_top"]}>
-        {/* <div className={style["top_bg"]}> */}
         <Carousel
           className={style["top_bg"]}
-          // style={{ width: 800, height: 240 }}
           autoPlay={true}
           indicatorType="dot"
           showArrow="hover"
@@ -41,7 +38,7 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
             </div>
           ))}
         </Carousel>
-        {/* </div> */}
+
         <div className={style["top_nav"]}>
           <ul>
             {topNavBar.map((item, index) => {

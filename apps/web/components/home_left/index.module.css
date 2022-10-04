@@ -11,7 +11,6 @@
 .main {
   width: 75%;
   margin-right: 0.6rem;
-  /* grid-area: main; */
 }
 .main_top {
   background-color: #24273b;
@@ -21,13 +20,11 @@
 }
 .top_bg {
   height: 4.8rem;
-  /* width: 16.62rem; */
   border-top-left-radius: 0.08rem;
   border-top-right-radius: 0.08rem;
 }
 .swiper_item {
   height: 4.8rem;
-  /* width: 16.62rem; */
   border-top-left-radius: 0.08rem;
   border-top-right-radius: 0.08rem;
 }
@@ -46,7 +43,6 @@
 }
 .top_nav ul li {
   width: 1.6rem;
-  /* margin-right: .2rem; */
   text-align: center;
   color: var(--theme-unactive-text-color);
   cursor: pointer;
@@ -58,13 +54,10 @@
 }
 .top_nav ul li:hover::after {
   content: "";
-  content: "";
   width: 1.6rem;
   height: 0.06rem;
   display: block;
   margin-top: -0.06rem;
-
-  /* margin: 0 auto; */
   background-color: var(--theme-link-text-color);
 }
 .elementActive {
@@ -94,7 +87,6 @@
   border-bottom: 0.02rem solid #272a3a;
   padding: 0.34rem 0.6rem;
   height: 2.68rem;
-  /* width: 14.48rem; */
 }
 .list ul li:hover {
   cursor: pointer;
