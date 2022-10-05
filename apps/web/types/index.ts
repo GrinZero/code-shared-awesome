@@ -56,13 +56,12 @@ interface articleList {
   comment: number;
   code: string;
 }
-[];
 
 export interface HomeLeftProps {
-  listData: articleList[][];
+  listData: articleList[];
 }
 
 export interface ArticleListProps {
-  listData: articleList[][];
+  listData: articleList[];
   activeIndex: number;
 }

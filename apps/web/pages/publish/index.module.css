@@ -28,7 +28,7 @@
 .code_ipt {
   width: 900px;
   height: 555px;
-  background-color: #011627;
+  background-color: pink;
   border: none;
   resize: none;
   opacity: 0;
@@ -82,6 +82,7 @@
   text-align: center;
   font-size: 13px;
   height: 30px;
+  background-color: #414659;
 }
 .tag:hover {
   background-color: #5a5f73;

@@ -11,9 +11,8 @@ type articleList = {
   comment: number;
   code: string;
 }[];
-type ListResult = articleList[];
 
-export const getArticleList: Api<ListResult> = async () => {
+export const getArticleList: Api<articleList> = async () => {
   return {
     status: "ok",
     data: articleListData,
