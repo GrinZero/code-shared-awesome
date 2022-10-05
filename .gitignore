@@ -32,4 +32,6 @@ yarn-error.log*
 # turbo
 .turbo
 
-dist/
+# vsc-code-shared-awesome
+**/dist
+**/node_modules
