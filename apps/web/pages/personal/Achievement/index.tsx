@@ -1,12 +1,16 @@
-import { IconEye, IconStar, IconThumbUp } from "@arco-design/web-react/icon";
+import {
+  IconEye,
+  IconStar,
+  IconThumbUp,
+  IconUpload,
+} from "@arco-design/web-react/icon";
 import classNames from "classnames";
 import React from "react";
+import { UserInfo } from "..";
 import style from "./index.module.scss";
 
 interface AchievementProps {
-  collection?: number;
-  good?: number;
-  read?: number;
+  userInfo: UserInfo;
   className?: string;
 }
 
@@ -14,7 +18,8 @@ interface AchievementProps {
  * 个人成就
  */
 const Achievement: React.FC<AchievementProps> = (props) => {
-  const { collection = 0, good = 0, read = 0, className = "" } = props;
+  const { userInfo, className } = props;
+  const { collection = 0, good = 0, read = 0, upload = 0 } = userInfo;
 
   return (
     <div className={classNames(style.achieve, className)}>
@@ -27,8 +32,13 @@ const Achievement: React.FC<AchievementProps> = (props) => {
         </li>
         <li>
           <IconStar />
-          <span> 文章被收藏 </span>
+          <span> 代码被收藏 </span>
           <span>{collection}</span>
+        </li>
+        <li>
+          <IconUpload />
+          <span> 总发布数 </span>
+          <span>{upload}</span>
         </li>
         <li>
           <IconEye />
