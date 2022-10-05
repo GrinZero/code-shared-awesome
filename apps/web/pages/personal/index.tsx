@@ -45,7 +45,7 @@ const Personal: React.FC = () => {
     name: "",
     account: "",
   });
-  const [listData, setListData] = useState<ListDataProps[]>();
+  const [listData, setListData] = useState<ListDataProps>();
 
   const menuElements = useMemo(() => {
     const menuStyle = { backgroundColor: "var(--theme-bg-color)" };
@@ -72,37 +72,23 @@ const Personal: React.FC = () => {
   const menuItems = useMemo(() => {
     switch (selectMenu) {
       case "0":
-        return (
-          listData &&
-          listData[parseInt(selectMenu)].map((item) => (
-            <ActicleItem data={item} />
-          ))
-        );
+        return listData && listData.map((item) => <ActicleItem data={item} />);
       case "1":
         return (
           // TODO 发布数据
-          listData &&
-          listData[parseInt(selectMenu)].map((item) => (
-            <ActicleItem data={item} />
-          ))
+          listData && listData.map((item) => <ActicleItem data={item} />)
         );
       case "2":
         return follows.map((item) => <FollowItem data={item} />);
       case "3":
         return (
           // TODO 发布数据
-          listData &&
-          listData[parseInt(selectMenu)].map((item) => (
-            <ActicleItem data={item} />
-          ))
+          listData && listData.map((item) => <ActicleItem data={item} />)
         );
       case "4":
         return (
           // TODO 发布数据
-          listData &&
-          listData[parseInt(selectMenu)].map((item) => (
-            <ActicleItem data={item} />
-          ))
+          listData && listData.map((item) => <ActicleItem data={item} />)
         );
 
       default:
@@ -130,7 +116,7 @@ const Personal: React.FC = () => {
   return (
     <MainLayout contentType="middle" loading={loading}>
       <div className={style.personal}>
-        <div className={style.left} style={{ height: 1000 }}>
+        <div className={style.left}>
           <AvatarHead userInfo={userInfo} isOwn={true} />
 
           <div className={style.menuDemo}>{menuElements}</div>
