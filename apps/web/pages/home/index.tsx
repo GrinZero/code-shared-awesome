@@ -8,7 +8,7 @@ import HomeRight from "./home_right";
 import MainLayout from "../../layouts/main-layout";
 
 const Home: React.FC = () => {
-  const [listData, setListData] = useState<ListDataProps[]>();
+  const [listData, setListData] = useState<ListDataProps>();
 
   useEffect(() => {
     let getData = async () => {
