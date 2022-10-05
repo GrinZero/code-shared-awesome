@@ -10,7 +10,7 @@ import {
 import { AddComment } from "api-sdk";
 import style from "./index.module.css";
 import dayjs from "dayjs";
-import { CommentProps } from "../../type";
+import { CommentProps } from "../../../types";
 const MyComment: FC<CommentProps> = (props) => {
   const { comment, author, id } = props;
 

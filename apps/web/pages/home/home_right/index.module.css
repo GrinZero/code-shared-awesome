@@ -10,7 +10,7 @@
 .self_info {
   height: 1.6rem;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   border-bottom: 0.02rem solid #272a3a;
 }
 .avatar {

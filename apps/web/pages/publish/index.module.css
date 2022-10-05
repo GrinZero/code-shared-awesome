@@ -24,6 +24,33 @@
   padding: 0.3rem;
   font-size: 0.36rem;
 }
+
+.code_ipt {
+  width: 900px;
+  height: 555px;
+  background-color: #011627;
+  border: none;
+  resize: none;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: absolute;
+  top: 80px;
+  left: 25px;
+  z-index: 111;
+}
+.dg-html {
+  width: 900px;
+  height: 555px;
+  border-radius: 4px;
+  background-color: #011627;
+  margin: 20px auto;
+  /* z-index: 111; */
+}
+.dg-html code {
+  padding: 0 !important;
+  padding-left: 20px !important;
+  /* z-index: 222; */
+}
 /* 右侧发布 */
 .publish_right {
   background-color: #31364b;
