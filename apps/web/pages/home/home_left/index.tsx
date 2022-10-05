@@ -1,10 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
 import { topNavBar } from "../../../utils";
-import Router from "next/router";
 import { HomeLeftProps } from "../../../types";
 import style from "./index.module.css";
 import { Carousel } from "@arco-design/web-react";
-import { IconThumbUp, IconMessage } from "@arco-design/web-react/icon";
+import ArticleList from "../../../components/articleList";
 const imageSrc = [
   "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp",
   "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp",
@@ -17,12 +16,6 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
   const clickHandler = (index: number) => {
     setActiveIndex(index);
   };
-  function goTodetail(id: number) {
-    Router.push({
-      pathname: "/detail",
-      query: { id: id, type: activeIndex },
-    });
-  }
   useEffect(() => {
     document.addEventListener("selectstart", function (e) {
       e.preventDefault();
@@ -63,34 +56,11 @@ const HomeLeft: FC<HomeLeftProps> = (props) => {
         </div>
       </div>
 
-      <div className={style["list"]}>
-        <ul>
-          {listData &&
-            listData[activeIndex].map((item) => {
-              return (
-                <li key={item.id}>
-                  <div onClick={() => goTodetail(item.id)}>
-                    <div className={style["title"]}>{item.title}</div>
-                    <div className={style["describe"]}>
-                      {item.user} | {item.time}
-                    </div>
-                    <div className={style["detail"]}>{item.introduce}</div>
-                  </div>
-                  <div className={style["article_info"]}>
-                    <div className={style["dianzan"]}>
-                      <span>
-                        <IconThumbUp />{" "}
-                      </span>
-                      <span>{item.getLikes}</span>
-                    </div>
-                    <div className={style["commonet"]}>
-                      <IconMessage /> {item.comment}
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-        </ul>
+      <div className={style["article_list"]}>
+        <ArticleList
+          listData={listData}
+          activeIndex={activeIndex}
+        ></ArticleList>
       </div>
     </div>
   );

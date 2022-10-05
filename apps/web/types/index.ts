@@ -61,3 +61,8 @@ interface articleList {
 export interface HomeLeftProps {
   listData: articleList[][];
 }
+
+export interface ArticleListProps {
+  listData: articleList[][];
+  activeIndex: number;
+}
