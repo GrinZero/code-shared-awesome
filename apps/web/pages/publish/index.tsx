@@ -1,8 +1,12 @@
 import React, { FC, useState, useEffect, useRef } from "react";
-import { Layout } from "@arco-design/web-react";
+import { Layout, Tag, Button } from "@arco-design/web-react";
 import style from "./index.module.css";
 import hljs from "highlight.js";
 import "highlight.js/styles/night-owl.css";
+import { Grid, Divider } from "@arco-design/web-react";
+import { classify } from "../../utils";
+const Row = Grid.Row;
+const Col = Grid.Col;
 const Sider = Layout.Sider;
 const Header = Layout.Header;
 
@@ -12,6 +16,7 @@ const Publish: FC = () => {
   const textRef = useRef<HTMLTextAreaElement | null>(null);
   function handleInput() {
     const ipt_value = textRef.current?.value;
+
     if (ipt_value || ipt_value == "") {
       setText(ipt_value);
     }
@@ -53,7 +58,28 @@ const Publish: FC = () => {
           ></textarea>
         </Content>
         <Sider style={{ width: "25%" }} className={style["publish_right"]}>
-          <div></div>
+          <div>
+            <p>简介</p>
+            <textarea className={style["introduction_ipt"]}></textarea>
+          </div>
+          <div className={style["classify"]}>
+            <p>分类</p>
+
+            <Row className="grid-gutter-demo" gutter={[24, 12]}>
+              {classify.map((item) => {
+                return (
+                  <Col span={8}>
+                    <Tag className={style["tag"]}>{item}</Tag>
+                  </Col>
+                );
+              })}
+            </Row>
+          </div>
+
+          <div className={style["btn"]}>
+            <button className={style["certain"]}>确定并发布</button>
+            <button className={style["cancle"]}>取消</button>
+          </div>
         </Sider>
       </Layout>
     </Layout>

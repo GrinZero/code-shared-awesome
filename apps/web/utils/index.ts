@@ -46,3 +46,12 @@ export const getTime = () => {
   };
   return obj;
 };
+
+export const classify = [
+  "人工智能",
+  "前端",
+  "后端",
+  "算法",
+  "Android",
+  "开发工具",
+];
