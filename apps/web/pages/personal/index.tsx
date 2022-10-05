@@ -31,6 +31,7 @@ export interface UserInfo {
 }
 
 const Personal: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [selectMenu, setSelectMenu] = useState<string>(menus[0].key);
   const [userInfo, setUserInfo] = useState<UserInfo>({
     id: -1,
@@ -62,16 +63,24 @@ const Personal: React.FC = () => {
   }, [selectMenu]);
 
   useEffect(() => {
-    getUserInfo().then((res) => {
-      res.status === "ok" && setUserInfo(res.data);
-    });
-    getArticleList().then((res) => {
-      res.status === "ok" && setListData(res.data);
-    });
+    async function initInfo() {
+      try {
+        setLoading(true);
+        const userInfoRes = await getUserInfo();
+        const articleListRes = await getArticleList();
+        userInfoRes.status === "ok" && setUserInfo(userInfoRes.data);
+        userInfoRes.status === "ok" && setListData(articleListRes.data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    initInfo();
   }, []);
 
   return (
-    <MainLayout contentType="middle">
+    <MainLayout contentType="middle" loading={loading}>
       <div className={style.personal}>
         <div className={style.left} style={{ height: 1000 }}>
           <AvatarHead userInfo={userInfo} isOwn={true} />
