@@ -14,7 +14,8 @@ const menus = [
   { title: "动态", key: "0" },
   { title: "发布", key: "1" },
   { title: "关注", key: "2" },
-  { title: "专栏", key: "3" },
+  { title: "收藏", key: "3" },
+  { title: "评论", key: "4" },
 ];
 
 export interface UserInfo {
