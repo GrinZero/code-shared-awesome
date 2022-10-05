@@ -13,7 +13,8 @@ sh ./service/install.sh
 记住在根文件夹启动
 
 ```bash
-sh ./docker-start.sh
+npm run docker:build
+npm run docker:start
 ```
 
 现在默认启动容器会运行代码
@@ -24,6 +25,11 @@ ps -fe
 kill -9 [pid]
 ```
 
+启动之后
+
+- 8000 端口可以访问到 koa 服务
+- nginx 暂时没用上
+
 # 2 常见事项
 
 - 其他解决不了
@@ -32,7 +38,7 @@ kill -9 [pid]
 apt-get update
 ```
 
-- 如果需要ping和其他网络相关
+- 如果需要 ping 和其他网络相关
 
 ```bash
 apt-get install iputils-ping
@@ -69,4 +75,12 @@ yum -y install git
 pwd
 # /root
 git clone xxx
+```
+
+# 4 数据库
+
+## 4.1 mysql
+
+```bash
+mysql -h 127.0.0.1 -u root -p
 ```
