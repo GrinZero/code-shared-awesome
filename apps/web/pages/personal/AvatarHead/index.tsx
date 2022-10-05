@@ -1,4 +1,6 @@
 import { Avatar } from "@arco-design/web-react";
+import React, { useState } from "react";
+import style from "./index.module.scss";
 import {
   IconEdit,
   IconGithub,
@@ -6,20 +8,20 @@ import {
   IconUser,
   IconWeibo,
 } from "@arco-design/web-react/icon";
-import React, { useState } from "react";
-import style from "./index.module.scss";
+
+import { UserInfo } from "..";
 
 interface AvatarHeadProps {
-  userId: string;
+  userInfo: UserInfo;
+  isOwn: boolean;
 }
 
 const AvatarHead: React.FC<AvatarHeadProps> = (props) => {
-  const { userId } = props;
-  const [userInfo, setUserInfo] = useState<{
-    name: string;
-  }>({
-    name: "丶明旭",
-  });
+  const { userInfo, isOwn } = props;
+
+  const handleClick = () => {
+    console.log(isOwn ? "是我" : "不是我");
+  };
 
   return (
     <div className={style.avatarhead}>
@@ -36,7 +38,7 @@ const AvatarHead: React.FC<AvatarHeadProps> = (props) => {
 
       <div className={style.right}>
         <div className={style.name}>
-          <p>{userInfo.name}</p>
+          <p>{userInfo.name || "未知姓名"}</p>
         </div>
         <div className={style.oth}>
           <p className={style.social}>
@@ -44,7 +46,9 @@ const AvatarHead: React.FC<AvatarHeadProps> = (props) => {
             <IconWeibo />
             <IconQq />
           </p>
-          <p className={style.edit}>编辑个人资料</p>
+          <p className={style.edit} onClick={handleClick}>
+            {isOwn ? "编辑个人资料" : "关注"}
+          </p>
         </div>
       </div>
     </div>
