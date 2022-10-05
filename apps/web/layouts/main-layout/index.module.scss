@@ -1,14 +1,7 @@
-// <<<<<<< HEAD:apps/web/pages/index.module.css
-// .container {
-//   /* width: 19.92rem; */
-//   min-height: 100vh;
-//   margin: 0 auto;
-//   position: relative;
-// =======
 .mainLayout {
   width: 100%;
   height: 100%;
-  // >>>>>>> 753a7e0b14888d4e1554851fd06d2f488535ca43:apps/web/layouts/main-layout/index.module.scss
+
   background-color: #24273b;
   position: relative;
 }
@@ -31,6 +24,7 @@
   margin-left: 0.4rem;
   font-family: "Telefon Black", Sans-Serif;
   font-size: 0.4rem;
+  cursor: pointer;
 }
 
 .head_r {
