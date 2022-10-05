@@ -4,34 +4,10 @@ process.env.TZ = "Asia/Shanghai";
 import "./extension";
 
 import { app } from "./app";
+import resolvers from "./resolvers";
+import typeDefs from "./typeDefs";
 
-import { ApolloServer, gql } from "apollo-server-koa";
-
-const books = [
-  {
-    title: "Harry Potter and the Chamber of Secrets",
-    author: "J.K. Rowling",
-  },
-  {
-    title: "Jurassic Park",
-    author: "Michael Crichton",
-  },
-];
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
-
-  type Query {
-    books: [Book]
-  }
-`;
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
+import { ApolloServer } from "apollo-server-koa";
 
 const server = new ApolloServer({
   typeDefs,
