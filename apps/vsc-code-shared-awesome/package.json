@@ -10,7 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:vsc-code-shared-awesome.codeShow"
+    "onCommand:vsc-code-shared-awesome.codeShow",
+    "onView:sidebar-codeShow-context"
   ],
   "main": "./dist/extension.js",
   "contributes": {
@@ -27,7 +28,7 @@
       "sidebar-codeShow": [
         {
           "id": "sidebar-codeShow-context",
-          "name": "收藏的code"
+          "name": "代码分享平台"
         }
       ]
     },

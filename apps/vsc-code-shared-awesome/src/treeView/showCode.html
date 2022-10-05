@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>showCode</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .show-conteiner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: skyblue;
+        }
+
+        .show-context {
+            width: 50vw;
+            height: 50vh;
+            background-color: brown;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="show-conteiner">
+        <div>
+            <button onclick="getPre();">pre</button>
+        </div>
+        <div class="show-context">
+            <span></span>
+        </div>
+        <div>
+            <button onclick="getNext();">next</button>
+        </div>
+    </div>
+
+    <script>
+        const getShowCode = async () => {
+            return {
+                status: "ok",
+                data: {
+                    id: "xxx",
+                    code: `
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Cat Coding</title>
+                        </head>
+                        <body>
+                            <h3>test：getShowCode</h3>
+                        </body>
+                        </html>
+                        `
+                },
+            };
+        };
+
+        const showContext = document.querySelector('.show-context')
+        console.log(showContext);
+
+        window.onload = async function () {
+
+            const { data } = await getShowCode()
+            showContext.innerHTML = data.code
+        }
+
+        function getNext() {
+            showContext.innerHTML += '1'
+        }
+
+        function getPre() {
+            showContext.innerHTML += '2'
+        }
+
+    </script>
+</body>
+
+</html>
