@@ -1,8 +1,8 @@
 import { Spin } from "@arco-design/web-react";
-import { IconSearch } from "@arco-design/web-react/icon";
+import { IconClose, IconSearch } from "@arco-design/web-react/icon";
 import Router from "next/router";
 import React, { useEffect, useState } from "react";
-import { getLoginStatus } from "../../utils/auth_token";
+import { clearLoginStatus, getLoginStatus } from "../../utils/auth_token";
 import style from "./index.module.scss";
 
 type ContentLayoutType = "default" | "middle";
@@ -21,6 +21,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   const [status, setStatus] = useState<boolean>(false);
   const handleClick = (path: string) => {
     Router.push(path);
+  };
+  const handleLogout = () => {
+    setStatus(false);
+    clearLoginStatus();
   };
 
   useEffect(() => {
@@ -43,12 +47,21 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             <IconSearch className={style.icon_search} />
           </div>
           {status ? (
-            <button
-              className={style.publish}
-              onClick={() => handleClick("/personal")}
-            >
-              进入主页
-            </button>
+            <>
+              <button
+                className={style.publish}
+                onClick={() => handleClick("/personal")}
+              >
+                进入主页
+              </button>
+              <span
+                onClick={handleLogout}
+                className={style.logout}
+                title={"注销"}
+              >
+                <IconClose />
+              </span>
+            </>
           ) : (
             <>
               <button

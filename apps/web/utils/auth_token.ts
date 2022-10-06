@@ -25,5 +25,7 @@ export function getLoginStatus(): boolean {
 }
 
 export function clearLoginStatus(): void {
+  console.log(1);
+
   window.localStorage.clear();
 }
