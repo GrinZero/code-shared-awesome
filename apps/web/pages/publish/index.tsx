@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect, useLayoutEffect, useRef } from "react";
 import {
   Layout,
   Tag,
@@ -7,11 +7,15 @@ import {
   Message,
   Alert,
 } from "@arco-design/web-react";
-import style from "./index.module.css";
-import hljs from "highlight.js";
-import "highlight.js/styles/night-owl.css";
 import { Grid, Divider } from "@arco-design/web-react";
+import Editor from "@monaco-editor/react";
+import hljs from "highlight.js";
+
 import { classify } from "../../utils";
+
+import style from "./index.module.css";
+import "highlight.js/styles/night-owl.css";
+
 const Row = Grid.Row;
 const Col = Grid.Col;
 const Sider = Layout.Sider;
@@ -19,20 +23,12 @@ const Header = Layout.Header;
 
 const Content = Layout.Content;
 const Publish: FC = () => {
-  const [text, setText] = useState("");
-
   let tagArr: string[] = [];
   const titleRef = useRef<HTMLInputElement | null>(null);
   const textRef = useRef<HTMLTextAreaElement | null>(null);
   const briefRef = useRef<HTMLTextAreaElement | null>(null);
   //高亮代码
 
-  function handleInput() {
-    const ipt_value = textRef.current?.value;
-    if (ipt_value || ipt_value == "") {
-      setText(ipt_value);
-    }
-  }
   //选中标签
   function handleClickTags(checked: boolean, tagIndex: number) {
     if (checked && !tagArr.includes(classify[tagIndex])) {
@@ -60,17 +56,19 @@ const Publish: FC = () => {
       Message.warning("请将信息填写完整!");
     }
   }
+
+  const codeRef = useRef<HTMLPreElement | null>(null);
   useEffect(() => {
+    if (!codeRef.current) return;
     hljs.configure({
       // 忽略未经转义的 HTML 字符
       ignoreUnescapedHTML: true,
     });
     // 获取到内容中所有的code标签
-    const codes = document.querySelectorAll("pre code");
-    codes.forEach((el) => {
-      // 让code进行高亮
-      hljs.highlightElement(el as HTMLElement);
-    });
+    const codes = codeRef.current;
+    for (let i = 0; i < codes.children.length; i++) {
+      hljs.highlightBlock(codes.children[i] as HTMLElement);
+    }
   });
 
   return (
@@ -84,18 +82,12 @@ const Publish: FC = () => {
       </Header>
       <Layout>
         <Content style={{ width: "75%" }} className={style["publish_left"]}>
-          <div className={style["dg-html"]}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `<pre> <code>${text}</code> </pre>`,
-              }}
-            />
-          </div>
-          <textarea
-            className={style["code_ipt"]}
-            ref={textRef}
-            onChange={handleInput}
-          ></textarea>
+          <Editor
+            theme="vs-dark"
+            height="80vh"
+            defaultLanguage="javascript"
+            defaultValue="const a=1;"
+          />
         </Content>
         <Sider style={{ width: "25%" }} className={style["publish_right"]}>
           <div>
