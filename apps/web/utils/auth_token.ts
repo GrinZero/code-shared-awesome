@@ -6,6 +6,7 @@ export type TokenType = string | null;
  */
 export function setToken(token: string) {
   window.localStorage.setItem("code_token", token);
+  window.localStorage.setItem("code_login_status", "1");
   console.log(token);
 }
 
@@ -16,4 +17,13 @@ export function setToken(token: string) {
 export function getToken(): TokenType {
   const token: TokenType = window.localStorage.getItem("code_token");
   return token;
+}
+
+export function getLoginStatus(): boolean {
+  const isLogin = window.localStorage.getItem("code_login_status");
+  return isLogin === "1" ? true : false;
+}
+
+export function clearLoginStatus(): void {
+  window.localStorage.clear();
 }
