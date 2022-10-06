@@ -5,7 +5,6 @@
 .main_top {
   background-color: #24273b;
   height: 6rem;
-
   border-radius: 0.08rem;
 }
 .top_bg {
@@ -68,4 +67,36 @@
   margin-top: 0.4rem;
   background-color: #151728;
   border-radius: 0.08rem;
+}
+
+@media screen and (max-width: 750px) {
+  .main {
+    width: 100%;
+    margin-right: 0rem;
+  }
+  .main_top {
+    height: 18rem;
+  }
+  .top_bg {
+    height: 15rem;
+    border-top-left-radius: 0.08rem;
+    border-top-right-radius: 0.08rem;
+  }
+
+  .swiper_item {
+    height: 100%;
+    border-top-left-radius: 0.08rem;
+    border-top-right-radius: 0.08rem;
+  }
+
+  .top_nav ul {
+    height: 3.5rem;
+    line-height: 3.5rem;
+    justify-content: space-around;
+  }
+
+  .top_nav ul li {
+    width: auto;
+    padding: 0 0.6rem;
+  }
 }
