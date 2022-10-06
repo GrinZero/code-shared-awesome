@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     <link rel="stylesheet" href="./layout.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"> </script>
     <title>showCode</title>
     <style>
         html,
@@ -29,7 +31,6 @@
         }
 
         .swiper-slide {
-            text-align: center;
             font-size: 18px;
             background: rgb(36, 39, 59);
             display: -webkit-box;
@@ -63,6 +64,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        .album-action{
+            margin:  10px 10px;
         }
 
         .album-detail {
@@ -123,25 +128,26 @@
     </div>
 
 
-
     <script type="module">
-        // 转换成markdown
-        let md = require("markdown-it")({
-            html: false,
-            xhtmlOut: false,
-            breaks: true,
-            langPrefix: "language-",
-            linkify: false,
-            typographer: false,
-            quotes: "“”‘’",
-            highlight: function (/*str, lang*/) {
-                return "";
-            },
-        });
-        import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
 
         const showContext = document.querySelector('.show-context')
+        // 转换成markdown
+        var md = window.markdownit(
+            {
+                html: false,
+                xhtmlOut: false,
+                breaks: true,
+                langPrefix: "language-",
+                linkify: false,
+                typographer: false,
+                quotes: "“”‘’",
+                highlight: function (/*str, lang*/) {
+                    return "";
+                },
+            }
+        )
 
+        // 获取数据
         const getShowCode = async () => {
             return {
                 status: "ok",
@@ -258,6 +264,7 @@
             });
         }
 
+        // 初始化
         window.onload = async function () {
             const { data } = await getShowCode()
             render(data)

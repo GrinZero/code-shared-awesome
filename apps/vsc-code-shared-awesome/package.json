@@ -58,7 +58,6 @@
     }
   },
   "scripts": {
-    "start": "parcel ./src/index.html",
     "vscode:prepublish": "pnpm run package",
     "compile": "webpack",
     "watch": "webpack --watch",
