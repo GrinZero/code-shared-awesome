@@ -1,9 +1,17 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import style from "./index.module.css";
-import { IconHeartFill, IconStarFill } from "@arco-design/web-react/icon";
-import { CodeProps } from "../../type";
+import {
+  IconHeartFill,
+  IconStarFill,
+  IconBranch,
+  IconHeart,
+  IconStar,
+} from "@arco-design/web-react/icon";
+import { CodeProps } from "../../../types";
 const MyCode: FC<CodeProps> = (props) => {
   const { code } = props;
+  const [like, setLike] = useState(false);
+  const [star, setStar] = useState(false);
   return (
     <div className={style["code"]}>
       <h2 className={style["title"]}>{code.title}</h2>
@@ -30,14 +38,24 @@ const MyCode: FC<CodeProps> = (props) => {
         />
       </div>
       <div className={style["operation"]}>
-        <p>
-          <IconHeartFill className={style["like"]} />
+        <p onClick={() => setLike(!like)}>
+          {like ? (
+            <IconHeartFill className={style["like"]} />
+          ) : (
+            <IconHeart className={style["unlike"]} />
+          )}
+        </p>
+        <p onClick={() => setStar(!star)}>
+          {star ? (
+            <IconStarFill className={style["collect"]} />
+          ) : (
+            <IconStar className={style["uncollect"]} />
+          )}
         </p>
         <p>
-          <IconStarFill className={style["collect"]} />
-        </p>
-        <p>
-          <span className={style["fork"]}>fork</span>
+          <span className={style["fork"]}>
+            <IconBranch />
+          </span>
         </p>
       </div>
     </div>

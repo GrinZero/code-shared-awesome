@@ -1,7 +1,14 @@
 /* 左边评论部分 */
 .comment {
   width: 25%;
-  background-color: var(--theme-bg-color);
+  /* background-color: var(--theme-bg-color); */
+  background-color: #31364b;
+}
+.custom-comment-action {
+  font-family: "Consolas";
+}
+.custom-comment-action:hover {
+  cursor: pointer;
 }
 .com_det {
   height: 70%;
@@ -15,6 +22,9 @@
   height: 30%;
   display: flex;
   flex-direction: column;
+}
+.publish_com textarea {
+  resize: none;
 }
 .com_neirong {
   width: 85%;

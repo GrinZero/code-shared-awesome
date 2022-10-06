@@ -1,0 +1,43 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--theme-bg-color);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  transform: translateY(-50%);
+  > div {
+    width: 300px;
+    height: 32px;
+    margin-bottom: 15px;
+
+    button {
+      width: 100%;
+      margin-top: 15px;
+    }
+  }
+}
+
+.title {
+  color: var(--theme-text-color);
+  margin-bottom: 15px;
+}
+
+.find {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3px;
+  span {
+    margin-left: 5px;
+    color: var(--theme-text-color);
+    cursor: pointer;
+    user-select: none;
+  }
+  span:hover {
+    color: var(--theme-link-text-color);
+  }
+}

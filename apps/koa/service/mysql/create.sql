@@ -10,10 +10,10 @@ CREATE TABLE `article` (
   `tag` text NOT NULL,
   `content` text NOT NULL,
   `createTime` bigint(20) NOT NULL COMMENT '文章发布时间',
-  `pv` int(11) NOT NULL DEFAULT '0' COMMENT '文章浏览量',
-  `status` int(11) NOT NULL DEFAULT '0' COMMENT '文章状态：1-公开；0-审核中；-1-审核失败不可见；-2-草稿；-3-删除',
+  `pv` int(11) NOT NULL DEFAULT 0 COMMENT '文章浏览量',
+  `status` int(11) NOT NULL DEFAULT 0 COMMENT '文章状态：1-公开；0-审核中；-1-审核失败不可见；-2-草稿；-3-删除',
   `updateTime` bigint(20) NOT NULL COMMENT '文章修改时间',
-  'sort' bigint(20) NOT NULL DEFAULT '0' COMMENT '文章排序',
+  `sort` bigint(20) NOT NULL DEFAULT 0 COMMENT '文章排序',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -53,39 +53,27 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB AUTO_INCREMENT=203 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
--- Table structure for tag
--- ----------------------------
-DROP TABLE IF EXISTS `tag`;
-CREATE TABLE `tag` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tagname` text NOT NULL,
-  `tagdesc` text NOT NULL,
-  `cdate` bigint(20) NOT NULL DEFAULT '1597618819110' COMMENT '创建时间',
-  `status` int(11) DEFAULT '0' COMMENT '标签状态, 1-可用，0-不可用',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
-
--- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户 id',
-  `username` text NOT NULL,
-  `password` text NOT NULL,
-  `nickName` text,
-  `avatar` text,
-  `introduce` text,
-  `createTime` bigint(20) NOT NULL DEFAULT '1597618819100' COMMENT '用户创建时间',
-  `updateTime` bigint(20) NOT NULL DEFAULT '1597618819100' COMMENT '用户创建时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+CREATE TABLE `code_shared`.`user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `nickName` VARCHAR(45) NOT NULL,
+  `avatar` TEXT NULL,
+  `introduce` TEXT NULL,
+  `createTime` BIGINT(20) NULL DEFAULT 1597618819100,
+  `updateTime` BIGINT(20) NULL DEFAULT 1597618819100,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` VALUES (1, 'admin', 'd42ea2921cc0ec2d02ab6951ea1834ed', '重庆崽儿', 'https://s.gravatar.com/avatar/d8065bea49aa2877ce13686772727711?s=80', 'Hello World', 1582595976253);
+INSERT INTO `user` VALUES (1, 'admin', 'root', '源心锁', 'https://s.gravatar.com/avatar/d8065bea49aa2877ce13686772727711?s=80', 'Hello World', 1582595976253, 1582595976253);
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

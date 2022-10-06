@@ -21,5 +21,8 @@
     "lib": ["ESNext", "WebWorker", "scripthost"]
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.js", "./src/**/*.ts", "./*.ts", "src/types/*.d.ts"]
+  "include": ["./src/**/*.js", "./src/**/*.ts", "./*.ts", "src/types/*.d.ts"],
+  "paths": {
+    "@/*": ["./src/*"]
+  }
 }
