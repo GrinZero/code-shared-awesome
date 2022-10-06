@@ -1,31 +1,34 @@
 // app.js
 
 import Koa from "koa";
-import Router from "koa-router";
 import jwt from "koa-jwt";
 import koaBody from "koa-body";
 
-const secret = "mock-sercet";
+import { JwtConfig } from "./config";
 
 const app = new Koa();
-const router = new Router();
 
-router.get("/", async (ctx: { type: string; body: string }) => {
-  ctx.type = "html";
-  ctx.body = "<h1>hello world!</h1>";
-});
-router.post("/auth", async (ctx, next) => {
-  console.log(ctx.request.body);
-  ctx.body = "test";
+app.use(koaBody());
+app.use((ctx, next) => {
+  return next().catch((err) => {
+    if (401 == err.status) {
+      ctx.status = 401;
+      ctx.body = "Protected resource, use Authorization header to get access\n";
+    } else {
+      throw err;
+    }
+  });
 });
 
-router.use(
+import { publicRouter, apiRouter } from "./routes";
+app.use(apiRouter.routes()).use(apiRouter.allowedMethods());
+app.use(publicRouter.routes()).use(publicRouter.allowedMethods());
+
+app.use(
   jwt({
-    secret,
+    secret: JwtConfig.secret,
     debug: true,
-  })
+  }).unless({ path: [/^\/public/] })
 );
 
-app.use(koaBody()).use(router.routes()).use(router.allowedMethods());
-
-export { app, router };
+export { app };

@@ -13,18 +13,6 @@ export default class Config {
   public static readonly BASE = isDev ? "src" : "dist/src";
   // redis数据库
   public static readonly REDIS_DB_NAME = REDIS_DB_NAME;
-  // mysql配置
-  public static readonly MYSQL = {
-    DB_NAME: "admin",
-    HOST: "127.0.0.1",
-    PORT: 3306,
-    USER_NAME: "admin",
-    PASSWORD: "admin",
-    CONNECTION_LIMIT: 60 * 60 * 1000,
-    CONNECT_TIMEOUT: 1000 * 60 * 60 * 1000,
-    ACQUIRE_TIMEOUT: 60 * 60 * 1000,
-    TIMEOUT: 1000 * 60 * 60 * 1000,
-  };
   // redis
   public static readonly REDIS = {
     PORT: 6379,
