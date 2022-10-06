@@ -83,6 +83,7 @@ const Publish: FC = () => {
       <Layout>
         <Content style={{ width: "75%" }} className={style["publish_left"]}>
           <Editor
+            theme="vs-dark"
             height="80vh"
             defaultLanguage="javascript"
             defaultValue="const a=1;"
