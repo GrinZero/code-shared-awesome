@@ -20,7 +20,7 @@ const articleType = new GraphQLObjectType({
       user: { type: String },
       introduce: { type: String },
       getLikes: { type: Int },
-      comment: { type: Int },
+      comment: { type: String },
       code: { type: String },
     };
   },
@@ -79,7 +79,7 @@ const createArticle = {
     user: { name: "user", type: String },
     introduce: { name: "introduce", type: String },
     getLikes: { name: "getLikes", type: Int },
-    comment: { name: "comment", type: Int },
+    comment: { name: "comment", type: String },
     code: { name: "code", type: String },
   },
   async resolve(root: any, args: any, options: any) {
@@ -90,13 +90,14 @@ const updateArticle = {
   name: "updateArticle",
   type: articleType,
   args: {
+    id: { name: "id", type: Int },
     type: { name: "type", type: Int },
     title: { name: "title", type: String },
     time: { name: "time", type: String },
     user: { name: "user", type: String },
     introduce: { name: "introduce", type: String },
     getLikes: { name: "getLikes", type: Int },
-    comment: { name: "comment", type: Int },
+    comment: { name: "comment", type: String },
     code: { name: "code", type: String },
   },
   async resolve(root: any, args: any, options: any) {
@@ -105,15 +106,15 @@ const updateArticle = {
 };
 const deleteArticle = {
   name: "deleteArticle",
-  type: Boolean,
+  type: articleType,
   args: {
     id: {
       name: "id",
       type: Int,
     },
   },
-  async resolve(root: any, args: any, options: any) {
-    return await Article.delete(args);
+  async resolve(root: any, { id = -1 }: any, options: any) {
+    return await Article.delete(id);
   },
 };
 

@@ -2,9 +2,9 @@
 import pool from "./pool";
 import mysql from "mysql";
 
-import { Models } from "common/typings/model";
-import { lineToHumpObject } from "common/utils";
-import { DataBaseFailed } from "core/HttpException";
+import { Models } from "../../common/typings/model";
+import { lineToHumpObject } from "../../common/utils";
+import { DataBaseFailed } from "../../core/HttpException";
 
 /*
  * 数据库增删改查
