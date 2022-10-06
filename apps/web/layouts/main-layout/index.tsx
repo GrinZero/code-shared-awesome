@@ -50,6 +50,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             <>
               <button
                 className={style.publish}
+                onClick={() => handleClick("/publish")}
+              >
+                发表文章
+              </button>
+              <button
+                className={style.publish}
                 onClick={() => handleClick("/personal")}
               >
                 进入主页
@@ -64,12 +70,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             </>
           ) : (
             <>
-              <button
-                className={style.publish}
-                onClick={() => handleClick("/publish")}
-              >
-                发表文章
-              </button>
               <button
                 className={style.login}
                 onClick={() => handleClick("/login")}
