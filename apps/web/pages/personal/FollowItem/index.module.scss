@@ -44,3 +44,25 @@
   border: 1px solid var(--theme-light-text-color);
   cursor: pointer;
 }
+
+@media screen and (max-width: 750px) {
+  .follow {
+    height: auto;
+    padding: 1rem 3rem;
+  }
+
+  .avatar {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .content {
+    width: calc(100% - 4rem);
+  }
+
+  .info {
+    p {
+      font-size: 1.3rem;
+    }
+  }
+}
