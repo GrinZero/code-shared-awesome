@@ -4,6 +4,7 @@
   height: 100%;
   background-color: #24273b;
   padding-left: 20px;
+  position: relative;
 }
 .title {
   margin-top: 20px;
@@ -77,6 +78,13 @@
   left: 6px;
   top: 8px;
 }
+.unlike {
+  font-size: 37px;
+  color: #a2a4b4;
+  position: absolute;
+  left: 6px;
+  top: 8px;
+}
 .collect {
   color: rgb(255, 180, 0);
   font-size: 37px;
@@ -84,8 +92,20 @@
   left: 7px;
   top: 6px;
 }
-.fork {
+.uncollect {
+  font-size: 37px;
   position: absolute;
   left: 7px;
   top: 6px;
+  color: #a2a4b4;
+}
+.fork {
+  position: absolute;
+  left: 3px;
+  top: -2px;
+  margin: 10px;
+
+  color: #a2a4b4;
+
+  font-size: 29px;
 }
