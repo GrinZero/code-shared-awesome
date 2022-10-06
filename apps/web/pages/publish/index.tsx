@@ -1,16 +1,9 @@
 import React, { FC, useState, useEffect, useRef } from "react";
-import {
-  Layout,
-  Tag,
-  Button,
-  Popconfirm,
-  Message,
-  Alert,
-} from "@arco-design/web-react";
+import { Layout, Tag, Message } from "@arco-design/web-react";
 import style from "./index.module.css";
 import hljs from "highlight.js";
 import "highlight.js/styles/night-owl.css";
-import { Grid, Divider } from "@arco-design/web-react";
+import { Grid } from "@arco-design/web-react";
 import { classify } from "../../utils";
 const Row = Grid.Row;
 const Col = Grid.Col;
@@ -26,7 +19,6 @@ const Publish: FC = () => {
   const textRef = useRef<HTMLTextAreaElement | null>(null);
   const briefRef = useRef<HTMLTextAreaElement | null>(null);
   //高亮代码
-
   function handleInput() {
     const ipt_value = textRef.current?.value;
     if (ipt_value || ipt_value == "") {
