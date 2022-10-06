@@ -1,6 +1,6 @@
 /* 主体部分 */
 .content {
-  width: calc(100% - 5.5rem);
+  width: calc(100vw - 25%);
   margin: 0rem auto;
   padding: 0.8rem 0 0 0;
   display: flex;
