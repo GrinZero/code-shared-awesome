@@ -29,7 +29,6 @@ const Publish: FC = () => {
   const textRef = useRef<HTMLTextAreaElement | null>(null);
   const briefRef = useRef<HTMLTextAreaElement | null>(null);
   //高亮代码
-
   //选中标签
   function handleClickTags(checked: boolean, tagIndex: number) {
     if (checked && !tagArr.includes(classify[tagIndex])) {
