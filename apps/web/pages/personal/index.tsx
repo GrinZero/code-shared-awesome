@@ -5,8 +5,9 @@ import MainLayout from "../../layouts/main-layout";
 import Achievement from "./Achievement";
 import AvatarHead from "./AvatarHead";
 import { getArticleList, getUserInfo } from "api-sdk";
-import ArticleList from "../../components/articleList";
 import { ListDataProps } from "../../types";
+import ActicleItem from "../../components/acticleItem";
+import FollowItem from "./FollowItem";
 
 const MenuItem = Menu.Item;
 
@@ -16,6 +17,11 @@ const menus = [
   { title: "关注", key: "2" },
   { title: "收藏", key: "3" },
   { title: "评论", key: "4" },
+];
+const follows = [
+  { id: 0, name: "张三", comment: "红红火火恍恍惚惚或或或" },
+  { id: 1, name: "李四", comment: "啊啊啊啊啊啊啊啊啊啊啊啊啊" },
+  { id: 2, name: "王五", comment: "啛啛喳喳错错错错错错错错错" },
 ];
 
 export interface UserInfo {
@@ -39,7 +45,7 @@ const Personal: React.FC = () => {
     name: "",
     account: "",
   });
-  const [listData, setListData] = useState<ListDataProps[]>();
+  const [listData, setListData] = useState<ListDataProps>();
 
   const menuElements = useMemo(() => {
     const menuStyle = { backgroundColor: "var(--theme-bg-color)" };
@@ -63,6 +69,33 @@ const Personal: React.FC = () => {
     );
   }, [selectMenu]);
 
+  const menuItems = useMemo(() => {
+    switch (selectMenu) {
+      case "0":
+        return listData && listData.map((item) => <ActicleItem data={item} />);
+      case "1":
+        return (
+          // TODO 发布数据
+          listData && listData.map((item) => <ActicleItem data={item} />)
+        );
+      case "2":
+        return follows.map((item) => <FollowItem data={item} />);
+      case "3":
+        return (
+          // TODO 发布数据
+          listData && listData.map((item) => <ActicleItem data={item} />)
+        );
+      case "4":
+        return (
+          // TODO 发布数据
+          listData && listData.map((item) => <ActicleItem data={item} />)
+        );
+
+      default:
+        break;
+    }
+  }, [selectMenu, listData]);
+
   useEffect(() => {
     async function initInfo() {
       try {
@@ -83,19 +116,12 @@ const Personal: React.FC = () => {
   return (
     <MainLayout contentType="middle" loading={loading}>
       <div className={style.personal}>
-        <div className={style.left} style={{ height: 1000 }}>
+        <div className={style.left}>
           <AvatarHead userInfo={userInfo} isOwn={true} />
 
           <div className={style.menuDemo}>{menuElements}</div>
 
-          <div className={style.content}>
-            {listData && (
-              <ArticleList
-                listData={listData}
-                activeIndex={parseInt(selectMenu)}
-              />
-            )}
-          </div>
+          <div className={style.content}>{menuItems}</div>
         </div>
         <div className={style.right}>
           <Achievement userInfo={userInfo} />
