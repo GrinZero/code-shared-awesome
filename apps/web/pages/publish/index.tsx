@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect, useLayoutEffect, useRef } from "react";
 import {
   Layout,
   Tag,
@@ -60,17 +60,19 @@ const Publish: FC = () => {
       Message.warning("请将信息填写完整!");
     }
   }
+
+  const codeRef = useRef<HTMLPreElement | null>(null);
   useEffect(() => {
+    if (!codeRef.current) return;
     hljs.configure({
       // 忽略未经转义的 HTML 字符
       ignoreUnescapedHTML: true,
     });
     // 获取到内容中所有的code标签
-    const codes = document.querySelectorAll("pre code");
-    codes.forEach((el) => {
-      // 让code进行高亮
-      hljs.highlightElement(el as HTMLElement);
-    });
+    const codes = codeRef.current;
+    for (let i = 0; i < codes.children.length; i++) {
+      hljs.highlightBlock(codes.children[i] as HTMLElement);
+    }
   });
 
   return (
@@ -85,11 +87,9 @@ const Publish: FC = () => {
       <Layout>
         <Content style={{ width: "75%" }} className={style["publish_left"]}>
           <div className={style["dg-html"]}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `<pre> <code>${text}</code> </pre>`,
-              }}
-            />
+            <pre className="language-jsx" ref={codeRef}>
+              <code>{text}</code>
+            </pre>
           </div>
           <textarea
             className={style["code_ipt"]}
