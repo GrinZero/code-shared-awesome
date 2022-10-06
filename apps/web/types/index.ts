@@ -44,3 +44,24 @@ export interface CommentProps {
 export interface CodeProps {
   code: Code;
 }
+
+interface articleList {
+  id: number;
+  type: number;
+  title: string;
+  time: string;
+  user: string;
+  introduce: string;
+  getLikes: number;
+  comment: number;
+  code: string;
+}
+
+export interface HomeLeftProps {
+  listData: articleList[];
+}
+
+export interface ArticleListProps {
+  listData: articleList[];
+  activeIndex: number;
+}

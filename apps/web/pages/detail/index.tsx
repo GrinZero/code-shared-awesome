@@ -5,10 +5,11 @@ import "highlight.js/styles/night-owl.css";
 import { useEffect, useState } from "react";
 import React, { FC } from "react";
 import { getArticleDetail, getComment } from "api-sdk";
-import { Code, Comment } from "../../type";
-import MyComment from "../../components/comment";
+import { Code, Comment } from "../../types";
 import { useRouter } from "next/router";
-import MyCode from "../../components/code";
+import MyComment from "./comment";
+import MyHeader from "./Header";
+import MyCode from "./code";
 const Detail: FC = () => {
   const router = useRouter();
   const { id, type } = router.query;
@@ -29,7 +30,7 @@ const Detail: FC = () => {
       }
     };
     getData();
-  }, []);
+  }, [id, type]);
   useEffect(() => {
     hljs.configure({
       // 忽略未经转义的 HTML 字符
@@ -42,15 +43,12 @@ const Detail: FC = () => {
       hljs.highlightElement(el as HTMLElement);
     });
   });
+  console.log("评论", comments);
+  console.log("daima", code);
 
   return (
     <div className={style["content"]}>
-      <div className={style["head"]}>
-        <div className={style["head_l"]}>Code Show</div>
-        <div className={style["head_r"]}>
-          <div className={style["avatar"]}></div>
-        </div>
-      </div>
+      <MyHeader></MyHeader>
       <div className={style["container"]}>
         {comments && code && (
           <MyComment comment={comments} author={code.user} id={id}></MyComment>

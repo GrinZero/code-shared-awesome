@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+var localizedFormat = require("dayjs/plugin/localizedFormat");
 export const topNavBar = ["推荐", "人工智能", "前端", "后端", "算法"];
 export const comment = [
   {
@@ -29,27 +31,27 @@ export const comment = [
 
 export const getTime = () => {
   const myDate = new Date();
-  const month = myDate.getMonth();
-  console.log(month);
+
+  dayjs.extend(localizedFormat);
+  const time = dayjs().format("ll");
+  const detT = dayjs().format("llll");
+  let obj: {
+    month: string;
+    day: string;
+    detTime: string;
+  } = {
+    detTime: detT,
+    month: time.substring(0, 3),
+    day: time.slice(4, 5),
+  };
+  return obj;
 };
-//得到月份
-export const getMonth = (id: number) => {
-  switch (id) {
-    case 0:
-      return "小排练厅";
-    case 1:
-      return "教室一二";
-    case 2:
-      return "教室三四";
-    case 3:
-      return "教室五六";
-    case 4:
-      return "钢琴排练房二";
-    case 5:
-      return "钢琴排练房三";
-    case 6:
-      return "钢琴排练房四";
-    default:
-      break;
-  }
-};
+
+export const classify = [
+  "人工智能",
+  "前端",
+  "后端",
+  "算法",
+  "Android",
+  "开发工具",
+];
