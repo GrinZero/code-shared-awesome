@@ -6,13 +6,22 @@ import {
   updateArticle,
   deleteArticle,
 } from "./articleSchema";
-const query = new GraphQLObjectType({
+
+import { mergeSchemaStore } from "./schemaStore";
+import userQuerySchema from "./userSchema";
+
+const query = mergeSchemaStore(userQuerySchema).finish({
   name: "Query",
-  fields: () => ({
-    article,
-    articles,
-  }),
 });
+
+// const query = new GraphQLObjectType({
+//   name: "Query",
+//   fields: () => ({
+//     article,
+//     articles,
+//   }),
+// });
+
 const mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: () => ({
