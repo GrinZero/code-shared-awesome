@@ -30,7 +30,7 @@ const AvatarHead: React.FC<AvatarHeadProps> = (props) => {
           triggerIcon={<IconEdit />}
           onClick={() => {}}
           style={{ backgroundColor: "#14C9C9" }}
-          size={120}
+          className={style.avatarImg}
         >
           <IconUser />
         </Avatar>

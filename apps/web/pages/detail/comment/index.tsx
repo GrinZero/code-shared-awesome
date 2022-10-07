@@ -13,6 +13,7 @@ import dayjs from "dayjs";
 import { CommentProps } from "../../../types";
 const MyComment: FC<CommentProps> = (props) => {
   const { comment, author, id } = props;
+  console.log("canhsu", props);
 
   const [like, setLike] = React.useState(false);
   const [star, setStar] = React.useState(false);
@@ -51,32 +52,41 @@ const MyComment: FC<CommentProps> = (props) => {
                 key="heart"
                 onClick={() => setLike(!like)}
               >
-                {like ? (
-                  <IconHeartFill style={{ color: "#f53f3f" }} />
-                ) : (
-                  <IconHeart />
-                )}
-                {item.getLike + (like ? 1 : 0)}
+                <span className={style["heart_icon"]}>
+                  {like ? (
+                    <IconHeartFill style={{ color: "#f53f3f" }} />
+                  ) : (
+                    <IconHeart />
+                  )}
+                </span>
+                <span className={style["heart_num"]}>
+                  {" "}
+                  {item.getLike + (like ? 1 : 0)}
+                </span>
               </span>,
               <span
                 className={style["custom-comment-action"]}
                 key="star"
                 onClick={() => setStar(!star)}
               >
-                {star ? (
-                  <IconStarFill style={{ color: "#ffb400" }} />
-                ) : (
-                  <IconStar />
-                )}
-                {item.getcollect + (star ? 1 : 0)}
+                <span className={style["star_icon"]}>
+                  {star ? (
+                    <IconStarFill style={{ color: "#ffb400" }} />
+                  ) : (
+                    <IconStar />
+                  )}
+                </span>
+                <span className={style["star_num"]}>
+                  {item.getcollect + (star ? 1 : 0)}
+                </span>
               </span>,
-              <span className={style["custom-comment-action"]} key="reply">
-                <IconMessage /> Reply
-              </span>,
+              // <span className={style["custom-comment-action"]} key="reply">
+              //   <IconMessage /> Reply
+              // </span>,
             ]}
             align="right"
             author={item.author}
-            avatar={<Avatar></Avatar>}
+            avatar={<Avatar className={style["avatar"]}></Avatar>}
             content={<div>{item.det}</div>}
             datetime={item.time}
             key={index}

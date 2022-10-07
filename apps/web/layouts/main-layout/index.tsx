@@ -1,7 +1,8 @@
 import { Spin } from "@arco-design/web-react";
-import { IconSearch } from "@arco-design/web-react/icon";
+import { IconClose, IconSearch } from "@arco-design/web-react/icon";
 import Router from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { clearLoginStatus, getLoginStatus } from "../../utils/auth_token";
 import style from "./index.module.scss";
 
 type ContentLayoutType = "default" | "middle";
@@ -17,9 +18,18 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   contentType = "default",
   loading = false,
 }) => {
+  const [status, setStatus] = useState<boolean>(false);
   const handleClick = (path: string) => {
     Router.push(path);
   };
+  const handleLogout = () => {
+    setStatus(false);
+    clearLoginStatus();
+  };
+
+  useEffect(() => {
+    setStatus(getLoginStatus());
+  }, []);
 
   return (
     <div className={style.mainLayout}>
@@ -36,15 +46,38 @@ const MainLayout: React.FC<MainLayoutProps> = ({
             />
             <IconSearch className={style.icon_search} />
           </div>
-          <button
-            className={style.publish}
-            onClick={() => handleClick("/publish")}
-          >
-            发表文章
-          </button>
-          <button className={style.login} onClick={() => handleClick("/login")}>
-            登录
-          </button>
+          {status ? (
+            <>
+              <button
+                className={style.publish}
+                onClick={() => handleClick("/publish")}
+              >
+                发表文章
+              </button>
+              <button
+                className={style.publish}
+                onClick={() => handleClick("/personal")}
+              >
+                进入主页
+              </button>
+              <span
+                onClick={handleLogout}
+                className={style.logout}
+                title={"注销"}
+              >
+                <IconClose />
+              </span>
+            </>
+          ) : (
+            <>
+              <button
+                className={style.login}
+                onClick={() => handleClick("/login")}
+              >
+                登录
+              </button>
+            </>
+          )}
         </div>
       </header>
 

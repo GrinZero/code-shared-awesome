@@ -7,13 +7,24 @@
 }
 
 .left {
-  width: 18.5rem;
+  // width: 18.5rem;
+  width: 100%;
   border: 1px solid var(--theme-border-color);
+  margin-right: 0.3rem;
 }
 
 .right {
   width: 5rem;
   border: 1px solid var(--theme-border-color);
+}
+
+@media screen and (max-width: 750px) {
+  .right {
+    display: none;
+  }
+  .left {
+    width: 100%;
+  }
 }
 
 .menuDemo {

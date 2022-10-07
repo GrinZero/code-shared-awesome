@@ -71,24 +71,16 @@ const Personal: React.FC = () => {
 
   const menuItems = useMemo(() => {
     switch (selectMenu) {
-      case "0":
-        return listData && listData.map((item) => <ActicleItem data={item} />);
-      case "1":
-        return (
-          // TODO 发布数据
-          listData && listData.map((item) => <ActicleItem data={item} />)
-        );
       case "2":
-        return follows.map((item) => <FollowItem data={item} />);
+        return follows.map((item) => <FollowItem data={item} key={item.id} />);
+      case "0":
+      case "1":
       case "3":
-        return (
-          // TODO 发布数据
-          listData && listData.map((item) => <ActicleItem data={item} />)
-        );
       case "4":
         return (
           // TODO 发布数据
-          listData && listData.map((item) => <ActicleItem data={item} />)
+          listData &&
+          listData.map((item) => <ActicleItem data={item} key={item.id} />)
         );
 
       default:

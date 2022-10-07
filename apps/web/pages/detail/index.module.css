@@ -40,3 +40,9 @@
   flex-direction: row-reverse;
   padding-top: 1.2rem;
 }
+
+@media screen and (max-width: 750px) {
+  .code {
+    width: 100%;
+  }
+}

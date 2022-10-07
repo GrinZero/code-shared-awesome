@@ -8,10 +8,27 @@ import {
   IconStar,
 } from "@arco-design/web-react/icon";
 import { CodeProps } from "../../../types";
+import copy from "copy-to-clipboard";
+import { Message } from "@arco-design/web-react";
 const MyCode: FC<CodeProps> = (props) => {
   const { code } = props;
   const [like, setLike] = useState(false);
   const [star, setStar] = useState(false);
+  const [isHover, setHover] = useState(false);
+  const handleCopy = (value: string) => {
+    console.log("111");
+
+    if (copy(value)) {
+      Message.success({
+        content: "复制成功",
+        duration: 1000,
+      });
+    } else
+      Message.warning({
+        content: "复制失败",
+        duration: 1000,
+      });
+  };
   return (
     <div className={style["code"]}>
       <h2 className={style["title"]}>{code.title}</h2>
@@ -30,12 +47,23 @@ const MyCode: FC<CodeProps> = (props) => {
         <button className={style["focus"]}>+ 关注</button>
       </div>
 
-      <div className={style["dg-html"]}>
+      <div
+        className={style["dg-html"]}
+        onMouseOver={() => setHover(true)}
+        onMouseOut={() => setHover(false)}
+      >
         <div
           dangerouslySetInnerHTML={{
             __html: `<pre> <code>${code.code}</code> </pre>`,
           }}
         />
+        <div
+          className={isHover ? style["hover"] : style["unhover"]}
+          onClick={() => handleCopy(code.code)}
+        >
+          复制代码
+        </div>
+        {/* <div className={style["hover"]}>复制代码</div> */}
       </div>
       <div className={style["operation"]}>
         <p onClick={() => setLike(!like)}>

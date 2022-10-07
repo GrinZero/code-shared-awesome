@@ -40,3 +40,47 @@
 .dianzan span {
   vertical-align: bottom;
 }
+
+@media screen and (max-width: 750px) {
+  .list {
+    padding: 1rem 2rem 0;
+  }
+  .list ul {
+    list-style: none;
+    /* height: 100%; */
+  }
+
+  .list ul li {
+    height: auto;
+  }
+
+  .title {
+    width: 70%;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .describe {
+    color: #595c6c;
+    font-size: 0.26rem;
+    margin: 0.2rem 0;
+  }
+
+  .detail {
+    color: var(--theme-text-color);
+    height: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .article_info {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .dianzan {
+    margin-right: 1rem;
+  }
+}

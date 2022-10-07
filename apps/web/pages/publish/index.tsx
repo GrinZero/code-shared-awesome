@@ -24,11 +24,11 @@ const Header = Layout.Header;
 const Content = Layout.Content;
 const Publish: FC = () => {
   let tagArr: string[] = [];
+  let code: string = "";
   const titleRef = useRef<HTMLInputElement | null>(null);
   const textRef = useRef<HTMLTextAreaElement | null>(null);
   const briefRef = useRef<HTMLTextAreaElement | null>(null);
   //高亮代码
-
   //选中标签
   function handleClickTags(checked: boolean, tagIndex: number) {
     if (checked && !tagArr.includes(classify[tagIndex])) {
@@ -41,13 +41,13 @@ const Publish: FC = () => {
   }
   //发布
   function handlePublish() {
-    const ipt_value = textRef.current?.value;
+    // const ipt_value = textRef.current?.value;
     const title = titleRef.current?.value;
     const brief_intro = briefRef.current?.value;
-    if (title && ipt_value && tagArr && brief_intro) {
+    if (title && code && tagArr && brief_intro) {
       const article = {
         title,
-        content: ipt_value,
+        content: code,
         brief_intro,
         tags: tagArr,
       };
@@ -56,21 +56,13 @@ const Publish: FC = () => {
       Message.warning("请将信息填写完整!");
     }
   }
-
-  const codeRef = useRef<HTMLPreElement | null>(null);
-  useEffect(() => {
-    if (!codeRef.current) return;
-    hljs.configure({
-      // 忽略未经转义的 HTML 字符
-      ignoreUnescapedHTML: true,
-    });
-    // 获取到内容中所有的code标签
-    const codes = codeRef.current;
-    for (let i = 0; i < codes.children.length; i++) {
-      hljs.highlightBlock(codes.children[i] as HTMLElement);
+  //当前的代码
+  function saveCurCode(value: string | undefined) {
+    console.log(value);
+    if (value) {
+      code = value;
     }
-  });
-
+  }
   return (
     <Layout style={{ height: "100vh" }}>
       <Header style={{ height: "1.2rem" }}>
@@ -81,15 +73,21 @@ const Publish: FC = () => {
         ></input>
       </Header>
       <Layout>
-        <Content style={{ width: "75%" }} className={style["publish_left"]}>
+        <Content className={style["publish_left"]}>
           <Editor
             theme="vs-dark"
-            height="80vh"
+            height="90.5vh"
+            width="100vw"
             defaultLanguage="javascript"
             defaultValue="const a=1;"
+            className={style["editor"]}
+            onChange={(value: string | undefined) => saveCurCode(value)}
           />
         </Content>
-        <Sider style={{ width: "25%" }} className={style["publish_right"]}>
+        <Sider
+          className={style["publish_right"]}
+          style={{ width: "25%", overflow: "hidden" }}
+        >
           <div>
             <p>简介</p>
             <textarea
@@ -103,7 +101,7 @@ const Publish: FC = () => {
             <Row className="grid-gutter-demo" gutter={[24, 12]}>
               {classify.map((item, index) => {
                 return (
-                  <Col span={8} key={index}>
+                  <Col sm={12} md={12} lg={8} xl={8} key={index}>
                     <Tag
                       className={style["tag"]}
                       checkable

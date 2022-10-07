@@ -11,12 +11,15 @@
   text-align: center;
   line-height: 3.5rem;
 }
+.avatarImg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
 .right {
   width: calc(100% - 3.6rem);
   display: flex;
   justify-content: space-between;
 }
-
 .name {
   width: 75%;
   padding-top: 0.5rem;
@@ -63,5 +66,48 @@
   &:hover {
     color: var(--theme-text-color);
     border: 1px solid var(--theme-text-color);
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .avatarhead {
+    height: 10rem;
+    padding: 1rem;
+  }
+  .avatar {
+    width: 10rem;
+    height: 10rem;
+    text-align: center;
+    line-height: 4rem;
+  }
+  .avatarImg {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .right {
+    width: calc(100% - 11rem);
+  }
+  .name {
+    width: 50%;
+    padding-top: 0.5rem;
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  .oth {
+    width: 50%;
+    padding: 1rem 0;
+  }
+
+  .social {
+    font-size: 2rem;
+  }
+  .edit {
+    width: auto;
+    padding: 0.5rem 1rem;
+    height: auto;
+    border-radius: 0.3rem;
   }
 }

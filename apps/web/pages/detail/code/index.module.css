@@ -55,6 +55,28 @@
   width: 96%;
   margin-left: 9px;
   margin-bottom: 14px;
+  position: relative;
+}
+.hover {
+  background-color: #444857;
+  color: white;
+  display: block;
+  width: 60px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  border-radius: 4px;
+  font-size: 12px;
+  position: absolute;
+  top: 30px;
+  right: 10px;
+}
+.hover:hover {
+  cursor: pointer;
+  transition: 0.36s ease;
+}
+.unhover {
+  display: none;
 }
 .operation {
   display: flex;
@@ -108,4 +130,10 @@
   color: #a2a4b4;
 
   font-size: 29px;
+}
+
+@media screen and (max-width: 765px) {
+  .code {
+    width: 100%;
+  }
 }
