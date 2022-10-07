@@ -28,7 +28,7 @@ app.use(
   jwt({
     secret: JwtConfig.secret,
     debug: true,
-  }).unless({ path: [/^\/public/] })
+  }).unless({ path: [/^\/public/, /^\/graphql/] })
 );
 
 export { app };
