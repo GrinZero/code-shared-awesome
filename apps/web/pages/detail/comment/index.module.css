@@ -56,3 +56,42 @@
   background-color: #24273b;
   border-radius: 5px;
 }
+.custom-comment-action {
+  display: flex;
+  justify-content: start;
+  width: 30px;
+}
+.star_icon,
+.heart_icon {
+  margin-right: 0.06rem;
+}
+@media screen and (max-width: 765px) {
+  .comment {
+    width: 0%;
+  }
+}
+@media screen and (max-width: 995px) {
+  /* .comment_item{
+    height: 1.72rem;
+    overflow: hidden;
+  } */
+  .custom-comment-action {
+    display: none;
+  }
+  .avatar {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+}
+@media screen and (max-width: 890px) {
+  /* .comment_item{
+    height: 1.72rem;
+    overflow: hidden;
+  } */
+  /* .custom-comment-action{
+    display: none;
+  } */
+  .avatar {
+    display: none;
+  }
+}

@@ -131,3 +131,9 @@
 
   font-size: 29px;
 }
+
+@media screen and (max-width: 765px) {
+  .code {
+    width: 100%;
+  }
+}
