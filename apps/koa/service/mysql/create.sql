@@ -4,6 +4,7 @@
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
   `id` bigint(20) NOT NULL COMMENT '文章id',
+  `userId` INT NOT NULL,
   `title` text NOT NULL,
   `introduce` text NOT NULL,
   `category` text NOT NULL,
@@ -16,7 +17,6 @@ CREATE TABLE `article` (
   `sort` bigint(20) NOT NULL DEFAULT 0 COMMENT '文章排序',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 -- ----------------------------
 -- Table structure for category
 -- ----------------------------
