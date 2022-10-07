@@ -73,7 +73,7 @@ const Publish: FC = () => {
         ></input>
       </Header>
       <Layout>
-        <Content style={{ width: "75%" }} className={style["publish_left"]}>
+        <Content className={style["publish_left"]}>
           <Editor
             theme="vs-dark"
             height="90.5vh"
@@ -85,8 +85,8 @@ const Publish: FC = () => {
           />
         </Content>
         <Sider
-          style={{ width: "25%", overflow: "hidden" }}
           className={style["publish_right"]}
+          style={{ width: "25%", overflow: "hidden" }}
         >
           <div>
             <p>简介</p>
@@ -101,7 +101,7 @@ const Publish: FC = () => {
             <Row className="grid-gutter-demo" gutter={[24, 12]}>
               {classify.map((item, index) => {
                 return (
-                  <Col span={8} key={index}>
+                  <Col sm={12} md={12} lg={8} xl={8} key={index}>
                     <Tag
                       className={style["tag"]}
                       checkable
