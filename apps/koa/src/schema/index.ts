@@ -7,10 +7,10 @@ import {
   deleteArticle,
 } from "./articleSchema";
 
-import { mergeSchemaStore } from "./schemaStore";
+import { mergeFieldStore } from "./fieldStore";
 import userQuerySchema from "./userSchema";
 
-const query = mergeSchemaStore(userQuerySchema).finish({
+const query = mergeFieldStore(userQuerySchema).finish({
   name: "Query",
 });
 

@@ -6,7 +6,7 @@ import {
 import GLong from "graphql-type-long";
 
 import { command } from "../service/mysql";
-import { SchemaStore } from "./schemaStore";
+import { FieldStore } from "./fieldStore";
 
 const userType = new GObject({
   name: "user",
@@ -25,7 +25,7 @@ const userType = new GObject({
   },
 });
 
-const userSchemaStore = new SchemaStore();
+const userSchemaStore = new FieldStore();
 
 userSchemaStore.add("user", {
   type: userType,

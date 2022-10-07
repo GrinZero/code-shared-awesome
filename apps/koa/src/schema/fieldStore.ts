@@ -1,7 +1,7 @@
 import { GraphQLObjectType as GObject } from "graphql";
 import type { GraphQLFieldConfig, GraphQLObjectTypeConfig } from "graphql";
 
-export class SchemaStore<T = any, S = any> {
+export class FieldStore<T = any, S = any> {
   fields: Record<string, GraphQLFieldConfig<any, any, any>> = {};
   add(name: string, field: GraphQLFieldConfig<any, any, any>) {
     this.fields[name] = field;
@@ -11,8 +11,8 @@ export class SchemaStore<T = any, S = any> {
   }
 }
 
-export const mergeSchemaStore = (...stores: SchemaStore<any, any>[]) => {
-  const store = new SchemaStore();
+export const mergeFieldStore = (...stores: FieldStore<any, any>[]) => {
+  const store = new FieldStore();
   stores.forEach((s) => {
     store.fields = { ...store.fields, ...s.fields };
   });
