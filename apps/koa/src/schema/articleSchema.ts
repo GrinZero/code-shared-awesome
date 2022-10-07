@@ -1,121 +1,163 @@
-import { Article } from "../controller";
 import {
-  GraphQLObjectType, //对象类型
-  GraphQLList, //数组类型
-  GraphQLString as String, //字符串类型
-  GraphQLInt as Int, //int类型
-  GraphQLBoolean as Boolean,
-  // GraphQLNonNull, // 必传
+  GraphQLObjectType as GObject,
+  GraphQLList as GArray,
+  GraphQLString as GString,
+  GraphQLInt as GInt,
 } from "graphql";
+import GLong from "graphql-type-long";
 
-const articleType = new GraphQLObjectType({
+import { command } from "../service/mysql";
+import { FieldStore } from "./fieldStore";
+
+const articleType = new GObject({
   name: "article",
   description: "文章对象",
   fields() {
     return {
-      id: { type: Int },
-      type: { type: Int },
-      title: { type: String },
-      time: { type: String },
-      user: { type: String },
-      introduce: { type: String },
-      getLikes: { type: Int },
-      comment: { type: String },
-      code: { type: String },
+      id: { type: GInt },
+      userId: { type: GInt },
+      title: { type: GString },
+      introduce: { type: GString },
+      category: { type: GString },
+      tag: { type: GString },
+      content: { type: GString },
+      createTime: { type: GLong },
+      updateTime: { type: GLong },
+      pv: { type: GInt },
+      status: { type: GInt },
+      sort: { type: GInt },
     };
   },
 });
 
-const article = {
-  name: "article",
-  type: articleType,
-  args: {
-    id: {
-      name: "id",
-      type: Int,
-    },
-  },
-  async resolve(root: any, { id = -1 }: any, options: any) {
-    return await Article.findOne(id);
-  },
-};
-const articles = {
-  name: "articles",
-  type: new GraphQLList(articleType),
-  args: {
-    pageIndex: {
-      name: "pageIndex",
-      type: Int,
-    },
-    pageSize: {
-      name: "pageSize",
-      type: Int,
-    },
-    // 分类
-    type: {
-      name: "type",
-      type: Int,
-    },
-  },
-  async resolve(
-    root: any,
-    { pageIndex = 1, pageSize = 5, type = 1 }: any,
-    options: any
-  ) {
-    return await Article.findAll({
-      pageIndex,
-      pageSize,
-      type,
-    });
-  },
-};
-const createArticle = {
-  name: "createArticle",
-  type: articleType,
-  args: {
-    type: { name: "type", type: Int },
-    title: { name: "title", type: String },
-    time: { name: "time", type: String },
-    user: { name: "user", type: String },
-    introduce: { name: "introduce", type: String },
-    getLikes: { name: "getLikes", type: Int },
-    comment: { name: "comment", type: String },
-    code: { name: "code", type: String },
-  },
-  async resolve(root: any, args: any, options: any) {
-    return await Article.create(args);
-  },
-};
-const updateArticle = {
-  name: "updateArticle",
-  type: articleType,
-  args: {
-    id: { name: "id", type: Int },
-    type: { name: "type", type: Int },
-    title: { name: "title", type: String },
-    time: { name: "time", type: String },
-    user: { name: "user", type: String },
-    introduce: { name: "introduce", type: String },
-    getLikes: { name: "getLikes", type: Int },
-    comment: { name: "comment", type: String },
-    code: { name: "code", type: String },
-  },
-  async resolve(root: any, args: any, options: any) {
-    return await Article.update(args);
-  },
-};
-const deleteArticle = {
-  name: "deleteArticle",
-  type: articleType,
-  args: {
-    id: {
-      name: "id",
-      type: Int,
-    },
-  },
-  async resolve(root: any, { id = -1 }: any, options: any) {
-    return await Article.delete(id);
-  },
-};
+const articleSchemaStore = new FieldStore();
 
-export { article, articles, createArticle, updateArticle, deleteArticle };
+articleSchemaStore
+  .add("article", {
+    type: articleType,
+    args: {
+      id: { type: GInt },
+    },
+    resolve: async (_, { id }) => {
+      return (await command(`SELECT * FROM article where id=?`, [id]))
+        ?.results[0];
+    },
+  })
+  .add("articles", {
+    type: new GArray(articleType),
+    args: {
+      pageIndex: {
+        type: GInt,
+      },
+      pageSize: {
+        type: GInt,
+      },
+      category: {
+        type: GInt,
+      },
+    },
+    resolve: async () => {
+      return (await command(`SELECT * FROM article`))?.results || [];
+    },
+  })
+  .add("createArticle", {
+    type: articleType,
+    args: {
+      title: { type: GString },
+      introduce: { type: GString },
+      category: { type: GString },
+      tag: { type: GString },
+      content: { type: GString },
+      status: { type: GInt },
+      sort: { type: GInt },
+    },
+    resolve: async (_, args) => {
+      const {
+        userId = -1,
+        title,
+        introduce,
+        category,
+        tag,
+        content,
+        status,
+        sort,
+      } = args;
+      return (
+        await command(
+          `INSERT INTO article (
+            \`userId\`,
+            \`title\`,
+            \`introduce\`,
+            \`category\`,
+            \`tag\`,
+            \`content\`,
+            \`createTime\`,
+            \`updateTime\`,
+            \`pv\`,
+            \`status\`,
+            \`sort\`
+            )
+            VALUES (
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                ?,
+                NOW(),
+                NOW(),
+                0,
+                ?,
+                ?
+          )`,
+          [userId, title, introduce, category, tag, content, status, sort]
+        )
+      )?.state;
+    },
+  })
+  .add("updateArticle", {
+    type: articleType,
+    args: {
+      id: { type: GInt },
+      title: { type: GString },
+      introduce: { type: GString },
+      category: { type: GString },
+      tag: { type: GString },
+      content: { type: GString },
+      pv: { type: GInt },
+      status: { type: GInt },
+      sort: { type: GInt },
+    },
+    resolve: async (_, args) => {
+      const { title, introduce, category, tag, content, pv, status, sort, id } =
+        args;
+      return (
+        await command(
+          `UPDATE article SET
+            \`title\`=?,
+            \`introduce\`=?,
+            \`category\`=?,
+            \`tag\`=?,
+            \`content\`=?,
+            \`updateTime\`=NOW(),
+            \`pv\`=?,
+            \`status\`=?,
+            \`sort\`=?
+            WHERE id=?;
+          `,
+          [title, introduce, category, tag, content, pv, status, sort, id]
+        )
+      )?.state;
+    },
+  })
+  .add("deleteArticle", {
+    type: articleType,
+    args: {
+      id: { type: GInt },
+    },
+    resolve: async (_, { id }) => {
+      return (await command(`DELETE from article WHERE id=?`, [id]))?.state;
+    },
+  });
+
+export default articleSchemaStore;
