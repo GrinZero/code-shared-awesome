@@ -2,21 +2,31 @@
 -- Table structure for article
 -- ----------------------------
 DROP TABLE IF EXISTS `article`;
+-- CREATE TABLE `article` (
+--   `id` bigint(20) NOT NULL COMMENT '文章id',
+--   `title` text NOT NULL,
+--   `introduce` text NOT NULL,
+--   `category` text NOT NULL,
+--   `tag` text NOT NULL,
+--   `content` text NOT NULL,
+--   `createTime` bigint(20) NOT NULL COMMENT '文章发布时间',
+--   `pv` int(11) NOT NULL DEFAULT 0 COMMENT '文章浏览量',
+--   `status` int(11) NOT NULL DEFAULT 0 COMMENT '文章状态：1-公开；0-审核中；-1-审核失败不可见；-2-草稿；-3-删除',
+--   `updateTime` bigint(20) NOT NULL COMMENT '文章修改时间',
+--   `sort` bigint(20) NOT NULL DEFAULT 0 COMMENT '文章排序',
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 CREATE TABLE `article` (
-  `id` bigint(20) NOT NULL COMMENT '文章id',
-  `title` text NOT NULL,
-  `introduce` text NOT NULL,
-  `category` text NOT NULL,
-  `tag` text NOT NULL,
-  `content` text NOT NULL,
-  `createTime` bigint(20) NOT NULL COMMENT '文章发布时间',
-  `pv` int(11) NOT NULL DEFAULT 0 COMMENT '文章浏览量',
-  `status` int(11) NOT NULL DEFAULT 0 COMMENT '文章状态：1-公开；0-审核中；-1-审核失败不可见；-2-草稿；-3-删除',
-  `updateTime` bigint(20) NOT NULL COMMENT '文章修改时间',
-  `sort` bigint(20) NOT NULL DEFAULT 0 COMMENT '文章排序',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+	`id` INT PRIMARY KEY AUTO_INCREMENT,
+	`type` VARCHAR (2) NOT NULL,
+	`title` VARCHAR (255) NOT NULL,
+	`time` datetime DEFAULT NOW(),
+	`user` VARCHAR (255),
+	`introduce` VARCHAR (255) DEFAULT '',
+	`getLikes` INT DEFAULT 0,
+	`comment` VARCHAR (255) DEFAULT '',
+	`code` VARCHAR (255) DEFAULT ''
+);
 -- ----------------------------
 -- Table structure for category
 -- ----------------------------

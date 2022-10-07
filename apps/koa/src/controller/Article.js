@@ -13,7 +13,7 @@ import { command } from "../service/mysql";
 // );`;
 const findAllSQL = `SELECT * FROM article`;
 const findOneSQL = `SELECT * FROM article WHERE id=?`;
-const createSQL = `INSERT INTO article (
+const insertSQL = `INSERT INTO article (
 	type,
 	title,
 	time,
@@ -63,7 +63,7 @@ const Article = {
       comment = "",
       code = "",
     } = article;
-    const { msg, state, results } = await command(createSQL, [
+    const { msg, state, results } = await command(insertSQL, [
       type,
       title,
       user,
@@ -74,7 +74,6 @@ const Article = {
     return { msg, state, id: results.insertId };
   },
   async update(article) {
-    console.log(article);
     const {
       id = "",
       title = "",
