@@ -2,6 +2,7 @@ import {
   GraphQLObjectType as GObject,
   GraphQLString as GString,
   GraphQLInt as GInt,
+  GraphQLList as GList,
 } from "graphql";
 import GLong from "graphql-type-long";
 
@@ -25,9 +26,9 @@ const userType = new GObject({
   },
 });
 
-const userSchemaStore = new FieldStore();
+const userQuerySchema = new FieldStore();
 
-userSchemaStore.add("user", {
+userQuerySchema.add("user", {
   type: userType,
   args: {
     id: { type: GInt },
@@ -37,4 +38,11 @@ userSchemaStore.add("user", {
   },
 });
 
-export default userSchemaStore;
+userQuerySchema.add("users", {
+  type: new GList(userType),
+  resolve: async (_, { id }) => {
+    return (await command(`SELECT * FROM user limit 100`, [id])).results;
+  },
+});
+
+export { userQuerySchema };

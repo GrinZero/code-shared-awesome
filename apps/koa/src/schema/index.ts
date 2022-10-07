@@ -8,9 +8,10 @@ import {
 } from "./articleSchema";
 
 import { mergeFieldStore } from "./fieldStore";
-import userQuerySchema from "./userSchema";
+import { userQuerySchema } from "./userSchema";
+import { commentQuerySchema } from "./commentSchema";
 
-const query = mergeFieldStore(userQuerySchema).finish({
+const query = mergeFieldStore(userQuerySchema, commentQuerySchema).finish({
   name: "Query",
 });
 
