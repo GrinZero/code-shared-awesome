@@ -3,8 +3,8 @@ import { getArticleList } from "api-sdk";
 import { ListDataProps } from "../../types";
 import style from "./index.module.css";
 
-import HomeLeft from "./home_left";
-import HomeRight from "./home_right";
+import HomeLeft from "../../components/home/home_left";
+import HomeRight from "../../components/home/home_right";
 import MainLayout from "../../layouts/main-layout";
 
 const Home: React.FC = () => {

@@ -2,12 +2,12 @@ import React, { useEffect, useMemo, useState } from "react";
 import style from "./index.module.scss";
 import { Menu } from "@arco-design/web-react";
 import MainLayout from "../../layouts/main-layout";
-import Achievement from "./Achievement";
-import AvatarHead from "./AvatarHead";
+import Achievement from "../../components/personal/Achievement";
+import AvatarHead from "../../components/personal/AvatarHead";
 import { getArticleList, getUserInfo } from "api-sdk";
 import { ListDataProps } from "../../types";
 import ActicleItem from "../../components/acticleItem";
-import FollowItem from "./FollowItem";
+import FollowItem from "../../components/personal/FollowItem";
 
 const MenuItem = Menu.Item;
 
