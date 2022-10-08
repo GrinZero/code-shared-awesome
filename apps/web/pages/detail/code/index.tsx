@@ -10,8 +10,20 @@ import {
 import { CodeProps } from "../../../types";
 import copy from "copy-to-clipboard";
 import { Message } from "@arco-design/web-react";
-const MyCode: FC<CodeProps> = (props) => {
-  const { code } = props;
+const MyCode: FC<CodeProps> = ({
+  code = {
+    id: 0,
+    type: 0,
+    title: "",
+    time: "",
+    user: "",
+    introduce: "",
+    getLikes: 0,
+    comment: 0,
+    code: "",
+  },
+}) => {
+  // const { code } = props;
   const [like, setLike] = useState(false);
   const [star, setStar] = useState(false);
   const [isHover, setHover] = useState(false);

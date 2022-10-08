@@ -11,9 +11,13 @@ import { AddComment } from "api-sdk";
 import style from "./index.module.css";
 import dayjs from "dayjs";
 import { CommentProps } from "../../../types";
-const MyComment: FC<CommentProps> = (props) => {
-  const { comment, author, id } = props;
-  console.log("canhsu", props);
+const MyComment: FC<CommentProps> = ({
+  comment = [],
+  author = "",
+  id = "0",
+}) => {
+  // const { comment, author, id } = props;
+  // console.log("canhsu", props);
 
   const [like, setLike] = React.useState(false);
   const [star, setStar] = React.useState(false);
