@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { Layout, Tag, Message } from "@arco-design/web-react";
 import { Grid } from "@arco-design/web-react";
 import Editor from "@monaco-editor/react";
@@ -19,6 +19,7 @@ const Publish: FC = () => {
   let code: string = "";
   const titleRef = useRef<HTMLInputElement | null>(null);
   const briefRef = useRef<HTMLTextAreaElement | null>(null);
+  const [editorLoading, setEditorLoading] = useState(true);
   //高亮代码
   //选中标签
   function handleClickTags(checked: boolean, tagIndex: number) {
@@ -58,6 +59,9 @@ const Publish: FC = () => {
       code = value;
     }
   }
+  useEffect(() => {
+    setEditorLoading(false);
+  }, []);
   return (
     <Layout style={{ height: "100vh" }}>
       <Header style={{ height: "1.2rem" }}>

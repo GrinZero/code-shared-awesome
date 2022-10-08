@@ -1,6 +1,5 @@
 import { Spin } from "@arco-design/web-react";
 import { IconClose, IconSearch } from "@arco-design/web-react/icon";
-import Router from "next/router";
 import React, { useEffect, useState } from "react";
 import { clearLoginStatus, getLoginStatus } from "../../utils/auth_token";
 import style from "./index.module.scss";
