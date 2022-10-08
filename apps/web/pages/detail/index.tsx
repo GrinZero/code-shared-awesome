@@ -6,9 +6,9 @@ import React, { FC } from "react";
 import { getArticleDetail, getComment } from "api-sdk";
 import { Code, Comment } from "../../types";
 import { useRouter } from "next/router";
-import MyComment from "../../components/detailComponent/comment";
-import MyHeader from "../../components/detailComponent/Header";
-import MyCode from "../../components/detailComponent/code";
+import MyComment from "../../components/detail/comment";
+import MyHeader from "../../components/detail/Header";
+import MyCode from "../../components/detail/code";
 const Detail: FC = () => {
   const router = useRouter();
   const { id, type } = router.query;

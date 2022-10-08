@@ -9,10 +9,14 @@ const ArticleList: FC<ArticleListProps> = (props) => {
     return item.type == activeIndex;
   });
   function goTodetail(id: number) {
-    Router.push({
-      pathname: "/detail",
-      query: { id: id, type: activeIndex },
-    });
+    // Router.push({
+    //   pathname: "/detail",
+    //   query: { id: id, type: activeIndex },
+    // });
+    const w = window.open("about:blank");
+    if (w) {
+      w.location.href = `/detail?id=${id}&type=${activeIndex}`;
+    }
   }
   return (
     <div className={style["list"]}>

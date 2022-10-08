@@ -1,16 +1,7 @@
-import React, { FC, useState, useEffect, useLayoutEffect, useRef } from "react";
-import {
-  Layout,
-  Tag,
-  Button,
-  Popconfirm,
-  Message,
-  Alert,
-} from "@arco-design/web-react";
-import { Grid, Divider } from "@arco-design/web-react";
+import React, { FC, useRef } from "react";
+import { Layout, Tag, Message } from "@arco-design/web-react";
+import { Grid } from "@arco-design/web-react";
 import Editor from "@monaco-editor/react";
-import hljs from "highlight.js";
-
 import { classify } from "../../utils";
 
 import style from "./index.module.css";
@@ -27,7 +18,6 @@ const Publish: FC = () => {
   let tagArr: string[] = [];
   let code: string = "";
   const titleRef = useRef<HTMLInputElement | null>(null);
-  const textRef = useRef<HTMLTextAreaElement | null>(null);
   const briefRef = useRef<HTMLTextAreaElement | null>(null);
   //高亮代码
   //选中标签
@@ -42,7 +32,6 @@ const Publish: FC = () => {
   }
   //发布
   async function handlePublish() {
-    // const ipt_value = textRef.current?.value;
     const title = titleRef.current?.value;
     const brief_intro = briefRef.current?.value;
     if (title && code && tagArr && brief_intro) {
@@ -85,7 +74,6 @@ const Publish: FC = () => {
             height="90vh"
             width="100vw"
             defaultLanguage="javascript"
-            // defaultValue="const a=1;"
             className={style["editor"]}
             onChange={(value: string | undefined) => saveCurCode(value)}
           />
@@ -129,7 +117,6 @@ const Publish: FC = () => {
             <button className={style["certain"]} onClick={handlePublish}>
               确定并发布
             </button>
-            {/* <button className={style["cancle"]}>取消</button> */}
           </div>
         </Sider>
       </Layout>

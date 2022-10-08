@@ -20,6 +20,9 @@
   font-family: "Telefon Black", Sans-Serif;
   font-size: 0.4rem;
 }
+.head_l:hover {
+  cursor: pointer;
+}
 .head_r {
   margin-right: 0.4rem;
   display: flex;
@@ -32,6 +35,9 @@
   padding: 0.2rem;
   background-color: palegoldenrod;
   margin-top: 0.2rem;
+}
+.avatar:hover {
+  cursor: pointer;
 }
 @media screen and (max-width: 750px) {
   .head {
