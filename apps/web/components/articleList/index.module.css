@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 .title {
-  color: #ccc8db;
+  color: #d1cfd9;
   font-size: 0.36rem;
 }
 .describe {
@@ -20,7 +20,7 @@
   margin: 0.06rem 0;
 }
 .detail {
-  color: #ccc8db;
+  color: #c9c6d3;
   font-size: 0.28rem;
   height: 0.44rem;
   overflow: hidden;
