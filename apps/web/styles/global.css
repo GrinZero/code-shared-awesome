@@ -9,6 +9,9 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
+/* html{
+  overflow-y: auto;overflow-x: hidden;
+} */
 body {
   --theme-bg-color: #151728;
   --theme-light-bg-color: #1b1d2e;

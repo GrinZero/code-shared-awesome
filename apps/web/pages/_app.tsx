@@ -1,14 +1,12 @@
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, FC } from "react";
 import { AppProps } from "../types";
 
 import "../styles/global.css";
 import "@arco-design/web-react/dist/css/arco.css";
 import "../styles/normalize.css";
 import "../styles/common.css";
-
-export default function App(props: AppProps) {
-  const { Component } = props;
+const App: FC<any> = ({ Component = null }) => {
   useEffect(() => {
     document.body.setAttribute("arco-theme", "dark");
   }, []);
@@ -22,4 +20,5 @@ export default function App(props: AppProps) {
       <Component />
     </>
   );
-}
+};
+export default App;

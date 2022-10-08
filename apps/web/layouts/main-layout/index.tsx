@@ -14,7 +14,7 @@ interface MainLayoutProps {
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({
-  children,
+  children = null,
   contentType = "default",
   loading = false,
 }) => {

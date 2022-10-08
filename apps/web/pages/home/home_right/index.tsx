@@ -25,17 +25,17 @@ const HomeRight: FC = () => {
         </div>
         <div className={style["achieve"]}>
           <p>
-            <IconThumbUp />
+            <IconThumbUp className={style["icon"]} />
             <span> 获得点赞 </span>
             <span>7</span>
           </p>
           <p>
-            <IconStar />
+            <IconStar className={style["icon"]} />
             <span> 文章被收藏 </span>
             <span>3</span>
           </p>
           <p>
-            <IconEye />
+            <IconEye className={style["icon"]} />
             <span> 总浏览 </span>
             <span>10</span>
           </p>

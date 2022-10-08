@@ -15,6 +15,7 @@ import { classify } from "../../utils";
 
 import style from "./index.module.css";
 import "highlight.js/styles/night-owl.css";
+import { PublishCode } from "api-sdk";
 
 const Row = Grid.Row;
 const Col = Grid.Col;
@@ -40,7 +41,7 @@ const Publish: FC = () => {
     }
   }
   //发布
-  function handlePublish() {
+  async function handlePublish() {
     // const ipt_value = textRef.current?.value;
     const title = titleRef.current?.value;
     const brief_intro = briefRef.current?.value;
@@ -52,6 +53,11 @@ const Publish: FC = () => {
         tags: tagArr,
       };
       //发送请求，发布代码
+      const publishRes = await PublishCode(article);
+      console.log(publishRes);
+      if (publishRes.data.info == "success") {
+        Message.success(`发布成功!`);
+      }
     } else {
       Message.warning("请将信息填写完整!");
     }
@@ -72,11 +78,11 @@ const Publish: FC = () => {
           ref={titleRef}
         ></input>
       </Header>
-      <Layout>
+      <Layout style={{ width: "100vw", overflow: "hidden" }}>
         <Content className={style["publish_left"]}>
           <Editor
             theme="vs-dark"
-            height="90.5vh"
+            height="90vh"
             width="100vw"
             defaultLanguage="javascript"
             defaultValue="const a=1;"
@@ -88,7 +94,7 @@ const Publish: FC = () => {
           className={style["publish_right"]}
           style={{ width: "25%", overflow: "hidden" }}
         >
-          <div>
+          <div className={style["intro"]}>
             <p>简介</p>
             <textarea
               className={style["introduction_ipt"]}
@@ -98,7 +104,7 @@ const Publish: FC = () => {
           <div className={style["classify"]}>
             <p>分类</p>
 
-            <Row className="grid-gutter-demo" gutter={[24, 12]}>
+            <Row className={style["grid-gutter-demo"]} gutter={[24, 12]}>
               {classify.map((item, index) => {
                 return (
                   <Col sm={12} md={12} lg={8} xl={8} key={index}>

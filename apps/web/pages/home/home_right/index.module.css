@@ -50,6 +50,12 @@
   font-size: 0.3rem;
   vertical-align: bottom;
 }
+.icon {
+  color: #b5bdc6;
+}
+.achieve p span {
+  color: #b1b6ce;
+}
 .entrance {
   height: 0.8rem;
   line-height: 0.8rem;

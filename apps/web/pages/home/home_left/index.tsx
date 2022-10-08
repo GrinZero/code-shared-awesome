@@ -10,8 +10,7 @@ const imageSrc = [
   "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/0265a04fddbd77a19602a15d9d55d797.png~tplv-uwbnlip3yd-webp.webp",
   "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/24e0dd27418d2291b65db1b21aa62254.png~tplv-uwbnlip3yd-webp.webp",
 ];
-const HomeLeft: FC<HomeLeftProps> = (props) => {
-  const { listData } = props;
+const HomeLeft: FC<HomeLeftProps> = ({ listData = [] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const clickHandler = (index: number) => {
     setActiveIndex(index);
