@@ -11,20 +11,29 @@ import { mergeFieldStore } from "./fieldStore";
 import { userQuerySchema } from "./userSchema";
 import { commentQuerySchema } from "./commentSchema";
 
-const query = mergeFieldStore(userQuerySchema, commentQuerySchema).finish({
-  name: "Query",
+const publicQuery = mergeFieldStore(userQuerySchema, commentQuerySchema).finish(
+  {
+    name: "PublicQuery",
+  }
+);
+const publicMutation = new GraphQLObjectType({
+  name: "PublicMutation",
+  fields: () => ({
+    createArticle,
+    updateArticle,
+    deleteArticle,
+  }),
+});
+const publicSchema = new GraphQLSchema({
+  query: publicQuery,
+  mutation: publicMutation,
 });
 
-// const query = new GraphQLObjectType({
-//   name: "Query",
-//   fields: () => ({
-//     article,
-//     articles,
-//   }),
-// });
-
-const mutation = new GraphQLObjectType({
-  name: "Mutation",
+const privateQuery = mergeFieldStore(userQuerySchema).finish({
+  name: "PrivateQuery",
+});
+const privateMutation = new GraphQLObjectType({
+  name: "PrivateMutation",
   fields: () => ({
     createArticle,
     updateArticle,
@@ -32,8 +41,9 @@ const mutation = new GraphQLObjectType({
   }),
 });
 
-const schema = new GraphQLSchema({
-  query,
-  mutation,
+const privateSchema = new GraphQLSchema({
+  query: privateQuery,
+  mutation: privateMutation,
 });
-export default schema;
+
+export { publicSchema, privateSchema };
