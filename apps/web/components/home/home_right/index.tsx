@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import style from "./index.module.css";
+import style from "./index.module.scss";
 import { IconStar, IconThumbUp, IconEye } from "@arco-design/web-react/icon";
 import { getTime } from "../../../utils";
 import Router from "next/router";
@@ -50,13 +50,7 @@ const HomeRight: FC = () => {
 
       <div className={`${style["event"]} ${style["box"]}`}>
         <div className={style["event-wrapper"]}>
-          <img
-            src={bgSrc.src}
-            className={style["event-img"]}
-            alt=""
-            width={270}
-            height={180}
-          />
+          <img src={bgSrc.src} className={style["event-img"]} alt="bgImg" />
           <div className={style["event-date"]}>
             <div className={style["event-month"]}>{getTime().month}</div>
             <div className={style["event-day"]}>{`0${getTime().day}`}</div>

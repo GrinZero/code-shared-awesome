@@ -1,8 +1,9 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { ArticleListProps } from "../../types";
-import style from "./index.module.css";
+import style from "./index.module.scss";
 import Router from "next/router";
 import { IconThumbUp, IconMessage } from "@arco-design/web-react/icon";
+
 const ArticleList: FC<ArticleListProps> = (props) => {
   const { listData, activeIndex } = props;
   const listDetailData = listData.filter((item) => {

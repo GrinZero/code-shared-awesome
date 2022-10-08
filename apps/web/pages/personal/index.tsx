@@ -12,11 +12,10 @@ import FollowItem from "../../components/personal/FollowItem";
 const MenuItem = Menu.Item;
 
 const menus = [
-  { title: "动态", key: "0" },
-  { title: "发布", key: "1" },
-  { title: "关注", key: "2" },
-  { title: "收藏", key: "3" },
-  { title: "评论", key: "4" },
+  { title: "发布", key: "0" },
+  { title: "关注", key: "1" },
+  { title: "收藏", key: "2" },
+  { title: "评论", key: "3" },
 ];
 const follows = [
   { id: 0, name: "张三", comment: "红红火火恍恍惚惚或或或" },
@@ -71,10 +70,10 @@ const Personal: React.FC = () => {
 
   const menuItems = useMemo(() => {
     switch (selectMenu) {
-      case "2":
+      case "1":
         return follows.map((item) => <FollowItem data={item} key={item.id} />);
       case "0":
-      case "1":
+      case "2":
       case "3":
       case "4":
         return (

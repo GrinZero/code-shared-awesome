@@ -1,18 +1,32 @@
-.list ul {
-  list-style: none;
-  height: 100%;
+.list {
+  ul {
+    list-style: none;
+    height: 100%;
+    li {
+      border-bottom: 0.02rem solid #272a3a;
+      background-color: #151728;
+      padding: 0.34rem 0.6rem;
+      height: 2.68rem;
+      opacity: 0.9;
+      transition: 0.36s ease;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+      &:first-child {
+        border-radius: 0.08rem 0.08rem 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 0.08rem 0.08rem;
+      }
+    }
+  }
 }
-.list ul li {
-  border-bottom: 0.02rem solid #272a3a;
-  padding: 0.34rem 0.6rem;
-  height: 2.68rem;
-}
-.list ul li:hover {
-  cursor: pointer;
-}
+
 .title {
-  color: #d1cfd9;
+  color: #d3d3d6;
   font-size: 0.36rem;
+  font-weight: 700;
 }
 .describe {
   color: #595c6c;

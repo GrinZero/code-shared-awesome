@@ -1,15 +1,8 @@
-import React, { FC, useState, useEffect, useLayoutEffect, useRef } from "react";
-import {
-  Layout,
-  Tag,
-  Button,
-  Popconfirm,
-  Message,
-  Alert,
-} from "@arco-design/web-react";
-import { Grid, Divider } from "@arco-design/web-react";
+import React, { FC, useRef } from "react";
+import { Layout, Tag, Message } from "@arco-design/web-react";
+import { Grid } from "@arco-design/web-react";
 import Editor from "@monaco-editor/react";
-import hljs from "highlight.js";
+import { EnergtSphereLoading } from "magic-design-react";
 
 import { classify } from "../../utils";
 
@@ -64,7 +57,6 @@ const Publish: FC = () => {
   }
   //当前的代码
   function saveCurCode(value: string | undefined) {
-    console.log(value);
     if (value) {
       code = value;
     }
@@ -83,9 +75,13 @@ const Publish: FC = () => {
           <Editor
             theme="vs-dark"
             height="90vh"
-            width="100vw"
+            width="100%"
             defaultLanguage="javascript"
-            // defaultValue="const a=1;"
+            loading={
+              <div className={style["loading__bg"]}>
+                <EnergtSphereLoading speed="2.4s" />
+              </div>
+            }
             className={style["editor"]}
             onChange={(value: string | undefined) => saveCurCode(value)}
           />

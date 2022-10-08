@@ -36,20 +36,22 @@
 }
 .info_desc {
   font-size: 0.26rem;
+  margin-top: 6px;
   color: #595c6c;
   height: 0.82rem;
   overflow: hidden;
 }
+
 .achieve {
-  height: 2.4rem;
   color: #c3c5d5;
   border-bottom: 0.02rem solid #272a3a;
+  p {
+    margin: 0.2rem;
+    font-size: 0.3rem;
+    vertical-align: bottom;
+  }
 }
-.achieve p {
-  margin: 0.2rem;
-  font-size: 0.3rem;
-  vertical-align: bottom;
-}
+
 .icon {
   color: #b5bdc6;
 }
@@ -62,10 +64,12 @@
   text-align: center;
   color: #5c5d71;
   cursor: pointer;
+  transition: 0.36s ease color;
+  &:hover {
+    color: rgb(216, 216, 216);
+  }
 }
-.entrance:hover {
-  cursor: pointer;
-}
+
 .box {
   background-color: #151728;
   border-radius: 0.08rem;
