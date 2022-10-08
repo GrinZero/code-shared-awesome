@@ -85,7 +85,7 @@ const Publish: FC = () => {
             height="90vh"
             width="100vw"
             defaultLanguage="javascript"
-            defaultValue="const a=1;"
+            // defaultValue="const a=1;"
             className={style["editor"]}
             onChange={(value: string | undefined) => saveCurCode(value)}
           />

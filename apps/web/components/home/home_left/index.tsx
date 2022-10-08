@@ -3,7 +3,7 @@ import { topNavBar } from "../../../utils";
 import { HomeLeftProps } from "../../../types";
 import style from "./index.module.css";
 import { Carousel } from "@arco-design/web-react";
-import ArticleList from "../../../components/articleList";
+import ArticleList from "../../articleList";
 const imageSrc = [
   "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/cd7a1aaea8e1c5e3d26fe2591e561798.png~tplv-uwbnlip3yd-webp.webp",
   "//p1-arco.byteimg.com/tos-cn-i-uwbnlip3yd/6480dbc69be1b5de95010289787d64f1.png~tplv-uwbnlip3yd-webp.webp",

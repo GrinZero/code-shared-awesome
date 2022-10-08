@@ -6,7 +6,7 @@ import {
 } from "@arco-design/web-react/icon";
 import classNames from "classnames";
 import React from "react";
-import { UserInfo } from "..";
+import { UserInfo } from "../../../pages/personal";
 import style from "./index.module.scss";
 
 interface AchievementProps {

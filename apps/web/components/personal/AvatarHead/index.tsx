@@ -9,7 +9,7 @@ import {
   IconWeibo,
 } from "@arco-design/web-react/icon";
 
-import { UserInfo } from "..";
+import { UserInfo } from "../../../pages/personal";
 
 interface AvatarHeadProps {
   userInfo: UserInfo;
