@@ -4,6 +4,8 @@ import { IconStar, IconThumbUp, IconEye } from "@arco-design/web-react/icon";
 import { getTime } from "../../../utils";
 import Router from "next/router";
 
+import bgSrc from "../../../public/images/rili_bg.png";
+
 const HomeRight: FC = () => {
   const handleClick = (path: string) => {
     Router.push(path);
@@ -49,7 +51,7 @@ const HomeRight: FC = () => {
       <div className={`${style["event"]} ${style["box"]}`}>
         <div className={style["event-wrapper"]}>
           <img
-            src="/images/rili_bg.png"
+            src={bgSrc.src}
             className={style["event-img"]}
             alt=""
             width={270}
