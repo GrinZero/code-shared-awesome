@@ -3,17 +3,17 @@
   width: 75%;
   height: 100%;
   background-color: #24273b;
-  padding-left: 20px;
+  padding-left: 0.4rem;
   position: relative;
 }
 .title {
-  margin-top: 20px;
+  margin-top: 0.4rem;
   color: #c3c5d5;
-  margin-left: 9px;
+  margin-left: 0.18rem;
   caret-color: transparent;
 }
 .author_info {
-  margin: 10px 10px -10px 10px;
+  margin: 0.2rem 0.2rem -0.2rem 0.2rem;
   display: flex;
   justify-content: space-between;
   color: var(--theme-unactive-text-color);
@@ -24,52 +24,57 @@
   justify-content: start;
 }
 .author_avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  margin-top: 10px;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 1rem;
+  margin-top: 0.2rem;
   background-color: palegoldenrod;
-  margin-right: 10px;
+  margin-right: 0.2rem;
 }
 .detail {
-  margin-left: 5px;
-  margin-top: 8px;
+  margin-left: 0.1rem;
+  margin-top: 0.16rem;
 }
 .article_det {
   display: flex;
   justify-content: start;
-  font-size: 13px;
+  font-size: 0.26rem;
 }
 .read {
-  margin-left: 10px;
+  margin-left: 0.2rem;
 }
 .focus {
   background-color: #444857;
-  height: 30px;
+  height: 0.6rem;
   border: none;
   color: #fff;
-  margin-top: 10px;
-  margin-right: 20px;
+  margin-top: 0.2rem;
+  margin-right: 0.4rem;
+}
+.focus:hover {
+  background-color: #5e626f;
+  transition: 0.36s ease;
+  cursor: pointer;
 }
 .dg-html {
   width: 96%;
-  margin-left: 9px;
-  margin-bottom: 14px;
+  margin-left: 0.18rem;
+  margin-bottom: 0.28rem;
   position: relative;
 }
 .hover {
   background-color: #444857;
   color: white;
   display: block;
-  width: 60px;
-  height: 25px;
-  line-height: 25px;
+  width: 1.2rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
   text-align: center;
-  border-radius: 4px;
-  font-size: 12px;
+  border-radius: 0.08rem;
+  font-size: 0.24rem;
   position: absolute;
-  top: 30px;
-  right: 10px;
+  top: 0.6rem;
+  right: 0.2rem;
 }
 .hover:hover {
   cursor: pointer;
@@ -82,58 +87,103 @@
   display: flex;
   justify-content: start;
   position: absolute;
-  right: 45px;
-  bottom: 30px;
+  right: 0.9rem;
+  bottom: 0.6rem;
 }
 .operation p {
-  margin: 10px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
+  margin: 0.2rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
   background-color: #444857;
   position: relative;
 }
+.operation p:hover {
+  background-color: #5e626f;
+  transition: 0.36s ease;
+  cursor: pointer;
+}
 .like {
   color: rgb(245, 63, 63);
-  font-size: 37px;
+  font-size: 0.74rem;
   position: absolute;
-  left: 6px;
-  top: 8px;
+  left: 0.12rem;
+  top: 0.16rem;
 }
 .unlike {
-  font-size: 37px;
+  font-size: 0.74rem;
   color: #a2a4b4;
   position: absolute;
-  left: 6px;
-  top: 8px;
+  left: 0.12rem;
+  top: 0.16rem;
 }
 .collect {
   color: rgb(255, 180, 0);
-  font-size: 37px;
+  font-size: 0.74rem;
   position: absolute;
-  left: 7px;
-  top: 6px;
+  left: 0.14rem;
+  top: 0.12rem;
 }
 .uncollect {
-  font-size: 37px;
+  font-size: 0.74rem;
   position: absolute;
-  left: 7px;
-  top: 6px;
+  left: 0.14rem;
+  top: 0.12rem;
   color: #a2a4b4;
 }
 .fork {
   position: absolute;
-  left: 3px;
-  top: -2px;
-  margin: 10px;
+  left: 0.06rem;
+  top: -0.04rem;
+  margin: 0.2rem;
 
   color: #a2a4b4;
 
-  font-size: 29px;
+  font-size: 0.58rem;
 }
 
-@media screen and (max-width: 765px) {
+@media screen and (max-width: 750px) {
   .code {
     width: 100%;
+  }
+  .author_avatar {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 1.5rem;
+    margin-top: 0.5rem;
+    background-color: palegoldenrod;
+    margin-right: 0.25em;
+  }
+  .focus {
+    height: 2rem;
+  }
+
+  .author_info {
+    margin: 1.2rem 0.2rem -0.2rem 0.2rem;
+  }
+
+  .operation p {
+    margin: 0.2rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1.5rem;
+  }
+  .like {
+    font-size: 1.74rem;
+  }
+  .unlike {
+    font-size: 1.74rem;
+  }
+  .collect {
+    font-size: 1.74rem;
+  }
+  .uncollect {
+    font-size: 1.74rem;
+  }
+  .fork {
+    left: 0.12rem;
+    top: -0.09rem;
+
+    font-size: 1.4rem;
   }
 }

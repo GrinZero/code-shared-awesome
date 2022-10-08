@@ -72,11 +72,11 @@ const Publish: FC = () => {
           ref={titleRef}
         ></input>
       </Header>
-      <Layout>
+      <Layout style={{ width: "100vw", overflow: "hidden" }}>
         <Content className={style["publish_left"]}>
           <Editor
             theme="vs-dark"
-            height="90.5vh"
+            height="90vh"
             width="100vw"
             defaultLanguage="javascript"
             defaultValue="const a=1;"
@@ -88,7 +88,7 @@ const Publish: FC = () => {
           className={style["publish_right"]}
           style={{ width: "25%", overflow: "hidden" }}
         >
-          <div>
+          <div className={style["intro"]}>
             <p>简介</p>
             <textarea
               className={style["introduction_ipt"]}
@@ -98,7 +98,7 @@ const Publish: FC = () => {
           <div className={style["classify"]}>
             <p>分类</p>
 
-            <Row className="grid-gutter-demo" gutter={[24, 12]}>
+            <Row className={style["grid-gutter-demo"]} gutter={[24, 12]}>
               {classify.map((item, index) => {
                 return (
                   <Col sm={12} md={12} lg={8} xl={8} key={index}>
