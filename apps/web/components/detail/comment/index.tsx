@@ -2,7 +2,6 @@ import React, { FC, useRef, useState } from "react";
 import { Comment, Avatar } from "@arco-design/web-react";
 import {
   IconHeartFill,
-  IconMessage,
   IconStarFill,
   IconHeart,
   IconStar,
@@ -16,9 +15,6 @@ const MyComment: FC<CommentProps> = ({
   author = "",
   id = "0",
 }) => {
-  // const { comment, author, id } = props;
-  // console.log("canhsu", props);
-
   const [like, setLike] = React.useState(false);
   const [star, setStar] = React.useState(false);
   const myCommentData = useRef<HTMLTextAreaElement | null>(null);
@@ -28,14 +24,6 @@ const MyComment: FC<CommentProps> = ({
     const value = myCommentData.current?.value;
     // 时间
     const time = dayjs().format("MM月D日 HH:mm");
-    //获取到整个评论区
-    // const comment = commentRef.current!;
-    // console.log("评论", comment);
-    // comment.scrollIntoView({ behavior: "auto" });
-    //  console.log("111111");
-
-    // comment.scrollIntoView({ behavior: "smooth" });
-
     if (value && id) {
       const resId = id.toString();
       const commentParams = {

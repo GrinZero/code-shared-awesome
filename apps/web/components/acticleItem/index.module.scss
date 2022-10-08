@@ -4,6 +4,7 @@
   height: 2.68rem;
   cursor: pointer;
 }
+
 .title {
   width: 70%;
   color: #ccc8db;
@@ -34,6 +35,7 @@
   color: #a2a4b4;
   font-size: 0.26rem;
   margin-top: 0.16rem;
+
   div {
     margin-right: 0.4rem;
     color: #a2a4b4;
@@ -58,18 +60,21 @@
   }
 
   .describe {
-    color: #595c6c;
+    // color: #595c6c;
     margin: 0.2rem 0;
+    font-size: 1rem;
   }
 
   .detail {
     height: auto;
     width: 100%;
+    font-size: 1.2rem;
   }
 
   .article_info {
     font-size: 1.2rem;
     margin-top: 0.5rem;
+
     div {
       margin-right: 1rem;
     }

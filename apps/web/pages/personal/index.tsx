@@ -71,10 +71,10 @@ const Personal: React.FC = () => {
 
   const menuItems = useMemo(() => {
     switch (selectMenu) {
-      case "2":
+      case "1":
         return follows.map((item) => <FollowItem data={item} key={item.id} />);
       case "0":
-      case "1":
+      case "2":
       case "3":
       case "4":
         return (

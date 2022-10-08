@@ -5,46 +5,26 @@ import "./extension";
 
 import { app } from "./app";
 
-import { ApolloServer, gql } from "apollo-server-koa";
+import { ApolloServer } from "apollo-server-koa";
+import { publicSchema, privateSchema } from "./schema";
 
-const books = [
-  {
-    title: "Harry Potter and the Chamber of Secrets",
-    author: "J.K. Rowling",
-  },
-  {
-    title: "Jurassic Park",
-    author: "Michael Crichton",
-  },
-];
-const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
-  }
-
-  type Query {
-    books: [Book]
-  }
-`;
-const resolvers = {
-  Query: {
-    books: () => books,
-  },
-};
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+const publicServer = new ApolloServer({
+  schema: publicSchema,
+});
+const privateServer = new ApolloServer({
+  schema: privateSchema,
 });
 
 // 启动服务监听本地3000端口
 
 (async () => {
-  await server.start();
-  server.applyMiddleware({ app });
+  await publicServer.start();
+  await privateServer.start();
+  publicServer.applyMiddleware({ app, path: "/public/graphql" });
+  privateServer.applyMiddleware({ app, path: "/api/graphql" });
   app.listen(3000, () => {
     console.log("应用已经启动，http://localhost:3000");
-    console.log("GQL已经启动，http://localhost:3000/graphql");
+    console.log("无需认证的GQL已经启动，http://localhost:3000/public/graphql");
+    console.log("需认证的GQL已经启动，http://localhost:3000/api/graphql");
   });
 })();

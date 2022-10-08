@@ -1,9 +1,10 @@
 import React, { FC } from "react";
-import style from "./index.module.css";
-import Image from "next/image";
+import style from "./index.module.scss";
 import { IconStar, IconThumbUp, IconEye } from "@arco-design/web-react/icon";
 import { getTime } from "../../../utils";
 import Router from "next/router";
+
+import bgSrc from "../../../public/images/rili_bg.png";
 
 const HomeRight: FC = () => {
   const handleClick = (path: string) => {
@@ -49,13 +50,7 @@ const HomeRight: FC = () => {
 
       <div className={`${style["event"]} ${style["box"]}`}>
         <div className={style["event-wrapper"]}>
-          <Image
-            src="/images/rili_bg.png"
-            className={style["event-img"]}
-            alt=""
-            width={270}
-            height={180}
-          />
+          <img src={bgSrc.src} className={style["event-img"]} alt="bgImg" />
           <div className={style["event-date"]}>
             <div className={style["event-month"]}>{getTime().month}</div>
             <div className={style["event-day"]}>{`0${getTime().day}`}</div>

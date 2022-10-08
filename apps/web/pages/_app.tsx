@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useEffect, FC } from "react";
 import "../styles/global.css";
 import "@arco-design/web-react/dist/css/arco.css";
+import "magic-design-react/dist/magic-design-react.css";
 import "../styles/normalize.css";
 import "../styles/common.css";
 const App: FC<any> = ({ Component = null }) => {

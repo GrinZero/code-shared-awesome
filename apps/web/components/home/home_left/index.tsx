@@ -31,7 +31,7 @@ const HomeLeft: FC<HomeLeftProps> = ({ listData = [] }) => {
         >
           {imageSrc.map((src, index) => (
             <div key={index} className={style["swiper_item"]}>
-              <img src={src} style={{ width: "100%", height: "100%" }} />
+              <img src={src} />
             </div>
           ))}
         </Carousel>

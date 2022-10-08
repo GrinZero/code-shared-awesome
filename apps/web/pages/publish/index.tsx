@@ -2,6 +2,8 @@ import React, { FC, useRef } from "react";
 import { Layout, Tag, Message } from "@arco-design/web-react";
 import { Grid } from "@arco-design/web-react";
 import Editor from "@monaco-editor/react";
+import { EnergtSphereLoading } from "magic-design-react";
+
 import { classify } from "../../utils";
 import style from "./index.module.css";
 import "highlight.js/styles/night-owl.css";
@@ -67,18 +69,24 @@ const Publish: FC = () => {
           ref={titleRef}
         ></input>
       </Header>
-      <Layout style={{ width: "100vw", overflow: "hidden" }}>
-        <Content className={style["publish_left"]}>
+      <div
+        style={{ width: "100vw", overflow: "hidden" }}
+        className={style["content_wrapper"]}
+      >
+        <div className={style["publish_left"]}>
           <Editor
             theme="vs-dark"
-            height="90vh"
-            width="100vw"
             defaultLanguage="javascript"
+            loading={
+              <div className={style["loading__bg"]}>
+                <EnergtSphereLoading speed="2.4s" />
+              </div>
+            }
             className={style["editor"]}
             onChange={(value: string | undefined) => saveCurCode(value)}
           />
-        </Content>
-        <Sider
+        </div>
+        <div
           className={style["publish_right"]}
           style={{ width: "25%", overflow: "hidden" }}
         >
@@ -118,8 +126,8 @@ const Publish: FC = () => {
               确定并发布
             </button>
           </div>
-        </Sider>
-      </Layout>
+        </div>
+      </div>
     </Layout>
   );
 };

@@ -6,12 +6,14 @@
   padding-left: 0.4rem;
   position: relative;
 }
+
 .title {
   margin-top: 0.4rem;
   color: #c3c5d5;
   margin-left: 0.18rem;
   caret-color: transparent;
 }
+
 .author_info {
   margin: 0.2rem 0.2rem -0.2rem 0.2rem;
   display: flex;
@@ -23,6 +25,7 @@
   display: flex;
   justify-content: start;
 }
+
 .author_avatar {
   width: 0.8rem;
   height: 0.8rem;
@@ -31,18 +34,22 @@
   background-color: palegoldenrod;
   margin-right: 0.2rem;
 }
+
 .detail {
   margin-left: 0.1rem;
   margin-top: 0.16rem;
 }
+
 .article_det {
   display: flex;
   justify-content: start;
   font-size: 0.26rem;
 }
+
 .read {
   margin-left: 0.2rem;
 }
+
 .focus {
   background-color: #444857;
   height: 0.6rem;
@@ -51,17 +58,20 @@
   margin-top: 0.2rem;
   margin-right: 0.4rem;
 }
+
 .focus:hover {
   background-color: #5e626f;
   transition: 0.36s ease;
   cursor: pointer;
 }
+
 .dg-html {
   width: 96%;
   margin-left: 0.18rem;
   margin-bottom: 0.28rem;
   position: relative;
 }
+
 .hover {
   background-color: #444857;
   color: white;
@@ -76,13 +86,16 @@
   top: 0.6rem;
   right: 0.2rem;
 }
+
 .hover:hover {
   cursor: pointer;
   transition: 0.36s ease;
 }
+
 .unhover {
   display: none;
 }
+
 .operation {
   display: flex;
   justify-content: start;
@@ -90,6 +103,7 @@
   right: 0.9rem;
   bottom: 0.6rem;
 }
+
 .operation p {
   margin: 0.2rem;
   width: 1rem;
@@ -98,11 +112,13 @@
   background-color: #444857;
   position: relative;
 }
+
 .operation p:hover {
   background-color: #5e626f;
   transition: 0.36s ease;
   cursor: pointer;
 }
+
 .like {
   color: rgb(245, 63, 63);
   font-size: 0.74rem;
@@ -110,6 +126,7 @@
   left: 0.12rem;
   top: 0.16rem;
 }
+
 .unlike {
   font-size: 0.74rem;
   color: #a2a4b4;
@@ -117,6 +134,7 @@
   left: 0.12rem;
   top: 0.16rem;
 }
+
 .collect {
   color: rgb(255, 180, 0);
   font-size: 0.74rem;
@@ -124,6 +142,7 @@
   left: 0.14rem;
   top: 0.12rem;
 }
+
 .uncollect {
   font-size: 0.74rem;
   position: absolute;
@@ -131,6 +150,7 @@
   top: 0.12rem;
   color: #a2a4b4;
 }
+
 .fork {
   position: absolute;
   left: 0.06rem;
@@ -146,6 +166,7 @@
   .code {
     width: 100%;
   }
+
   .author_avatar {
     width: 2.2rem;
     height: 2.2rem;
@@ -154,6 +175,7 @@
     background-color: palegoldenrod;
     margin-right: 0.25em;
   }
+
   .focus {
     height: 2rem;
   }
@@ -168,22 +190,42 @@
     height: 2rem;
     border-radius: 1.5rem;
   }
+
   .like {
     font-size: 1.74rem;
   }
+
   .unlike {
     font-size: 1.74rem;
   }
+
   .collect {
     font-size: 1.74rem;
   }
+
   .uncollect {
     font-size: 1.74rem;
   }
+
   .fork {
     left: 0.12rem;
     top: -0.09rem;
 
     font-size: 1.4rem;
+  }
+
+  .hover {
+    width: 5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    border-radius: 0.2rem;
+    font-size: 0.24rem;
+    top: 2.6rem;
+    right: 1.2rem;
+  }
+
+  .operation {
+    right: 1.9rem;
+    bottom: 3.6rem;
   }
 }

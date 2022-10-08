@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getArticleList } from "api-sdk";
 import { ListDataProps } from "../../types";
-import style from "./index.module.css";
+import style from "./index.module.scss";
 
 import HomeLeft from "../../components/home/home_left";
 import HomeRight from "../../components/home/home_right";
@@ -20,12 +20,14 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <MainLayout>
-      <div className={style["content"]}>
-        {listData && <HomeLeft listData={listData}></HomeLeft>}
-        <HomeRight></HomeRight>
-      </div>
-    </MainLayout>
+    <>
+      <MainLayout>
+        <div className={style["content"]}>
+          {listData && <HomeLeft listData={listData}></HomeLeft>}
+          <HomeRight></HomeRight>
+        </div>
+      </MainLayout>
+    </>
   );
 };
 export default Home;
