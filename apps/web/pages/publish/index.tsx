@@ -15,6 +15,7 @@ import { classify } from "../../utils";
 
 import style from "./index.module.css";
 import "highlight.js/styles/night-owl.css";
+import { PublishCode } from "api-sdk";
 
 const Row = Grid.Row;
 const Col = Grid.Col;
@@ -40,7 +41,7 @@ const Publish: FC = () => {
     }
   }
   //发布
-  function handlePublish() {
+  async function handlePublish() {
     // const ipt_value = textRef.current?.value;
     const title = titleRef.current?.value;
     const brief_intro = briefRef.current?.value;
@@ -52,6 +53,11 @@ const Publish: FC = () => {
         tags: tagArr,
       };
       //发送请求，发布代码
+      const publishRes = await PublishCode(article);
+      console.log(publishRes);
+      if (publishRes.data.info == "success") {
+        Message.success(`发布成功!`);
+      }
     } else {
       Message.warning("请将信息填写完整!");
     }

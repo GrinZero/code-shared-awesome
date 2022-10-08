@@ -16,8 +16,15 @@ interface AvatarHeadProps {
   isOwn: boolean;
 }
 
-const AvatarHead: React.FC<AvatarHeadProps> = (props) => {
-  const { userInfo, isOwn } = props;
+const AvatarHead: React.FC<AvatarHeadProps> = ({
+  userInfo = {
+    id: 0,
+    name: "",
+    account: "",
+  },
+  isOwn = true,
+}) => {
+  // const { userInfo, isOwn } = props;
 
   const handleClick = () => {
     console.log(isOwn ? "是我" : "不是我");

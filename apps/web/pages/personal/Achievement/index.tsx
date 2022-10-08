@@ -17,8 +17,15 @@ interface AchievementProps {
 /**
  * 个人成就
  */
-const Achievement: React.FC<AchievementProps> = (props) => {
-  const { userInfo, className } = props;
+const Achievement: React.FC<AchievementProps> = ({
+  userInfo = {
+    id: 0,
+    name: "",
+    account: "",
+  },
+  className = "",
+}) => {
+  // const { userInfo, className } = props;
   const { collection = 0, good = 0, read = 0, upload = 0 } = userInfo;
 
   return (

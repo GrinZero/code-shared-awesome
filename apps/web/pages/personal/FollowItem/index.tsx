@@ -10,8 +10,10 @@ interface FollowItemProps {
   };
 }
 
-const FollowItem: React.FC<FollowItemProps> = (props) => {
-  const { id, name, comment } = props.data;
+const FollowItem: React.FC<FollowItemProps> = ({
+  data: { id = 0, name = "", comment = "" },
+}) => {
+  // const { id, name, comment } = props.data;
 
   const handleFollow = () => {
     console.log(id);

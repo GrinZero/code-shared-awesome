@@ -6,7 +6,7 @@ import "../styles/global.css";
 import "@arco-design/web-react/dist/css/arco.css";
 import "../styles/normalize.css";
 import "../styles/common.css";
-const App: FC<AppProps> = ({ Component }) => {
+const App: FC<any> = ({ Component = null }) => {
   useEffect(() => {
     document.body.setAttribute("arco-theme", "dark");
   }, []);
