@@ -57,15 +57,20 @@
 
 @media screen and (max-width: 750px) {
   .list {
-    padding: 1rem 2rem 0;
-  }
-  .list ul {
-    list-style: none;
-    /* height: 100%; */
-  }
-
-  .list ul li {
-    height: auto;
+    padding: 1rem 0;
+    ul {
+      list-style: none;
+      li {
+        height: auto;
+        padding: 1rem 2rem;
+        &:first-child {
+          border-radius: 0.08rem 0.08rem 0 0;
+        }
+        &:last-child {
+          border-radius: 0 0 0.08rem 0.08rem;
+        }
+      }
+    }
   }
 
   .title {
