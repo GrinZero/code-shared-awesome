@@ -5,6 +5,7 @@ export class FieldStore<T = any, S = any> {
   fields: Record<string, GraphQLFieldConfig<any, any, any>> = {};
   add(name: string, field: GraphQLFieldConfig<any, any, any>) {
     this.fields[name] = field;
+    return this;
   }
   finish(config: Readonly<Omit<GraphQLObjectTypeConfig<T, S>, "fields">>) {
     return new GObject({ ...config, fields: this.fields });

@@ -3,7 +3,7 @@
 -- ----------------------------
 -- 我认为我们不可以叫这玩意儿文章
 CREATE TABLE `article` (
-  `id` bigint(20) NOT NULL COMMENT '文章id' AUTO_INCREMENT,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '文章id',
   `userId` INT NOT NULL,
   `title` text NOT NULL,
   `introduce` text NOT NULL,
