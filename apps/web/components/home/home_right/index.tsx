@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import style from "./index.module.css";
-import Image from "next/image";
 import { IconStar, IconThumbUp, IconEye } from "@arco-design/web-react/icon";
-import dayjs from "dayjs";
 import { getTime } from "../../../utils";
 import Router from "next/router";
 
@@ -50,7 +48,7 @@ const HomeRight: FC = () => {
 
       <div className={`${style["event"]} ${style["box"]}`}>
         <div className={style["event-wrapper"]}>
-          <Image
+          <img
             src="/images/rili_bg.png"
             className={style["event-img"]}
             alt=""
