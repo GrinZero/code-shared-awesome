@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import style from "./index.module.css";
 import Image from "next/image";
 import { IconStar, IconThumbUp, IconEye } from "@arco-design/web-react/icon";
-import dayjs from "dayjs";
 import { getTime } from "../../../utils";
 import Router from "next/router";
 

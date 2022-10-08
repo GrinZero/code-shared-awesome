@@ -3,14 +3,7 @@ import { IconClose, IconSearch } from "@arco-design/web-react/icon";
 import React, { useEffect, useState } from "react";
 import { clearLoginStatus, getLoginStatus } from "../../utils/auth_token";
 import style from "./index.module.scss";
-
-type ContentLayoutType = "default" | "middle";
-
-interface MainLayoutProps {
-  children?: React.ReactNode;
-  contentType?: ContentLayoutType;
-  loading?: boolean;
-}
+import { MainLayoutProps } from "../../types";
 
 const MainLayout: React.FC<MainLayoutProps> = ({
   children = null,

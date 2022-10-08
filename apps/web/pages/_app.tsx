@@ -1,7 +1,5 @@
 import Head from "next/head";
 import { useEffect, FC } from "react";
-import { AppProps } from "../types";
-
 import "../styles/global.css";
 import "@arco-design/web-react/dist/css/arco.css";
 import "../styles/normalize.css";

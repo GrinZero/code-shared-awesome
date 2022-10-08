@@ -1,9 +1,8 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useRef } from "react";
 import { Layout, Tag, Message } from "@arco-design/web-react";
 import { Grid } from "@arco-design/web-react";
 import Editor from "@monaco-editor/react";
 import { classify } from "../../utils";
-
 import style from "./index.module.css";
 import "highlight.js/styles/night-owl.css";
 import { PublishCode } from "api-sdk";
@@ -12,23 +11,24 @@ const Row = Grid.Row;
 const Col = Grid.Col;
 const Sider = Layout.Sider;
 const Header = Layout.Header;
-
 const Content = Layout.Content;
+
 const Publish: FC = () => {
-  let tagArr: string[] = [];
-  let code: string = "";
+  let code = useRef("");
+  let tagArr = useRef<string[]>([]);
   const titleRef = useRef<HTMLInputElement | null>(null);
   const briefRef = useRef<HTMLTextAreaElement | null>(null);
-  const [editorLoading, setEditorLoading] = useState(true);
   //高亮代码
   //选中标签
   function handleClickTags(checked: boolean, tagIndex: number) {
-    if (checked && !tagArr.includes(classify[tagIndex])) {
-      tagArr.push(classify[tagIndex]);
+    if (checked && !tagArr.current.includes(classify[tagIndex])) {
+      tagArr.current.push(classify[tagIndex]);
     } else if (!checked) {
       //没有选中 遍历数组看数组里面是否有这个元素，如果有就删除
-      const newTagArr = tagArr.filter((item) => item !== classify[tagIndex]);
-      tagArr = newTagArr;
+      const newTagArr = tagArr.current.filter(
+        (item) => item !== classify[tagIndex]
+      );
+      tagArr.current = newTagArr;
     }
   }
   //发布
@@ -38,13 +38,12 @@ const Publish: FC = () => {
     if (title && code && tagArr && brief_intro) {
       const article = {
         title,
-        content: code,
+        content: code.current,
         brief_intro,
-        tags: tagArr,
+        tags: tagArr.current,
       };
       //发送请求，发布代码
       const publishRes = await PublishCode(article);
-      console.log(publishRes);
       if (publishRes.data.info == "success") {
         Message.success(`发布成功!`);
       }
@@ -54,14 +53,11 @@ const Publish: FC = () => {
   }
   //当前的代码
   function saveCurCode(value: string | undefined) {
-    console.log(value);
     if (value) {
-      code = value;
+      code.current = value;
     }
   }
-  useEffect(() => {
-    setEditorLoading(false);
-  }, []);
+
   return (
     <Layout style={{ height: "100vh" }}>
       <Header style={{ height: "1.2rem" }}>
