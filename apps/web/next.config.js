@@ -6,4 +6,7 @@ module.exports = withTM({
     process.env.NODE_ENV === "development" ? "" : "/code-shared-awesome",
   assetPrefix:
     process.env.NODE_ENV === "development" ? "" : "/code-shared-awesome",
+  env: {
+    NODE_ENV: process.env.NODE_ENV,
+  },
 });
