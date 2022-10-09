@@ -42,8 +42,6 @@ const Detail: FC = () => {
       hljs.highlightElement(el as HTMLElement);
     });
   });
-  console.log("评论", comments);
-  console.log("daima", code);
 
   return (
     <div className={style["content"]}>

@@ -1,14 +1,7 @@
 import { Avatar } from "@arco-design/web-react";
 import React from "react";
 import style from "./index.module.scss";
-
-interface FollowItemProps {
-  data: {
-    id: Number;
-    name: string;
-    comment: string;
-  };
-}
+import { FollowItemProps } from "../../../types";
 
 const FollowItem: React.FC<FollowItemProps> = ({
   data: { id = 0, name = "", comment = "" },

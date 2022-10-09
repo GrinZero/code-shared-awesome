@@ -2,22 +2,26 @@
 .right {
   width: 25%;
 }
+
 @media screen and (max-width: 750px) {
   .right {
     display: none;
   }
 }
+
 .personal_info {
   background-color: #151728;
   padding: 0.4rem 0.4rem 0rem 0.4rem;
   border-radius: 0.08rem;
 }
+
 .self_info {
   height: 1.6rem;
   display: flex;
   justify-content: flex-start;
   border-bottom: 0.02rem solid #272a3a;
 }
+
 .avatar {
   width: 0.8rem;
   height: 0.8rem;
@@ -26,14 +30,17 @@
   background-color: palegoldenrod;
   margin-top: 0.2rem;
 }
+
 .info_det {
   width: 80%;
   margin-left: 0.2rem;
 }
+
 .info_det p {
   color: #bbbcc5;
   font-weight: bold;
 }
+
 .info_desc {
   font-size: 0.26rem;
   margin-top: 6px;
@@ -45,6 +52,7 @@
 .achieve {
   color: #c3c5d5;
   border-bottom: 0.02rem solid #272a3a;
+
   p {
     margin: 0.2rem;
     font-size: 0.3rem;
@@ -55,9 +63,11 @@
 .icon {
   color: #b5bdc6;
 }
+
 .achieve p span {
   color: #b1b6ce;
 }
+
 .entrance {
   height: 0.8rem;
   line-height: 0.8rem;
@@ -65,6 +75,7 @@
   color: #5c5d71;
   cursor: pointer;
   transition: 0.36s ease color;
+
   &:hover {
     color: rgb(216, 216, 216);
   }
@@ -74,6 +85,7 @@
   background-color: #151728;
   border-radius: 0.08rem;
 }
+
 .event {
   position: relative;
   margin-top: 0.4rem;

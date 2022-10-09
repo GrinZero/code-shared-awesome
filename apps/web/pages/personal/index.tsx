@@ -8,20 +8,21 @@ import { getArticleList, getUserInfo } from "api-sdk";
 import { ListDataProps } from "../../types";
 import ActicleItem from "../../components/acticleItem";
 import FollowItem from "../../components/personal/FollowItem";
-
+import { menus, follows } from "../../utils";
 const MenuItem = Menu.Item;
 
-const menus = [
-  { title: "发布", key: "0" },
-  { title: "关注", key: "1" },
-  { title: "收藏", key: "2" },
-  { title: "评论", key: "3" },
-];
-const follows = [
-  { id: 0, name: "张三", comment: "红红火火恍恍惚惚或或或" },
-  { id: 1, name: "李四", comment: "啊啊啊啊啊啊啊啊啊啊啊啊啊" },
-  { id: 2, name: "王五", comment: "啛啛喳喳错错错错错错错错错" },
-];
+// const menus = [
+//   { title: "动态", key: "0" },
+//   { title: "发布", key: "1" },
+//   { title: "关注", key: "2" },
+//   { title: "收藏", key: "3" },
+//   { title: "评论", key: "4" },
+// ];
+// const follows = [
+//   { id: 0, name: "张三", comment: "红红火火恍恍惚惚或或或" },
+//   { id: 1, name: "李四", comment: "啊啊啊啊啊啊啊啊啊啊啊啊啊" },
+//   { id: 2, name: "王五", comment: "啛啛喳喳错错错错错错错错错" },
+// ];
 
 export interface UserInfo {
   id: number;

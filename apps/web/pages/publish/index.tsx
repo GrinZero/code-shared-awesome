@@ -5,7 +5,6 @@ import Editor from "@monaco-editor/react";
 import { EnergtSphereLoading } from "magic-design-react";
 
 import { classify } from "../../utils";
-
 import style from "./index.module.css";
 import "highlight.js/styles/night-owl.css";
 import { PublishCode } from "api-sdk";
@@ -14,40 +13,39 @@ const Row = Grid.Row;
 const Col = Grid.Col;
 const Sider = Layout.Sider;
 const Header = Layout.Header;
-
 const Content = Layout.Content;
+
 const Publish: FC = () => {
-  let tagArr: string[] = [];
-  let code: string = "";
+  let code = useRef("");
+  let tagArr = useRef<string[]>([]);
   const titleRef = useRef<HTMLInputElement | null>(null);
-  const textRef = useRef<HTMLTextAreaElement | null>(null);
   const briefRef = useRef<HTMLTextAreaElement | null>(null);
   //高亮代码
   //选中标签
   function handleClickTags(checked: boolean, tagIndex: number) {
-    if (checked && !tagArr.includes(classify[tagIndex])) {
-      tagArr.push(classify[tagIndex]);
+    if (checked && !tagArr.current.includes(classify[tagIndex])) {
+      tagArr.current.push(classify[tagIndex]);
     } else if (!checked) {
       //没有选中 遍历数组看数组里面是否有这个元素，如果有就删除
-      const newTagArr = tagArr.filter((item) => item !== classify[tagIndex]);
-      tagArr = newTagArr;
+      const newTagArr = tagArr.current.filter(
+        (item) => item !== classify[tagIndex]
+      );
+      tagArr.current = newTagArr;
     }
   }
   //发布
   async function handlePublish() {
-    // const ipt_value = textRef.current?.value;
     const title = titleRef.current?.value;
     const brief_intro = briefRef.current?.value;
     if (title && code && tagArr && brief_intro) {
       const article = {
         title,
-        content: code,
+        content: code.current,
         brief_intro,
-        tags: tagArr,
+        tags: tagArr.current,
       };
       //发送请求，发布代码
       const publishRes = await PublishCode(article);
-      console.log(publishRes);
       if (publishRes.data.info == "success") {
         Message.success(`发布成功!`);
       }
@@ -58,9 +56,10 @@ const Publish: FC = () => {
   //当前的代码
   function saveCurCode(value: string | undefined) {
     if (value) {
-      code = value;
+      code.current = value;
     }
   }
+
   return (
     <Layout style={{ height: "100vh" }}>
       <Header style={{ height: "1.2rem" }}>
@@ -70,12 +69,13 @@ const Publish: FC = () => {
           ref={titleRef}
         ></input>
       </Header>
-      <Layout style={{ width: "100vw", overflow: "hidden" }}>
-        <Content className={style["publish_left"]}>
+      <div
+        style={{ width: "100vw", overflow: "hidden" }}
+        className={style["content_wrapper"]}
+      >
+        <div className={style["publish_left"]}>
           <Editor
             theme="vs-dark"
-            height="90vh"
-            width="100%"
             defaultLanguage="javascript"
             loading={
               <div className={style["loading__bg"]}>
@@ -85,8 +85,8 @@ const Publish: FC = () => {
             className={style["editor"]}
             onChange={(value: string | undefined) => saveCurCode(value)}
           />
-        </Content>
-        <Sider
+        </div>
+        <div
           className={style["publish_right"]}
           style={{ width: "25%", overflow: "hidden" }}
         >
@@ -125,10 +125,9 @@ const Publish: FC = () => {
             <button className={style["certain"]} onClick={handlePublish}>
               确定并发布
             </button>
-            {/* <button className={style["cancle"]}>取消</button> */}
           </div>
-        </Sider>
-      </Layout>
+        </div>
+      </div>
     </Layout>
   );
 };
