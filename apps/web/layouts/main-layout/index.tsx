@@ -1,17 +1,9 @@
 import { Spin } from "@arco-design/web-react";
 import { IconClose, IconSearch } from "@arco-design/web-react/icon";
-import Router from "next/router";
 import React, { useEffect, useState } from "react";
 import { clearLoginStatus, getLoginStatus } from "../../utils/auth_token";
 import style from "./index.module.scss";
-
-type ContentLayoutType = "default" | "middle";
-
-interface MainLayoutProps {
-  children?: React.ReactNode;
-  contentType?: ContentLayoutType;
-  loading?: boolean;
-}
+import { MainLayoutProps } from "../../types";
 
 const MainLayout: React.FC<MainLayoutProps> = ({
   children = null,
@@ -20,7 +12,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({
 }) => {
   const [status, setStatus] = useState<boolean>(false);
   const handleClick = (path: string) => {
-    Router.push(path);
+    // Router.push(path);
+    const w = window.open("about:blank");
+    if (w) {
+      w.location.href = `${path}`;
+    }
   };
   const handleLogout = () => {
     setStatus(false);
@@ -34,9 +30,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
   return (
     <div className={style.mainLayout}>
       <header className={style.header}>
-        <div className={style.head_l} onClick={() => handleClick("/home")}>
-          Code Show
-        </div>
+        <div className={style.head_l}>Code Show</div>
         <div className={style.head_r}>
           <div className={style.search}>
             <input

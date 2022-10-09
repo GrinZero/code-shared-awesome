@@ -28,8 +28,6 @@ const MyCode: FC<CodeProps> = ({
   const [star, setStar] = useState(false);
   const [isHover, setHover] = useState(false);
   const handleCopy = (value: string) => {
-    console.log("111");
-
     if (copy(value)) {
       Message.success({
         content: "复制成功",
@@ -75,7 +73,6 @@ const MyCode: FC<CodeProps> = ({
         >
           复制代码
         </div>
-        {/* <div className={style["hover"]}>复制代码</div> */}
       </div>
       <div className={style["operation"]}>
         <p onClick={() => setLike(!like)}>

@@ -1,5 +1,5 @@
 import { Avatar } from "@arco-design/web-react";
-import React, { useState } from "react";
+import React from "react";
 import style from "./index.module.scss";
 import {
   IconEdit,
