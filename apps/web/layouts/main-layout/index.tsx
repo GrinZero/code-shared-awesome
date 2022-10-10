@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { clearLoginStatus, getLoginStatus } from "../../utils/auth_token";
 import style from "./index.module.scss";
 import { MainLayoutProps } from "../../types";
+import { Router } from "next/router";
 
 const MainLayout: React.FC<MainLayoutProps> = ({
   children = null,
@@ -12,9 +13,6 @@ const MainLayout: React.FC<MainLayoutProps> = ({
 }) => {
   const [status, setStatus] = useState<boolean>(false);
   const handleClick = (path: string) => {
-    console.log(path);
-
-    // Router.push(path);
     const baseurl =
       // eslint-disable-next-line turbo/no-undeclared-env-vars
       process.env.NODE_ENV === "development" ? "" : "/code-shared-awesome";

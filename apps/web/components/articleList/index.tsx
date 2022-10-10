@@ -11,20 +11,7 @@ const ArticleList: FC<ArticleListProps> = (props) => {
   });
   useEffect(() => {});
   function goTodetail(id: number) {
-    const w = window.open("about:blank");
-    // eslint-disable-next-line turbo/no-undeclared-env-vars
-    // if(process.env.NODE_ENV  === "development" ){
-    //   return
-    // }
-    // eslint-disable-next-line turbo/no-undeclared-env-vars
-    const baseurl =
-      // eslint-disable-next-line turbo/no-undeclared-env-vars
-      process.env.NODE_ENV === "development" ? "" : "/code-shared-awesome";
-    console.log(baseurl);
-
-    if (w) {
-      w.location.href = `${baseurl}/detail?id=${id}&type=${activeIndex}`;
-    }
+    Router.push(`/detail?id=${id}&type=${activeIndex}`);
   }
   return (
     <div className={style["list"]}>
