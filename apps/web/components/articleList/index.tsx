@@ -1,18 +1,17 @@
 import React, { FC, useEffect } from "react";
 import { ArticleListProps } from "../../types";
-import style from "./index.module.css";
+import style from "./index.module.scss";
 import Router from "next/router";
 import { IconThumbUp, IconMessage } from "@arco-design/web-react/icon";
+
 const ArticleList: FC<ArticleListProps> = (props) => {
   const { listData, activeIndex } = props;
   const listDetailData = listData.filter((item) => {
     return item.type == activeIndex;
   });
+  useEffect(() => {});
   function goTodetail(id: number) {
-    Router.push({
-      pathname: "/detail",
-      query: { id: id, type: activeIndex },
-    });
+    Router.push(`/detail?id=${id}&type=${activeIndex}`);
   }
   return (
     <div className={style["list"]}>

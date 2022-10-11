@@ -1,0 +1,54 @@
+/* 头部 */
+.head {
+  display: flex;
+  justify-content: space-between;
+  height: 1.2rem;
+  line-height: 1.2rem;
+  background-color: var(--theme-bg-color);
+  color: var(--theme-light-text-color);
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 111;
+}
+
+.head_l {
+  caret-color: transparent;
+  margin-left: 0.4rem;
+  font-family: "Telefon Black", Sans-Serif;
+  font-size: 0.4rem;
+}
+.head_l:hover {
+  cursor: pointer;
+}
+.head_r {
+  margin-right: 0.4rem;
+  display: flex;
+  justify-content: start;
+}
+.avatar {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 1rem;
+  padding: 0.2rem;
+  background-color: palegoldenrod;
+  margin-top: 0.2rem;
+}
+.avatar:hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 750px) {
+  .head {
+    height: 3rem;
+    font-size: 1rem;
+    line-height: 3rem;
+  }
+  .avatar {
+    width: 1.9rem;
+    height: 1.9rem;
+
+    margin-top: 0.6rem;
+  }
+}

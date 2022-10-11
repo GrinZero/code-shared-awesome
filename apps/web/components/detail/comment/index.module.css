@@ -1,0 +1,101 @@
+/* 左边评论部分 */
+.comment {
+  width: 25%;
+  /* background-color: var(--theme-bg-color); */
+  background-color: #31364b;
+}
+
+.custom-comment-action {
+  font-family: "Consolas";
+}
+
+.custom-comment-action:hover {
+  cursor: pointer;
+}
+
+.com_det {
+  height: 70%;
+  overflow-y: auto;
+  padding: 0.2rem 0rem;
+  caret-color: transparent;
+}
+
+.publish_com {
+  position: relative;
+  /* border-top: .02rem solid #43475d; */
+  box-shadow: -3px 5px 10px #100f0f;
+
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.publish_com textarea {
+  resize: none;
+}
+
+.com_neirong {
+  width: 85%;
+  height: 70%;
+  border-radius: 0.1rem;
+  background-color: #24273b;
+  outline: none;
+  border: none;
+  margin: 0.2rem auto;
+  color: #fff;
+  padding: 0.16rem;
+}
+
+.com_btn {
+  width: 1rem;
+  position: absolute;
+  right: 0.48rem;
+  bottom: 0.1rem;
+  background-color: #444857;
+  border: none;
+  color: #fff;
+  padding: 0.08rem;
+  border-radius: 0.04rem;
+}
+
+/* 每一条评论 */
+.comment_item {
+  margin: 0rem 0.3rem;
+  padding: 0.3rem;
+  background-color: #24273b;
+  border-radius: 0.1rem;
+}
+
+.custom-comment-action {
+  display: flex;
+  justify-content: start;
+  width: 0.6rem;
+}
+
+.star_icon,
+.heart_icon {
+  margin-right: 0.06rem;
+}
+
+@media screen and (max-width: 750px) {
+  .comment {
+    width: 0%;
+  }
+}
+
+@media screen and (max-width: 995px) {
+  .custom-comment-action {
+    display: none;
+  }
+
+  .avatar {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .avatar {
+    display: none;
+  }
+}

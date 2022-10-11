@@ -2,27 +2,27 @@ import React, { useEffect, useMemo, useState } from "react";
 import style from "./index.module.scss";
 import { Menu } from "@arco-design/web-react";
 import MainLayout from "../../layouts/main-layout";
-import Achievement from "./Achievement";
-import AvatarHead from "./AvatarHead";
+import Achievement from "../../components/personal/Achievement";
+import AvatarHead from "../../components/personal/AvatarHead";
 import { getArticleList, getUserInfo } from "api-sdk";
 import { ListDataProps } from "../../types";
 import ActicleItem from "../../components/acticleItem";
-import FollowItem from "./FollowItem";
-
+import FollowItem from "../../components/personal/FollowItem";
+import { menus, follows } from "../../utils";
 const MenuItem = Menu.Item;
 
-const menus = [
-  { title: "动态", key: "0" },
-  { title: "发布", key: "1" },
-  { title: "关注", key: "2" },
-  { title: "收藏", key: "3" },
-  { title: "评论", key: "4" },
-];
-const follows = [
-  { id: 0, name: "张三", comment: "红红火火恍恍惚惚或或或" },
-  { id: 1, name: "李四", comment: "啊啊啊啊啊啊啊啊啊啊啊啊啊" },
-  { id: 2, name: "王五", comment: "啛啛喳喳错错错错错错错错错" },
-];
+// const menus = [
+//   { title: "动态", key: "0" },
+//   { title: "发布", key: "1" },
+//   { title: "关注", key: "2" },
+//   { title: "收藏", key: "3" },
+//   { title: "评论", key: "4" },
+// ];
+// const follows = [
+//   { id: 0, name: "张三", comment: "红红火火恍恍惚惚或或或" },
+//   { id: 1, name: "李四", comment: "啊啊啊啊啊啊啊啊啊啊啊啊啊" },
+//   { id: 2, name: "王五", comment: "啛啛喳喳错错错错错错错错错" },
+// ];
 
 export interface UserInfo {
   id: number;
@@ -71,24 +71,16 @@ const Personal: React.FC = () => {
 
   const menuItems = useMemo(() => {
     switch (selectMenu) {
-      case "0":
-        return listData && listData.map((item) => <ActicleItem data={item} />);
       case "1":
-        return (
-          // TODO 发布数据
-          listData && listData.map((item) => <ActicleItem data={item} />)
-        );
+        return follows.map((item) => <FollowItem data={item} key={item.id} />);
+      case "0":
       case "2":
-        return follows.map((item) => <FollowItem data={item} />);
       case "3":
-        return (
-          // TODO 发布数据
-          listData && listData.map((item) => <ActicleItem data={item} />)
-        );
       case "4":
         return (
           // TODO 发布数据
-          listData && listData.map((item) => <ActicleItem data={item} />)
+          listData &&
+          listData.map((item) => <ActicleItem data={item} key={item.id} />)
         );
 
       default:

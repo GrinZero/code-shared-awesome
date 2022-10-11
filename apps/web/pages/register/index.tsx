@@ -21,9 +21,7 @@ const Register: React.FC = () => {
   const handleRegister = async () => {
     setLoading(true);
     if (formRef.current) {
-      console.log(formRef.current?.getFields());
       register().then((res) => {
-        console.log(res);
         setLoading(false);
       });
     }

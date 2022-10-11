@@ -31,4 +31,5 @@ app.use(
   }).unless({ path: [/^\/public/] })
 );
 
+//ctx.state.user 可以获得用户态了
 export { app };

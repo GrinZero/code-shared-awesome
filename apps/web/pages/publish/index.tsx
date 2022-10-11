@@ -1,75 +1,64 @@
-import React, { FC, useState, useEffect, useLayoutEffect, useRef } from "react";
-import {
-  Layout,
-  Tag,
-  Button,
-  Popconfirm,
-  Message,
-  Alert,
-} from "@arco-design/web-react";
-import { Grid, Divider } from "@arco-design/web-react";
+import React, { FC, useRef } from "react";
+import { Layout, Tag, Message } from "@arco-design/web-react";
+import { Grid } from "@arco-design/web-react";
 import Editor from "@monaco-editor/react";
-import hljs from "highlight.js";
+import { EnergtSphereLoading } from "magic-design-react";
 
 import { classify } from "../../utils";
-
 import style from "./index.module.css";
 import "highlight.js/styles/night-owl.css";
+import { PublishCode } from "api-sdk";
 
 const Row = Grid.Row;
 const Col = Grid.Col;
 const Sider = Layout.Sider;
 const Header = Layout.Header;
-
 const Content = Layout.Content;
+
 const Publish: FC = () => {
-  let tagArr: string[] = [];
+  let code = useRef("");
+  let tagArr = useRef<string[]>([]);
   const titleRef = useRef<HTMLInputElement | null>(null);
-  const textRef = useRef<HTMLTextAreaElement | null>(null);
   const briefRef = useRef<HTMLTextAreaElement | null>(null);
   //高亮代码
-
   //选中标签
   function handleClickTags(checked: boolean, tagIndex: number) {
-    if (checked && !tagArr.includes(classify[tagIndex])) {
-      tagArr.push(classify[tagIndex]);
+    if (checked && !tagArr.current.includes(classify[tagIndex])) {
+      tagArr.current.push(classify[tagIndex]);
     } else if (!checked) {
       //没有选中 遍历数组看数组里面是否有这个元素，如果有就删除
-      const newTagArr = tagArr.filter((item) => item !== classify[tagIndex]);
-      tagArr = newTagArr;
+      const newTagArr = tagArr.current.filter(
+        (item) => item !== classify[tagIndex]
+      );
+      tagArr.current = newTagArr;
     }
   }
   //发布
-  function handlePublish() {
-    const ipt_value = textRef.current?.value;
+  async function handlePublish() {
     const title = titleRef.current?.value;
     const brief_intro = briefRef.current?.value;
-    if (title && ipt_value && tagArr && brief_intro) {
+    if (title && code && tagArr && brief_intro) {
       const article = {
         title,
-        content: ipt_value,
+        content: code.current,
         brief_intro,
-        tags: tagArr,
+        tags: tagArr.current,
       };
       //发送请求，发布代码
+      const publishRes = await PublishCode(article);
+      if (publishRes.data.info == "success") {
+        Message.success(`发布成功!`);
+      }
     } else {
       Message.warning("请将信息填写完整!");
     }
   }
-
-  const codeRef = useRef<HTMLPreElement | null>(null);
-  useEffect(() => {
-    if (!codeRef.current) return;
-    hljs.configure({
-      // 忽略未经转义的 HTML 字符
-      ignoreUnescapedHTML: true,
-    });
-    // 获取到内容中所有的code标签
-    const codes = codeRef.current;
-    for (let i = 0; i < codes.children.length; i++) {
-      hljs.highlightBlock(codes.children[i] as HTMLElement);
+  //当前的代码
+  function saveCurCode(value: string | undefined) {
+    if (value) {
+      code.current = value;
     }
-  });
+  }
 
   return (
     <Layout style={{ height: "100vh" }}>
@@ -80,17 +69,28 @@ const Publish: FC = () => {
           ref={titleRef}
         ></input>
       </Header>
-      <Layout>
-        <Content style={{ width: "75%" }} className={style["publish_left"]}>
+      <div
+        style={{ width: "100vw", overflow: "hidden" }}
+        className={style["content_wrapper"]}
+      >
+        <div className={style["publish_left"]}>
           <Editor
             theme="vs-dark"
-            height="80vh"
             defaultLanguage="javascript"
-            defaultValue="const a=1;"
+            loading={
+              <div className={style["loading__bg"]}>
+                <EnergtSphereLoading speed="2.4s" />
+              </div>
+            }
+            className={style["editor"]}
+            onChange={(value: string | undefined) => saveCurCode(value)}
           />
-        </Content>
-        <Sider style={{ width: "25%" }} className={style["publish_right"]}>
-          <div>
+        </div>
+        <div
+          className={style["publish_right"]}
+          style={{ width: "25%", overflow: "hidden" }}
+        >
+          <div className={style["intro"]}>
             <p>简介</p>
             <textarea
               className={style["introduction_ipt"]}
@@ -100,10 +100,10 @@ const Publish: FC = () => {
           <div className={style["classify"]}>
             <p>分类</p>
 
-            <Row className="grid-gutter-demo" gutter={[24, 12]}>
+            <Row className={style["grid-gutter-demo"]} gutter={[24, 12]}>
               {classify.map((item, index) => {
                 return (
-                  <Col span={8} key={index}>
+                  <Col sm={12} md={12} lg={8} xl={8} key={index}>
                     <Tag
                       className={style["tag"]}
                       checkable
@@ -125,10 +125,9 @@ const Publish: FC = () => {
             <button className={style["certain"]} onClick={handlePublish}>
               确定并发布
             </button>
-            {/* <button className={style["cancle"]}>取消</button> */}
           </div>
-        </Sider>
-      </Layout>
+        </div>
+      </div>
     </Layout>
   );
 };
