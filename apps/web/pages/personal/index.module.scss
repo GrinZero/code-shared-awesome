@@ -7,8 +7,11 @@
 }
 
 .left {
-  width: 18.5rem;
+  // width: 18.5rem;
+  width: 100%;
+  min-width: 20rem;
   border: 1px solid var(--theme-border-color);
+  margin-right: 0.3rem;
 }
 
 .right {
@@ -20,6 +23,7 @@
   width: 100%;
   margin-top: 0.25rem;
 }
+
 .menu {
   background-color: var(--theme-bg-color);
 }
@@ -28,4 +32,14 @@
   width: 100%;
   border-top: 1px solid var(--theme-border-color);
   background-color: var(--theme-bg-color);
+}
+
+@media screen and (max-width: 750px) {
+  .right {
+    display: none;
+  }
+
+  .left {
+    width: 100%;
+  }
 }

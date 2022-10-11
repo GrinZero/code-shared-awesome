@@ -30,6 +30,10 @@ const ActicleItem: React.FC<ActicleItemProps> = ({ data, onClick }) => {
 
   const handleClick = () => {
     onClick && onClick(id, type);
+    Router.push({
+      pathname: "/detail",
+      query: { id, type },
+    });
   };
 
   return (

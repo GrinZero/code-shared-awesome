@@ -4,9 +4,14 @@
   height: 2.68rem;
   cursor: pointer;
 }
+
 .title {
+  width: 70%;
   color: #ccc8db;
   font-size: 0.36rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .describe {
@@ -20,6 +25,8 @@
   font-size: 0.28rem;
   height: 0.44rem;
   overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .article_info {
@@ -28,6 +35,7 @@
   color: #a2a4b4;
   font-size: 0.26rem;
   margin-top: 0.16rem;
+
   div {
     margin-right: 0.4rem;
     color: #a2a4b4;
@@ -35,6 +43,40 @@
 
     span {
       vertical-align: bottom;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .item {
+    border-bottom: 0.02rem solid #272a3a;
+    padding: 1rem 2rem;
+    height: auto;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .describe {
+    // color: #595c6c;
+    margin: 0.2rem 0;
+    font-size: 1rem;
+  }
+
+  .detail {
+    height: auto;
+    width: 100%;
+    font-size: 1.2rem;
+  }
+
+  .article_info {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+
+    div {
+      margin-right: 1rem;
     }
   }
 }

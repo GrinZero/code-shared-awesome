@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "PORT=4000 next dev",
+    "build": "EXPORT=true next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -12,15 +12,13 @@
     "@arco-design/web-react": "^2.40.2",
     "@monaco-editor/react": "^4.4.6",
     "classnames": "^2.3.2",
-    "codemirror": "^6.0.1",
+    "copy-to-clipboard": "^3.3.2",
     "dayjs": "^1.11.5",
     "highlight.js": "^11.6.0",
-    "monaco-editor": "^0.34.0",
+    "magic-design-react": "^0.0.30",
     "next": "12.3.1",
     "react": "18.2.0",
-    "react-codemirror2": "^7.2.1",
     "react-dom": "18.2.0",
-    "react-monaco-editor": "^0.50.1",
     "sass": "^1.55.0",
     "ui": "workspace:*"
   },

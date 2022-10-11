@@ -65,3 +65,17 @@ export interface ArticleListProps {
   listData: articleList[];
   activeIndex: number;
 }
+export type ContentLayoutType = "default" | "middle";
+
+export interface MainLayoutProps {
+  children?: React.ReactNode;
+  contentType?: ContentLayoutType;
+  loading?: boolean;
+}
+export interface FollowItemProps {
+  data: {
+    id: Number;
+    name: string;
+    comment: string;
+  };
+}

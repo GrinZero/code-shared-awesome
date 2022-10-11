@@ -1,5 +1,4 @@
 import style from "./index.module.css";
-
 import hljs from "highlight.js";
 import "highlight.js/styles/night-owl.css";
 import { useEffect, useState } from "react";
@@ -7,9 +6,9 @@ import React, { FC } from "react";
 import { getArticleDetail, getComment } from "api-sdk";
 import { Code, Comment } from "../../types";
 import { useRouter } from "next/router";
-import MyComment from "./comment";
-import MyHeader from "./Header";
-import MyCode from "./code";
+import MyComment from "../../components/detail/comment";
+import MyHeader from "../../components/detail/Header";
+import MyCode from "../../components/detail/code";
 const Detail: FC = () => {
   const router = useRouter();
   const { id, type } = router.query;
@@ -43,8 +42,6 @@ const Detail: FC = () => {
       hljs.highlightElement(el as HTMLElement);
     });
   });
-  console.log("评论", comments);
-  console.log("daima", code);
 
   return (
     <div className={style["content"]}>
