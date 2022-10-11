@@ -5,4 +5,4 @@ export * from "./comment";
 export * from "./user";
 export * from "./receiveCodeSnippets";
 export * from "./publish";
-// export * from "./getShowCode";
+export * from "./getShowCode";

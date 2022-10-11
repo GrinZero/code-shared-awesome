@@ -5,49 +5,156 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./layout.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"> </script>
     <title>showCode</title>
     <style>
-        * {
+        html,
+        body {
+            position: relative;
+            height: 100%;
+            color: #fff;
+        }
+
+        body {
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
             margin: 0;
             padding: 0;
         }
 
-        .show-conteiner {
+        .swiper {
+            width: 80vw;
+            height: 80vh;
+        }
+
+        .swiper-slide {
+            font-size: 18px;
+            background: rgb(36, 39, 59);
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .main-container {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .album-actions {
             display: flex;
             justify-content: center;
             align-items: center;
-            background: skyblue;
         }
 
-        .show-context {
-            width: 50vw;
-            height: 50vh;
-            background-color: brown;
-            text-align: center;
+        .album-action{
+            margin:  10px 10px;
+        }
+
+        .album-detail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 
 <body>
-    <div class="show-conteiner">
-        <div>
-            <button onclick="getPre();">pre</button>
-        </div>
-        <div class="show-context">
-            <span></span>
-        </div>
-        <div>
-            <button onclick="getNext();">next</button>
+    <div class="main-container">
+        <div class="album box">
+            <div class="status-main">
+                <div class="album-detail">
+                    <div class="album-title">
+                        <strong>Quan Ha</strong>
+                        <span>album</span>
+                    </div>
+                    <div class="album-date">6 hours ago</div>
+                </div>
+                <button class="intro-menu"></button>
+            </div>
+            <div class="album-content">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+            <div class="album-actions">
+                <a href="#" class="album-action">
+                    <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                    </svg>
+                    87
+                </a>
+                <a href="#" class="album-action">
+                    <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" class="css-i6dzq1" viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg>
+                    20
+                </a>
+                <a href="#" class="album-action">
+                    <svg stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round" class="css-i6dzq1" viewBox="0 0 24 24">
+                        <path d="M17 1l4 4-4 4" />
+                        <path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4" />
+                        <path d="M21 13v2a4 4 0 01-4 4H3" />
+                    </svg>
+                    13
+                </a>
+            </div>
         </div>
     </div>
 
-    <script>
+
+    <script type="module">
+
+        const showContext = document.querySelector('.show-context')
+        // 转换成markdown
+        var md = window.markdownit(
+            {
+                html: false,
+                xhtmlOut: false,
+                breaks: true,
+                langPrefix: "language-",
+                linkify: false,
+                typographer: false,
+                quotes: "“”‘’",
+                highlight: function (/*str, lang*/) {
+                    return "";
+                },
+            }
+        )
+
+        // 获取数据
         const getShowCode = async () => {
             return {
                 status: "ok",
-                data: {
-                    id: "xxx",
-                    code: `
+                data: [
+                    {
+                        id: "xxx",
+                        code: `
                         <!DOCTYPE html>
                         <html lang="en">
                         <head>
@@ -60,27 +167,108 @@
                         </body>
                         </html>
                         `
-                },
+                    },
+                    {
+                        id: "xxx",
+                        code: `
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Cat Coding</title>
+                        </head>
+                        <body>
+                            <h3>test：getShowCode</h3>
+                        </body>
+                        </html>
+                        `
+                    },
+                    {
+                        id: "xxx",
+                        code: `
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Cat Coding</title>
+                        </head>
+                        <body>
+                            <h3>test：getShowCode</h3>
+                        </body>
+                        </html>
+                        `
+                    },
+                    {
+                        id: "xxx",
+                        code: `
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Cat Coding</title>
+                        </head>
+                        <body>
+                            <h3>test：getShowCode</h3>
+                        </body>
+                        </html>
+                        `
+                    },
+                    {
+                        id: "xxx",
+                        code: `
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Cat Coding</title>
+                        </head>
+                        <body>
+                            <h3>test：getShowCode</h3>
+                        </body>
+                        </html>
+                        `
+                    },
+                ]
             };
         };
 
-        const showContext = document.querySelector('.show-context')
-        console.log(showContext);
+        // 渲染数据
+        const render = (data) => {
+            let bannerHtml = ''
+            data.forEach((item, i) => {
+                let res = md.render(data[i].code)
+                bannerHtml += `
+                    <div class="swiper-slide">
+                        <div class="show-context">
+                            <span>${res}</span>
+                        </div>                    
+                    </div>`;
+            })
 
+            document.querySelector(".swiper-wrapper").innerHTML = bannerHtml
+
+            var swiper = new Swiper(".mySwiper", {
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+                on: {
+                    slideChange: function () {
+                        console.log('改变了，activeIndex为' + this.activeIndex);
+                    },
+                },
+            });
+        }
+
+        // 初始化
         window.onload = async function () {
-
             const { data } = await getShowCode()
-            showContext.innerHTML = data.code
+            render(data)
         }
-
-        function getNext() {
-            showContext.innerHTML += '1'
-        }
-
-        function getPre() {
-            showContext.innerHTML += '2'
-        }
-
     </script>
 </body>
 
